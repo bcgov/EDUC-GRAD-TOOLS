@@ -26,14 +26,8 @@ public class EducStudentExamApiApplication {
 
 		ModelMapper modelMapper = new ModelMapper();
 
-		modelMapper.typeMap(StudentExamEntity.class, StudentExam.class).addMappings(mapper -> {
-			mapper.skip(StudentExam::setSessionDate);
-		});
-
-		modelMapper.typeMap(StudentExam.class, StudentExamEntity.class).addMappings(mapper -> {
-			mapper.skip(StudentExamEntity::setSessionDate);
-		});
-
+		modelMapper.typeMap(StudentExamEntity.class, StudentExam.class);
+		modelMapper.typeMap(StudentExam.class, StudentExamEntity.class);
 		return modelMapper;
 	}
 }
