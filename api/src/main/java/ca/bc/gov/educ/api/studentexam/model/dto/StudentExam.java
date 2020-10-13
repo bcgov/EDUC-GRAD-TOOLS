@@ -8,7 +8,10 @@ import lombok.Data;
 @Component
 public class StudentExam {
 
-	private StudentExamId examKey;
+	private String pen;
+    private String courseCode;
+    private String courseLevel;
+    private String sessionDate;
     private String gradReqMet;    
     private String courseType;    
     private Double completedCourseSchoolPercentage;    
@@ -23,7 +26,8 @@ public class StudentExam {
     
 	@Override
 	public String toString() {
-		return "StudentExam [examKey=" + examKey + ", gradReqMet=" + gradReqMet + ", courseType=" + courseType
+		return "StudentExam [pen=" + pen + ", courseCode=" + courseCode + ", courseLevel=" + courseLevel
+				+ ", sessionDate=" + sessionDate + ", gradReqMet=" + gradReqMet + ", courseType=" + courseType
 				+ ", completedCourseSchoolPercentage=" + completedCourseSchoolPercentage
 				+ ", completedCourseExamPercentage=" + completedCourseExamPercentage
 				+ ", completedCourseFinalPercentage=" + completedCourseFinalPercentage + ", completedCourseLetterGrade="
@@ -31,6 +35,8 @@ public class StudentExam {
 				+ interimLetterGrade + ", credits=" + credits + ", creditsUsedForGrad=" + creditsUsedForGrad
 				+ ", reqMetLiteracyNumeracy=" + reqMetLiteracyNumeracy + "]";
 	}
+    
+	
     
 	
 }

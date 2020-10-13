@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import ca.bc.gov.educ.api.studentexam.model.dto.StudentExam;
-import ca.bc.gov.educ.api.studentexam.model.dto.StudentExamId;
 import ca.bc.gov.educ.api.studentexam.model.entity.StudentExamEntity;
 import ca.bc.gov.educ.api.studentexam.util.StudentExamApiUtils;
 
@@ -41,12 +40,10 @@ public class StudentExamTransformer {
         for (StudentExamEntity studentExamEntity : studentExamEntities) {
             StudentExam studentExam = new StudentExam();
             studentExam = modelMapper.map(studentExamEntity, StudentExam.class);
-            StudentExamId examKeyObj = new StudentExamId();
-            examKeyObj.setPen(studentExamEntity.getExamKey().getPen());
-            examKeyObj.setCourseCode(studentExamEntity.getExamKey().getCourseCode());
-            examKeyObj.setCourseLevel(studentExamEntity.getExamKey().getCourseLevel());
-            examKeyObj.setSessionDate(StudentExamApiUtils.parseTraxDate(studentExamEntity.getExamKey().getSessionDate()).toLocaleString());
-            studentExam.setExamKey(examKeyObj);
+            studentExam.setPen(studentExamEntity.getExamKey().getPen());
+            studentExam.setCourseCode(studentExamEntity.getExamKey().getCourseCode());
+            studentExam.setCourseLevel(studentExamEntity.getExamKey().getCourseLevel());
+            studentExam.setSessionDate(StudentExamApiUtils.parseTraxDate(studentExamEntity.getExamKey().getSessionDate()).toLocaleString());
             studentExamList.add(studentExam);
         }
 
