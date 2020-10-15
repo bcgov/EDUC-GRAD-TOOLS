@@ -47,4 +47,10 @@ public class StudentExamEntity {
     @Column(name = "MET_LIT_NUM_REQT", nullable = true)
     private String reqMetLiteracyNumeracy;
     
+    @Column(name = "WROTE_FLAG", nullable = true)
+    private String wroteFlag;
+    
+    @Column(name = "PROV_SPEC_CASE ", nullable = true)
+    private String specialCase;
+    
 }

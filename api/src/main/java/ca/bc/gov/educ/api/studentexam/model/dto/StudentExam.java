@@ -23,6 +23,8 @@ public class StudentExam {
     private Integer credits;    
     private Integer creditsUsedForGrad;    
     private String reqMetLiteracyNumeracy;
+    private String wroteFlag;
+    private String specialCase;
     
 	@Override
 	public String toString() {
