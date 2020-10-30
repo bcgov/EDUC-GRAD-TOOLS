@@ -10,6 +10,7 @@ public class StudentExam {
 
 	private String pen;
     private String courseCode;
+    private String courseName;
     private String courseLevel;
     private String sessionDate;
     private String gradReqMet;    
