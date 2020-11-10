@@ -42,7 +42,7 @@ public class StudentExamEntity {
     private Integer credits;
     
     @Column(name = "USED_FOR_GRAD", nullable = true)
-    private Integer creditsUsedForGrad; 
+    private String creditsUsedForGrad; 
     
     @Column(name = "MET_LIT_NUM_REQT", nullable = true)
     private String reqMetLiteracyNumeracy;
