@@ -24,4 +24,6 @@ public class StudentExamApiConstants {
     public static final String DEFAULT_DATE_FORMAT = "dd-MMM-yyyy";
     
     public static final String TRAX_DATE_FORMAT = "yyyyMM";
+    
+    public static final String ENDPOINT_COURSE_BY_CRSE_CODE_URL="${endpoint.course-api.course_by_crse_code}";
 }
