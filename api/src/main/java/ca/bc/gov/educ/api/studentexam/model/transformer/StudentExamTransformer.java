@@ -43,7 +43,7 @@ public class StudentExamTransformer {
             studentExam.setPen(studentExamEntity.getExamKey().getPen());
             studentExam.setCourseCode(studentExamEntity.getExamKey().getCourseCode());
             studentExam.setCourseLevel(studentExamEntity.getExamKey().getCourseLevel());
-            studentExam.setSessionDate(StudentExamApiUtils.parseTraxDate(studentExamEntity.getExamKey().getSessionDate()).toLocaleString());
+            studentExam.setSessionDate(StudentExamApiUtils.parseTraxDate(studentExamEntity.getExamKey().getSessionDate()));
             studentExamList.add(studentExam);
         }
 
