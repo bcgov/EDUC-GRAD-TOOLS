@@ -51,7 +51,7 @@ public class StudentExamController {
     	String accessToken = auth.getTokenValue();
         List<StudentExam> studentExamList =  studentExamService.getStudentExamList(pen,accessToken);
         if(studentExamList.isEmpty()) {
-        	return response.NOT_FOUND();
+        	return response.NO_CONTENT();
         }
     	return response.GET(studentExamList);
     }
