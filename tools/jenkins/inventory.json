@@ -1,0 +1,48 @@
+{
+  "applications": [
+    {
+      "name": "student-course-api",
+      "kind": "API",
+      "tier": "Backend",
+      "Tech": "Java Spring",
+      "labels": ["java", "spring", "REST", "API"],
+      "git": "https://github.com/bcgov/EDUC-STUDENT-COURSE_API.git",
+      "environments": [
+        {
+          "name": "Development",
+          "acronym": "DEV",
+          "type": "PRE-PROD",
+          "ocp-namespace": "TOOLS"
+        },
+        {
+          "name": "Test",
+          "acronym": "TEST",
+          "type": "PRE-PROD",
+          "ocp-namespace": "DEV"
+        }
+      ]
+    },
+    {
+      "name": "student-assessments-api",
+      "kind": "API",
+      "tier": "Backend",
+      "Tech": "Java Spring",
+      "labels": ["java", "spring", "REST", "API"],
+      "git": "https://github.com/bcgov/EDUC-STUDENT-ASSESSMENT-API.git",
+      "environments": [
+        {
+          "name": "Development",
+          "acronym": "DEV",
+          "type": "PRE-PROD",
+          "ocp-namespace": "TOOLS"
+        },
+        {
+          "name": "Test",
+          "acronym": "TEST",
+          "type": "PRE-PROD",
+          "ocp-namespace": "DEV"
+        }
+      ]
+    }
+  ]
+}
