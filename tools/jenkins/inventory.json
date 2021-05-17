@@ -34,13 +34,15 @@
           "name": "Development",
           "acronym": "DEV",
           "type": "PRE-PROD",
-          "ocp-namespace": "TOOLS"
+          "ocp-namespace": "77c02f-tools",
+          "ocp-env": "TOOLS"
         },
         {
           "name": "Test",
           "acronym": "TEST",
           "type": "PRE-PROD",
-          "ocp-namespace": "DEV"
+          "ocp-namespace": "77c02f-dev",
+          "ocp-env": "DEV"
         }
       ]
     }
