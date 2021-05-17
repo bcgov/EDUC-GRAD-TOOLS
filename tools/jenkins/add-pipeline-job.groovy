@@ -1,4 +1,4 @@
-import hudson.plugins.git.*;
+import hudson.plugins.git.*
 import com.cloudbees.hudson.plugins.folder.Folder
 
 def scm = new GitSCM("https://github.com/bcgov/EDUC-STUDENT-COURSE_API.git")
