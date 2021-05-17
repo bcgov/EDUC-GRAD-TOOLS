@@ -1,3 +1,29 @@
+import jenkins.*
+import jenkins.model.*
+import hudson.*
+import hudson.model.*
+import com.cloudbees.hudson.plugins.folder.*
+import org.jenkinsci.plugins.workflow.job.WorkflowJob
+import groovy.json.JsonSlurper
+import groovy.io.FileType
+
+Jenkins jenkins = Jenkins.instance
+
+def addFolder(folderName ->
+    def folder = jenkins.getItem(folderName)
+    if (folder == null) {
+        folder = jenkins.createProject(Folder.class, folderName)
+        println 'Folder Created!'
+    } else {
+        if (folder.getClass() != Folder.class) {
+            folder = jenkins.createProject(Folder.class, folderName)
+      	    println 'Folder Created!'
+        } else {
+            println 'Folder already exists!'
+        }
+    }
+)
+
 pipeline {
     agent {
         kubernetes {
@@ -33,21 +59,21 @@ pipeline {
     }
 
     environment {
-        APP_NAME = 'student-exam-api'
+        //APP_NAME = 'student-exam-api'
     }
 
     parameters {
         choice(
-            choices: ['DEV', 'TEST', 'UAT', 'PROD'],
+            choices: ['TEMP', 'DEV', 'TEST', 'UAT', 'PROD'],
             name: 'ENVIRONMENT'
         )
     }
 
     stages {
-        stage('Init') {
+        stage ('Init') {
             steps {
                 script {
-                    println 'Initialization Complete!'
+                    println "Environment Selected => ${env.ENVIRONMENT}"
                 }
             }
             post {
@@ -57,8 +83,20 @@ pipeline {
                 failure {
                     echo 'Init Failed'
                 }
-                always {
-                    echo 'Init END'
+            }
+        }
+        stage ('Add-Folder') {
+            steps {
+                script {
+                    addFolder(env.ENVIRONMENT)
+                }
+            }
+            post {
+                success {
+                    echo 'Folder added Successfully'
+                }
+                failure {
+                    echo 'Failed adding folder'
                 }
             }
         }
