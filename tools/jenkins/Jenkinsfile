@@ -30,7 +30,6 @@ pipeline {
 
     options {
         buildDiscarder(logRotator(daysToKeepStr: '', numToKeepStr: '5'))
-        timestamps ()
     }
 
     environment {
