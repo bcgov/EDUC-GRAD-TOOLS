@@ -29,7 +29,7 @@ pipeline {
     }
 
     options {
-        buildDiscarder(logRotator(daysToKeepStr: '', numToKeepStr: '5'))
+        buildDiscarder(logRotator(daysToKeepStr: '', numToKeepStr: '3'))
     }
 
     environment {
@@ -38,8 +38,8 @@ pipeline {
 
     parameters {
         choice(
-            choices: ['ONE', 'TWO'],
-            name: 'PARAMETER_01'
+            choices: ['DEV', 'TEST', 'UAT', 'PROD'],
+            name: 'ENVIRONMENT'
         )
     }
 
