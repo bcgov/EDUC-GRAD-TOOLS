@@ -32,11 +32,29 @@ pipeline {
         APP_NAME = 'student-exam-api'
     }
 
-    parameters {
-        choice(name: 'Choice Param', choices: ['False', 'True'], description: 'Select 1 option')
-        extendedChoice(name: 'Extended Choice Param', value: ['Choice1', 'Choice2', 'Choice3'], defaultValue: 'Choice2', description: 'Choose 1 or more', multiSelectDelimiter: ',', type: 'PT_MULTI_SELECT', visibleItemCount: 5) //PubSize())
-        gitParameter branchFilter: 'origin/(.*)', defaultValue: '', name: 'CODE_BRANCH', type: 'PT_BRANCH', description: 'Code Branch', listSize: '10', useRepository: '.*EDUC-GRAD-TOOLS', quickFilterEnabled: true
-    }
+    parameters([
+        choice(
+            choices: ['ONE', 'TWO'],
+            name: 'PARAMETER_01'
+        ),
+        booleanParam(
+            defaultValue: true,
+            description: '',
+            name: 'BOOLEAN'
+        ),
+        text(
+            defaultValue: '''
+            this is a multi-line
+            string parameter example
+            ''',
+             name: 'MULTI-LINE-STRING'
+        ),
+        string(
+            defaultValue: 'scriptcrunch',
+            name: 'STRING-PARAMETER',
+            trim: true
+        )
+    ])
 
     stages {
         stage('Init') {
