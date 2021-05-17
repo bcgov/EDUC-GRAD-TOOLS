@@ -1,34 +1,12 @@
 {
   "applications": [
     {
-      "name": "student-course-api",
+      "name": "grad-algorithm-api",
       "kind": "API",
       "tier": "Backend",
       "Tech": "Java Spring",
       "labels": ["java", "spring", "REST", "API"],
-      "git": "https://github.com/bcgov/EDUC-STUDENT-COURSE_API.git",
-      "environments": [
-        {
-          "name": "Development",
-          "acronym": "DEV",
-          "type": "PRE-PROD",
-          "ocp-namespace": "TOOLS"
-        },
-        {
-          "name": "Test",
-          "acronym": "TEST",
-          "type": "PRE-PROD",
-          "ocp-namespace": "DEV"
-        }
-      ]
-    },
-    {
-      "name": "student-assessments-api",
-      "kind": "API",
-      "tier": "Backend",
-      "Tech": "Java Spring",
-      "labels": ["java", "spring", "REST", "API"],
-      "git": "https://github.com/bcgov/EDUC-STUDENT-ASSESSMENT-API.git",
+      "git": "https://github.com/bcgov/EDUC-GRAD-ALGORITHM-API",
       "environments": [
         {
           "name": "Development",
@@ -43,6 +21,364 @@
           "type": "PRE-PROD",
           "ocp-namespace": "77c02f-dev",
           "ocp-env": "DEV"
+        }
+      ]
+    },
+    {
+      "name": "grad-assessment-api",
+      "kind": "API",
+      "tier": "Backend",
+      "Tech": "Java Spring",
+      "labels": ["java", "spring", "REST", "API"],
+      "git": "https://github.com/bcgov/EDUC-GRAD-ASSESSMENT-API",
+      "environments": [
+        {
+          "name": "Development",
+          "acronym": "DEV",
+          "type": "PRE-PROD",
+          "ocp-namespace": "77c02f-tools",
+          "ocp-env": "TOOLS"
+        },
+        {
+          "name": "Test",
+          "acronym": "TEST",
+          "type": "PRE-PROD",
+          "ocp-namespace": "77c02f-dev",
+          "ocp-env": "DEV"
+        }
+      ]
+    },
+    {
+      "name": "educ-grad-batch-graduation-api",
+      "kind": "API",
+      "tier": "Backend",
+      "Tech": "Java Spring",
+      "labels": ["java", "spring", "REST", "API"],
+      "git": "https://github.com/bcgov/EDUC-GRAD-BATCH-GRADUATION-API",
+      "environments": [
+        {
+          "name": "Development",
+          "acronym": "DEV",
+          "type": "PRE-PROD",
+          "ocp-namespace": "77c02f-tools",
+          "ocp-env": "TOOLS"
+        },
+        {
+          "name": "Test",
+          "acronym": "TEST",
+          "type": "PRE-PROD",
+          "ocp-namespace": "77c02f-dev",
+          "ocp-env": "DEV"
+        }
+      ]
+    },
+    {
+      "name": "educ-grad-code-api",
+      "kind": "API",
+      "tier": "Backend",
+      "Tech": "Java Spring",
+      "labels": ["java", "spring", "REST", "API"],
+      "git": "https://github.com/bcgov/EDUC-GRAD-CODE-API",
+      "environments": [
+        {
+          "name": "Development",
+          "acronym": "DEV",
+          "type": "PRE-PROD",
+          "ocp-namespace": "77c02f-tools",
+          "ocp-env": "TOOLS"
+        },
+        {
+          "name": "Test",
+          "acronym": "TEST",
+          "type": "PRE-PROD",
+          "ocp-namespace": "77c02f-dev",
+          "ocp-env": "DEV"
+        }
+      ]
+    },
+    {
+      "name": "educ-grad-common-api",
+      "kind": "API",
+      "tier": "Backend",
+      "Tech": "Java Spring",
+      "labels": ["java", "spring", "REST", "API"],
+      "git": "https://github.com/bcgov/EDUC-GRAD-COMMON-API",
+      "environments": [
+        {
+          "name": "Development",
+          "acronym": "DEV",
+          "type": "PRE-PROD",
+          "ocp-namespace": "77c02f-tools",
+          "ocp-env": "TOOLS"
+        },
+        {
+          "name": "Test",
+          "acronym": "TEST",
+          "type": "PRE-PROD",
+          "ocp-namespace": "77c02f-dev",
+          "ocp-env": "DEV"
+        }
+      ]
+    },
+    {
+      "name": "grad-course-api",
+      "kind": "API",
+      "tier": "Backend",
+      "Tech": "Java Spring",
+      "labels": ["java", "spring", "REST", "API"],
+      "git": "https://github.com/bcgov/EDUC-GRAD-COURSE-API",
+      "environments": [
+        {
+          "name": "Development",
+          "acronym": "DEV",
+          "type": "PRE-PROD",
+          "ocp-namespace": "77c02f-tools",
+          "ocp-env": "TOOLS"
+        },
+        {
+          "name": "Test",
+          "acronym": "TEST",
+          "type": "PRE-PROD",
+          "ocp-namespace": "77c02f-dev",
+          "ocp-env": "DEV"
+        }
+      ]
+    },
+    {
+      "name": "educ-grad-graduation-api",
+      "kind": "API",
+      "tier": "Backend",
+      "Tech": "Java Spring",
+      "labels": ["java", "spring", "REST", "API"],
+      "git": "https://github.com/bcgov/EDUC-GRAD-GRADUATION-API",
+      "environments": [
+        {
+          "name": "Development",
+          "acronym": "DEV",
+          "type": "PRE-PROD",
+          "ocp-namespace": "77c02f-tools",
+          "ocp-env": "TOOLS"
+        },
+        {
+          "name": "Test",
+          "acronym": "TEST",
+          "type": "PRE-PROD",
+          "ocp-namespace": "77c02f-dev",
+          "ocp-env": "DEV"
+        }
+      ]
+    },
+    {
+      "name": "educ-grad-graduation-status-api",
+      "kind": "API",
+      "tier": "Backend",
+      "Tech": "Java Spring",
+      "labels": ["java", "spring", "REST", "API"],
+      "git": "https://github.com/bcgov/EDUC-GRADUATION-STATUS-API",
+      "environments": [
+        {
+          "name": "Development",
+          "acronym": "DEV",
+          "type": "PRE-PROD",
+          "ocp-namespace": "77c02f-tools",
+          "ocp-env": "TOOLS"
+        },
+        {
+          "name": "Test",
+          "acronym": "TEST",
+          "type": "PRE-PROD",
+          "ocp-namespace": "77c02f-dev",
+          "ocp-env": "DEV"
+        }
+      ]
+    },
+    {
+      "name": "educ-grad-program-management-api",
+      "kind": "API",
+      "tier": "Backend",
+      "Tech": "Java Spring",
+      "labels": ["java", "spring", "REST", "API"],
+      "git": "https://github.com/bcgov/EDUC-GRAD-PROGRAM-MANAGEMENT-API",
+      "environments": [
+        {
+          "name": "Development",
+          "acronym": "DEV",
+          "type": "PRE-PROD",
+          "ocp-namespace": "77c02f-tools",
+          "ocp-env": "TOOLS"
+        },
+        {
+          "name": "Test",
+          "acronym": "TEST",
+          "type": "PRE-PROD",
+          "ocp-namespace": "77c02f-dev",
+          "ocp-env": "DEV"
+        }
+      ]
+    },
+    {
+      "name": "educ-grad-psi-api",
+      "kind": "API",
+      "tier": "Backend",
+      "Tech": "Java Spring",
+      "labels": ["java", "spring", "REST", "API"],
+      "git": "https://github.com/bcgov/EDUC-GRAD-PSI-API",
+      "environments": [
+        {
+          "name": "Development",
+          "acronym": "DEV",
+          "type": "PRE-PROD",
+          "ocp-namespace": "77c02f-tools",
+          "ocp-env": "TOOLS"
+        },
+        {
+          "name": "Test",
+          "acronym": "TEST",
+          "type": "PRE-PROD",
+          "ocp-namespace": "77c02f-dev",
+          "ocp-env": "DEV"
+        }
+      ]
+    },
+    {
+      "name": "educ-grad-school-api",
+      "kind": "API",
+      "tier": "Backend",
+      "Tech": "Java Spring",
+      "labels": ["java", "spring", "REST", "API"],
+      "git": "https://github.com/bcgov/EDUC-GRAD-COURSE-API",
+      "environments": [
+        {
+          "name": "Development",
+          "acronym": "DEV",
+          "type": "PRE-PROD",
+          "ocp-namespace": "77c02f-tools",
+          "ocp-env": "TOOLS"
+        },
+        {
+          "name": "Test",
+          "acronym": "TEST",
+          "type": "PRE-PROD",
+          "ocp-namespace": "77c02f-dev",
+          "ocp-env": "DEV"
+        }
+      ]
+    },
+    {
+      "name": "grad-student-api",
+      "kind": "API",
+      "tier": "Backend",
+      "Tech": "Java Spring",
+      "labels": ["java", "spring", "REST", "API"],
+      "git": "https://github.com/bcgov/EDUC-GRAD-STUDENT-API",
+      "environments": [
+        {
+          "name": "Development",
+          "acronym": "DEV",
+          "type": "PRE-PROD",
+          "ocp-namespace": "77c02f-tools",
+          "ocp-env": "TOOLS"
+        },
+        {
+          "name": "Test",
+          "acronym": "TEST",
+          "type": "PRE-PROD",
+          "ocp-namespace": "77c02f-dev",
+          "ocp-env": "DEV"
+        }
+      ]
+    },
+    {
+      "name": "report-api",
+      "kind": "API",
+      "tier": "Backend",
+      "Tech": "Java Spring",
+      "labels": ["java", "spring", "REST", "API"],
+      "git": "https://github.com/bcgov/EDUC-REPORT-API",
+      "environments": [
+        {
+          "name": "Development",
+          "acronym": "DEV",
+          "type": "PRE-PROD",
+          "ocp-namespace": "77c02f-tools",
+          "ocp-env": "TOOLS"
+        },
+        {
+          "name": "Test",
+          "acronym": "TEST",
+          "type": "PRE-PROD",
+          "ocp-namespace": "77c02f-dev",
+          "ocp-env": "DEV"
+        }
+      ]
+    },
+    {
+      "name": "rule-engine-api",
+      "kind": "API",
+      "tier": "Backend",
+      "Tech": "Java Spring",
+      "labels": ["java", "spring", "REST", "API"],
+      "git": "https://github.com/bcgov/EDUC-RULE-ENGINE-API",
+      "environments": [
+        {
+          "name": "Development",
+          "acronym": "DEV",
+          "type": "PRE-PROD",
+          "ocp-namespace": "77c02f-tools",
+          "ocp-env": "TOOLS"
+        },
+        {
+          "name": "Test",
+          "acronym": "TEST",
+          "type": "PRE-PROD",
+          "ocp-namespace": "77c02f-dev",
+          "ocp-env": "DEV"
+        }
+      ]
+    },
+    {
+      "name": "student-assessment-api",
+      "kind": "API",
+      "tier": "Backend",
+      "Tech": "Java Spring",
+      "labels": ["java", "spring", "REST", "API"],
+      "git": "https://github.com/bcgov/EDUC-STUDENT-ASSESSMENT-API",
+      "environments": [
+        {
+          "name": "Development",
+          "acronym": "DEV",
+          "type": "PRE-PROD",
+          "ocp-namespace": "77c02f-tools",
+          "ocp-env": "TOOLS"
+        },
+        {
+          "name": "Test",
+          "acronym": "TEST",
+          "type": "PRE-PROD",
+          "ocp-namespace": "77c02f-dev",
+          "ocp-env": "DEV"
+        }
+      ]
+    },
+    {
+      "name": "student-course-api",
+      "kind": "API",
+      "tier": "Backend",
+      "Tech": "Java Spring",
+      "labels": ["java", "spring", "REST", "API"],
+      "git": "https://github.com/bcgov/EDUC-STUDENT-COURSE_API",
+      "environments": [
+        {
+          "name": "Development",
+          "acronym": "DEV",
+          "type": "PRE-PROD",
+          "ocp-namespace": "TOOLS"
+        },
+        {
+          "name": "Test",
+          "acronym": "TEST",
+          "type": "PRE-PROD",
+          "ocp-namespace": "DEV"
         }
       ]
     }
