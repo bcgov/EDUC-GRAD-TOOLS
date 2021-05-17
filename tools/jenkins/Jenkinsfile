@@ -59,7 +59,7 @@ pipeline {
     }
 
     environment {
-        //APP_NAME = 'student-exam-api'
+        APP_NAME = 'student-grad-tools'
     }
 
     parameters {
