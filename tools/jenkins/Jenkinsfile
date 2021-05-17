@@ -63,17 +63,28 @@ pipeline {
                     println 'Initialization Complete!'
                 }
             }
+            post {
+                success {
+                    echo 'Init Success'
+                }
+                failure {
+                    echo 'Init Failed'
+                }
+                always {
+                    echo 'Init END'
+                }
+            }
         }
-        post {
-            success {
-                echo 'Pipeline Successful'
-            }
-            failure {
-                echo 'Pipeline Failed'
-            }
-            always {
-                echo 'Pipeline END'
-            }
+    }
+    post {
+        success {
+            println 'Stages Success'
+        }
+        failure {
+            println 'Stages failure'
+        }
+        always {
+            println 'Stages always'
         }
     }
 }
