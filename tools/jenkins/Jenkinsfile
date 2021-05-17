@@ -32,7 +32,7 @@ pipeline {
         APP_NAME = 'student-exam-api'
     }
 
-    parameters([
+    parameters {
         choice(
             choices: ['ONE', 'TWO'],
             name: 'PARAMETER_01'
@@ -54,7 +54,7 @@ pipeline {
             name: 'STRING-PARAMETER',
             trim: true
         )
-    ])
+    }
 
     stages {
         stage('Init') {
