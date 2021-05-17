@@ -9,17 +9,18 @@ import groovy.io.FileType
 
 Jenkins jenkins = Jenkins.instance
 
-def addFolder(folderName ->
-    def folder = jenkins.getItem(folderName)
-    if (folder == null) {
-        folder = jenkins.createProject(Folder.class, folderName)
-        println 'Folder Created!'
-    } else {
-        if (folder.getClass() != Folder.class) {
+def addFolder(folderName -> {
+        def folder = jenkins.getItem(folderName)
+        if (folder == null) {
             folder = jenkins.createProject(Folder.class, folderName)
-      	    println 'Folder Created!'
+            println 'Folder Created!'
         } else {
-            println 'Folder already exists!'
+            if (folder.getClass() != Folder.class) {
+                folder = jenkins.createProject(Folder.class, folderName)
+                println 'Folder Created!'
+            } else {
+                println 'Folder already exists!'
+            }
         }
     }
 )
