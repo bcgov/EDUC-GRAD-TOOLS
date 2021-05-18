@@ -156,7 +156,7 @@ applications:
           - spring
           - REST
           - API
-      git: https://github.com/bcgov/EDUC-GRADUATION-STATUS-API
+      git: https://github.com/bcgov/EDUC-GRAD-GRADUATION-STATUS-API
       environments:
           - name: Development
             acronym: DEV
