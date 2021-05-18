@@ -112,7 +112,7 @@ pipeline {
                     println ''
 
                     apps.each {
-                        it -> println it.name
+                        app -> println app.name
                     }
 
                     println ''
