@@ -24,7 +24,7 @@ def addFolder = { String folderName ->
 }
 
 pipeline {
-    agent {
+    agent any /*{
         kubernetes {
             label 'maven'
             cloud 'openshift'
@@ -51,7 +51,7 @@ pipeline {
                     claimName: 'maven-slave-pvc'
             """
         }
-    }
+    }*/
 
     options {
         buildDiscarder(logRotator(daysToKeepStr: '', numToKeepStr: '3'))
