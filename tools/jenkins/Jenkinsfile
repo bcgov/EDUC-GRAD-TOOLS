@@ -99,6 +99,26 @@ pipeline {
                 }
             }
         }
+        stage ('print-apps') {
+            steps {
+                script {
+                    def slurper = new JsonSlurper()
+                    def inventory = slurper.parse(
+                            "https://raw.githubusercontent.com/bcgov/EDUC-GRAD-TOOLS/main/tools/jenkins/inventory.json".toURL()
+                    )
+
+                    def apps = inventory.applications
+
+                    println ''
+
+                    apps.each {
+                        it -> println it.name
+                    }
+
+                    println ''
+                }
+            }
+        }
     }
     post {
         success {
