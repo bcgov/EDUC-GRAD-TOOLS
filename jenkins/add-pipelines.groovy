@@ -1,5 +1,4 @@
-@Grapes(@Grab(group='org.codehaus.groovy', module='groovy-yaml', version='3.0.8'))
-
+@Grab(group='org.codehaus.groovy', module='groovy-yaml', version='3.0.8')
 import jenkins.*
 import jenkins.model.*
 import hudson.*
