@@ -51,7 +51,7 @@ pipeline{
     stages{
         stage('Promote to TEST') {
             steps{
-                deployStage('test', DEV, TEST_HOST_ROUTE, 'dev')
+                deployStage('test', DEV, TEST_HOST_ROUTE, 'latest')
             }
             post{
                 success{
