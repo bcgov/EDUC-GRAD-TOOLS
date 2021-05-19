@@ -53,7 +53,7 @@ pipeline{
             steps{
                 script {
                     openshift.withCluster() {
-                        openshift.withProject('77c02f-test') {
+                        openshift.withProject('77c02f-dev') {
                             def dcTemplate = openshift.process('-f',
                                     'openshift/api.dc.yaml',
                                     "REPO_NAME=educ-grad-code-api",
