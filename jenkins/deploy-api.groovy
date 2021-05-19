@@ -51,7 +51,28 @@ pipeline{
     stages{
         stage('Promote to TEST') {
             steps{
-                deployStage('test', TOOLS, TEST_HOST_ROUTE, 'latest')
+                openshift.withCluster() {
+                    openshift.withProject('77c02f-test') {
+                        def dcTemplate = openshift.process('-f',
+                                'openshift/api.dc.yaml',
+                                "REPO_NAME=educ-grad-code-api",
+                                "JOB_NAME=main",
+                                "NAMESPACE=77c02f-tools",
+                                "APP_NAME=educ-grad-code-api",
+                                "HOST_ROUTE=educ-grad-code-api-77c02f-test.apps.silver.devops.gov.bc.ca",
+                                "TAG=latest"
+                        )
+
+                        echo "Applying Deployment educ-grad-code-api"
+                        def dc = openshift.apply(dcTemplate).narrow('dc')
+
+                        echo "Waiting for deployment to roll out"
+                        // Wait for deployments to roll out
+                        timeout(10) {
+                            dc.rollout().status('--watch=true')
+                        }
+                    }
+                }
             }
             post{
                 success{
@@ -60,36 +81,6 @@ pipeline{
                 failure{
                     echo 'Deployment to Dev failed'
                 }
-            }
-        }
-    }
-}
-
-def deployStage(String stageEnv, String projectEnv, String hostRouteEnv, String tag) {
-
-    if (!stageEnv.equalsIgnoreCase('dev')) {
-        input("Deploy to ${projectEnv}?")
-    }
-
-    openshift.withCluster() {
-        openshift.withProject(projectEnv) {
-            def dcTemplate = openshift.process('-f',
-                    'openshift/api.dc.yaml',
-                    "REPO_NAME=${REPO_NAME}",
-                    "JOB_NAME=${JOB_NAME}",
-                    "NAMESPACE=${projectEnv}",
-                    "APP_NAME=${APP_NAME}",
-                    "HOST_ROUTE=${hostRouteEnv}",
-                    "TAG=${tag}"
-            )
-
-            echo "Applying Deployment ${REPO_NAME}"
-            def dc = openshift.apply(dcTemplate).narrow('dc')
-
-            echo "Waiting for deployment to roll out"
-            // Wait for deployments to roll out
-            timeout(10) {
-                dc.rollout().status('--watch=true')
             }
         }
     }
