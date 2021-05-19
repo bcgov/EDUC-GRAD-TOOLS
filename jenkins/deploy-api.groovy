@@ -72,6 +72,7 @@ pipeline{
                             timeout(10) {
                                 dc.rollout().status('--watch=true')
                             }
+                            openshift.selector('dc', "educ-grad-code-api-main").rollout().latest()
                         }
                     }
                 }
