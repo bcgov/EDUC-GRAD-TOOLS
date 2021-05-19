@@ -51,7 +51,7 @@ pipeline{
     stages{
         stage('Promote to TEST') {
             steps{
-                deployStage('test', DEV, TEST_HOST_ROUTE, 'latest')
+                deployStage('test', TOOLS, TEST_HOST_ROUTE, 'latest')
             }
             post{
                 success{
@@ -91,8 +91,6 @@ def deployStage(String stageEnv, String projectEnv, String hostRouteEnv, String 
             timeout(10) {
                 dc.rollout().status('--watch=true')
             }
-
-            openshift.selector('dc', "${APP_NAME}-frontend-${JOB_NAME}").rollout().latest()
         }
     }
 }
