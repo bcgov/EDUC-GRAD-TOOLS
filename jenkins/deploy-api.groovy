@@ -60,7 +60,7 @@ pipeline{
                                     "JOB_NAME=main",
                                     "NAMESPACE=77c02f-tools",
                                     "APP_NAME=educ-grad-code-api",
-                                    "HOST_ROUTE=educ-grad-code-api-77c02f-tools.apps.silver.devops.gov.bc.ca",
+                                    "HOST_ROUTE=educ-grad-code-api-77c02f-tst.apps.silver.devops.gov.bc.ca",
                                     "TAG=latest"
                             )
 
