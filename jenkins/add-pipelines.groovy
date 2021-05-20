@@ -39,12 +39,9 @@ inventory = yamlSlurper.parse(new File("${WORKSPACE}/jenkins/inventory.yaml"))
 apps = inventory.applications
 
 apps.each { app ->
-    println '---------------------------------------------------------------'
     app.environments.each {
         if (envName.equalsIgnoreCase(it.acronym)) {
             newPipeline(it.acronym, app.name, app.git, 'main')
-            println "Pipeline Added: ${app.name}"
         }
     }
-    println '---------------------------------------------------------------'
 }

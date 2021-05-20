@@ -45,7 +45,7 @@ pipeline{
                 script {
                     openshift.withCluster() {
                         openshift.withProject(OCP_PROJECT) {
-                            def dcTemplate = openshift.process('-f', 'openshift/api.dc.yaml',
+                            def dcTemplate = openshift.process('-f', 'tools/openshift/api.dc.yaml',
                                     "REPO_NAME=${REPO_NAME}",
                                     "JOB_NAME=${JOB_NAME}",
                                     "NAMESPACE=${IMAGE_PROJECT}",
