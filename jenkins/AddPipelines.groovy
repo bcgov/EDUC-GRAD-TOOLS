@@ -21,7 +21,7 @@ def newPipeline = { String folderName, String appName, String scmUrl, String scm
                         extensions { }  // required as otherwise it may try to tag the repo, which you may not want
                     }
                 }
-                scriptPath('jenkins/DeployToTest.groovy')
+                scriptPath('tools/jenkins/DeployToTest.groovy')
             }
         }
     }
