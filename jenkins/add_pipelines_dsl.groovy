@@ -1,3 +1,5 @@
+import groovy.yaml.YamlSlurper
+
 println 'Starting SCRIPT'
 
 folder('TESTING') {
