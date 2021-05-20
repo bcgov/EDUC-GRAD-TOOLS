@@ -17,10 +17,6 @@ pipeline{
             alwaysPullImage: false
             workingDir: /tmp
             ttyEnabled: false
-            resourceRequestCpu: 3
-            resourceRequestMemory: 2Gi
-            resourceLimitCpu: 3
-            resourceLimitMemory: 2Gi
             volumeMounts:
             - mountPath: '/home/jenkins/.m2'
               name: pvc
@@ -33,35 +29,23 @@ pipeline{
     }
 
     environment{
-        TOOLS = '77c02f-tools'
-        DEV = '77c02f-dev'
-        TEST = '77c02f-test'
-        PROD = '77c02f-prod'
-
-        REPO_NAME = 'educ-grad-code-api'
-        OWNER = 'bcgov'
-        JOB_NAME = 'main'
-        TAG = 'dev'
-
         APP_NAME = 'educ-grad-code-api'
         APP_DOMAIN = 'apps.silver.devops.gov.bc.ca'
-
-        TEST_HOST_ROUTE = "${APP_NAME}-${TEST}.${APP_DOMAIN}"
     }
+
     stages{
         stage('Promote to TEST') {
             steps{
                 script {
                     openshift.withCluster() {
                         openshift.withProject('77c02f-dev') {
-                            def dcTemplate = openshift.process('-f',
-                                    'openshift/api.dc.yaml',
+                            def dcTemplate = openshift.process('-f', 'openshift/api.dc.yaml',
                                     "REPO_NAME=educ-grad-code-api",
                                     "JOB_NAME=main",
-                                    "NAMESPACE=77c02f-tools",
+                                    "NAMESPACE=${NAMESPACE}",
                                     "APP_NAME=educ-grad-code-api",
-                                    "HOST_ROUTE=educ-grad-code-api-77c02f-tst.apps.silver.devops.gov.bc.ca",
-                                    "TAG=latest"
+                                    "HOST_ROUTE=educ-grad-code-api-77c02f-test.apps.silver.devops.gov.bc.ca",
+                                    "TAG=${TAG}"
                             )
 
                             echo "Applying Deployment educ-grad-code-api"
