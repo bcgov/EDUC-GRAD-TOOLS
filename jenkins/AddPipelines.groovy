@@ -1,15 +1,11 @@
 @Grab(group='org.codehaus.groovy', module='groovy-yaml', version='3.0.8')
 import groovy.yaml.YamlSlurper
 
-println 'Starting SCRIPT'
-
 def newFolder = { folderName ->
     folder(folderName) {
         displayName(folderName)
-        //description('Folder for Testing scripts')
     }
 }
-
 def newPipeline = { String folderName, String appName, String scmUrl, String scmBranch ->
     pipelineJob("${folderName}/${appName}") {
         definition {
@@ -26,7 +22,6 @@ def newPipeline = { String folderName, String appName, String scmUrl, String scm
         }
     }
 }
-
 def thisBuild = Thread.currentThread().executable
 def resolver = thisBuild.buildVariableResolver
 def envName = resolver.resolve('ENV_NAME')
@@ -34,7 +29,6 @@ def envName = resolver.resolve('ENV_NAME')
 newFolder(envName)
 
 def yamlSlurper = new YamlSlurper()
-//inventory = yamlSlurper.parseText(new URL("https://..../inventory.yaml").getText())
 inventory = yamlSlurper.parse(new File("${WORKSPACE}/jenkins/inventory.yaml"))
 apps = inventory.applications
 
