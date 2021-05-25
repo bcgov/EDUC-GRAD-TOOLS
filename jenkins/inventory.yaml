@@ -219,7 +219,7 @@ applications:
           - spring
           - REST
           - API
-      git: https://github.com/bcgov/EDUC-GRAD-COURSE-API
+      git: https://github.com/bcgov/EDUC-GRAD-SCHOOL-API
       environments:
           - name: Development
             acronym: DEV
