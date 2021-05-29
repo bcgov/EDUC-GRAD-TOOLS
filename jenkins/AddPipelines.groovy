@@ -20,6 +20,7 @@ def newPipeline = { String folderName, String appName, String scmUrl, String scm
                 scriptPath('tools/jenkins/DeployToTest.groovy')
             }
         }
+        logRotator { numToKeep(5) }
     }
 }
 def thisBuild = Thread.currentThread().executable
