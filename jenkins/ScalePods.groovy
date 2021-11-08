@@ -61,8 +61,13 @@ pipeline {
                     sh "oc scale dc --replicas=${env.Desired_number_of_Pods} \
                         educ-grad-assessment-api-dc \
                         educ-grad-course-api-dc \
-                        educ-grad-batch-graduation-api-dc"
-                    sleep 10
+                        educ-grad-batch-graduation-api-dc \
+                        educ-grad-program-api \
+                        educ-grad-report-api \
+                        educ-grad-student-api \
+                        educ-grad-trax-api \
+                        educ-grad-student-graduation-api"
+                    sleep 15
                 }
             }
             post {
