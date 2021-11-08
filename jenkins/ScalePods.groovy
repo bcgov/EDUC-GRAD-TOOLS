@@ -1,8 +1,3 @@
-import jenkins.*
-import jenkins.model.*
-import hudson.*
-import hudson.model.*
-
 def project = { envName ->
     if (envName == 'TEST')
         return "${projectPrefix}dev"
@@ -13,7 +8,6 @@ def project = { envName ->
     else
         return "${projectPrefix}tools"
 }
-
 pipeline {
     agent any
     options {
@@ -26,14 +20,8 @@ pipeline {
         def ocpProject = "${projectPrefix}${envName}"
     }
     parameters {
-        choice(
-                name: 'Desired_number_of_Pods',
-                choices: ['0', '1', '2', '3']
-        )
-        choice(
-                name: 'Environment',
-                choices: ['DEV', 'TEST']
-        )
+        choice(  name: 'Desired_number_of_Pods', choices: ['0', '1', '2', '3'] )
+        choice( name: 'Environment', choices: ['DEV', 'TEST'] )
     }
     stages {
         stage ('Init') {
@@ -47,48 +35,29 @@ pipeline {
                 }
             }
             post {
-                success {
-                    echo 'Init Complete'
-                }
-                failure {
-                    echo 'Init Failed'
-                }
+                success { echo 'Init Complete' }
+                failure { echo 'Init Failed' }
             }
         }
         stage ('Scale-Pods') {
             steps {
                 script {
                     sh "oc scale dc --replicas=${env.Desired_number_of_Pods} \
-                        educ-grad-assessment-api-dc \
-                        educ-grad-course-api-dc \
-                        educ-grad-batch-graduation-api-dc \
-                        educ-grad-program-api-dc \
-                        educ-grad-report-api-dc \
-                        educ-grad-student-api-dc \
-                        educ-grad-trax-api-dc \
-                        educ-grad-student-graduation-api-dc"
+                        educ-grad-assessment-api-dc educ-grad-course-api-dc educ-grad-batch-graduation-api-dc \
+                        educ-grad-program-api-dc educ-grad-report-api-dc educ-grad-student-api-dc \
+                        educ-grad-trax-api-dc educ-grad-student-graduation-api-dc"
                     sleep 15
                 }
             }
             post {
-                success {
-                    echo 'POD Scaling Complete'
-                }
-                failure {
-                    echo 'POD Scaling Failed'
-                }
+                success { echo 'POD Scaling Complete' }
+                failure { echo 'POD Scaling Failed' }
             }
         }
     }
     post {
-        success {
-            println 'Scaling Complete'
-        }
-        failure {
-            println 'Scaling Failed'
-        }
-        always {
-            sh "oc project ${project()} ; oc get dc"
-        }
+        success { println 'Scaling Complete' }
+        failure { println 'Scaling Failed' }
+        always { sh "oc project ${project()} ; oc get dc" }
     }
 }
