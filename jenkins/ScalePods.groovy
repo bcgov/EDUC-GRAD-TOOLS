@@ -2,65 +2,61 @@ import jenkins.*
 import jenkins.model.*
 import hudson.*
 import hudson.model.*
-import com.cloudbees.hudson.plugins.folder.*
-import org.jenkinsci.plugins.workflow.job.WorkflowJob
-import groovy.json.JsonSlurper
-import groovy.io.FileType
 
-def addFolder = { String folderName ->
-    def folder = Jenkins.instance.getItem(folderName)
-    if (folder == null) {
-        folder = Jenkins.instance.createProject(Folder.class, folderName)
-        println 'Folder Created!'
-    } else {
-        if (folder.getClass() != Folder.class) {
-            folder = Jenkins.instance.createProject(Folder.class, folderName)
-            println 'Folder Created!'
-        } else {
-            println 'Folder already exists!'
-        }
-    }
-    return folderName
+def project = { String envName ->
+    def prefix = '77c02f-'
+
+    if (envName == 'TEST')
+        return "${prefix}dev"
+    else if (envName == 'UAT')
+        return "${prefix}test"
+    else if (envName == 'PROD')
+        return "${prefix}prod"
+    else
+        return "${prefix}tools"
 }
 
 pipeline {
     agent any
-
     options {
-        buildDiscarder(logRotator(daysToKeepStr: '', numToKeepStr: '3'))
+        buildDiscarder(logRotator(daysToKeepStr: '', numToKeepStr: '5'))
     }
-
     environment {
         APP_NAME = 'student-grad-tools'
     }
-
     parameters {
         choice(
-            choices: ['TEMP', 'DEV', 'TEST', 'UAT', 'PROD'],
-            name: 'ENVRNMNT'
+                name: 'Desired_number_of_Pods',
+                choices: ['0', '1', '2', '3'],
+                default: '2'
+        )
+        choice(
+                name: 'Environment',
+                choices: ['DEV', 'TEST'],
+                default: 'DEV'
         )
     }
-
     stages {
         stage ('Init') {
             steps {
                 script {
-                    println "Environment Selected => ${env.ENVRNMNT}"
+                    println "Scale to => ${env.Desired_number_of_Pods} in ${env.Environment}"
+                    sh "oc --project ${project}; oc get dc"
                 }
             }
             post {
                 success {
-                    echo 'Init Success'
+                    echo 'Init Complete'
                 }
                 failure {
                     echo 'Init Failed'
                 }
             }
         }
-        stage ('Add-Folder') {
+        /*stage ('Scale-Pods') {
             steps {
                 script {
-                    addFolder(env.ENVRNMNT)
+                    oc scale dc --replicas=2 educ-grad-assessment-api-dc educ-grad-course-api-dc
                 }
             }
             post {
@@ -87,17 +83,14 @@ pipeline {
                     println ''
                 }
             }
-        }
+        }*/
     }
     post {
         success {
-            println 'Stage Success'
+            println 'Scaling Complete'
         }
         failure {
-            println 'Stage failure'
-        }
-        always {
-            println 'Stage always'
+            println 'Scaling Failed'
         }
     }
 }
