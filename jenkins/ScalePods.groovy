@@ -62,6 +62,7 @@ pipeline {
                         educ-grad-assessment-api-dc \
                         educ-grad-course-api-dc \
                         educ-grad-batch-graduation-api-dc"
+                    sleep 10
                 }
             }
             post {
