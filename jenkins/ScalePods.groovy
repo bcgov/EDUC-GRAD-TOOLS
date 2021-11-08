@@ -3,12 +3,7 @@ import jenkins.model.*
 import hudson.*
 import hudson.model.*
 
-def envName = 'DEV'
-def numPods = 2
-def projectPrefix = '77c02f-'
-def ocpProject = projectPrefix + envName
-
-def project = { String envName ->
+def project = { envName ->
     if (envName == 'TEST')
         return "${projectPrefix}dev"
     else if (envName == 'UAT')
@@ -25,7 +20,10 @@ pipeline {
         buildDiscarder(logRotator(daysToKeepStr: '', numToKeepStr: '5'))
     }
     environment {
-        APP_NAME = 'student-grad-tools'
+        def envName = 'DEV'
+        def numPods = 2
+        def projectPrefix = '77c02f-'
+        def ocpProject = projectPrefix + envName
     }
     parameters {
         choice(
