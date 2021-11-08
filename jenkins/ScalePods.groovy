@@ -43,7 +43,7 @@ pipeline {
                     numPods = params.Desired_number_of_Pods
                     ocpProject = project(envName)
                     println "Scale to => ${numPods} in ${envName}"
-                    sh "oc project ${ocpProject}; sh oc get dc"
+                    sh "oc project ${ocpProject}; oc get dc"
                 }
             }
             post {
@@ -82,7 +82,7 @@ pipeline {
             println 'Scaling Failed'
         }
         always {
-            sh "oc project ${project()} ; sh oc get dc"
+            sh "oc project ${project()} ; oc get dc"
         }
     }
 }
