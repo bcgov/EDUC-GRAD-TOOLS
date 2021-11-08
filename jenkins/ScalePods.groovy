@@ -23,7 +23,7 @@ pipeline {
         def envName = 'DEV'
         def numPods = 2
         def projectPrefix = '77c02f-'
-        def ocpProject = projectPrefix + envName
+        def ocpProject = "${projectPrefix}${envName}"
     }
     parameters {
         choice(
