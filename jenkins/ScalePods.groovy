@@ -39,7 +39,7 @@ pipeline {
             steps {
                 script {
                     println "Scale to => ${env.Desired_number_of_Pods} in ${env.Environment}"
-                    sh 'oc project ' + project + '; oc get dc'
+                    sh 'oc project ${project}; oc get dc'
                 }
             }
             post {
