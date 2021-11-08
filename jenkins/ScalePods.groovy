@@ -3,6 +3,11 @@ import jenkins.model.*
 import hudson.*
 import hudson.model.*
 
+def envName = 'DEV'
+def numPods = 2
+def projectPrefix = '77c02f-'
+def ocpProject = projectPrefix + envName
+
 def project = { String envName ->
     if (envName == 'TEST')
         return "${projectPrefix}dev"
@@ -13,11 +18,6 @@ def project = { String envName ->
     else
         return "${projectPrefix}tools"
 }
-
-def envName = 'DEV'
-def numPods = 2
-def projectPrefix = '77c02f-'
-def ocpProject = projectPrefix + envName
 
 pipeline {
     agent any
