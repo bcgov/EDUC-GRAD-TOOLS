@@ -28,12 +28,12 @@ pipeline {
         choice(
                 name: 'Desired_number_of_Pods',
                 choices: ['0', '1', '2', '3'],
-                default: '2'
+                defaultValue: '2'
         )
         choice(
                 name: 'Environment',
                 choices: ['DEV', 'TEST'],
-                default: 'DEV'
+                defaultValue: 'DEV'
         )
     }
     stages {
