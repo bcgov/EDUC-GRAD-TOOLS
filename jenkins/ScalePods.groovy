@@ -39,7 +39,7 @@ pipeline {
             steps {
                 script {
                     println "Scale to => ${env.Desired_number_of_Pods} in ${env.Environment}"
-                    sh 'oc project ${project}; oc get dc'
+                    sh "oc project ${project}; oc get dc"
                 }
             }
             post {
@@ -54,10 +54,10 @@ pipeline {
         stage ('Scale-Pods') {
             steps {
                 script {
-                    sh 'oc scale dc --replicas=$env.Desired_number_of_Pods \
+                    sh "oc scale dc --replicas=${env.Desired_number_of_Pods} \
                         educ-grad-assessment-api-dc \
                         educ-grad-course-api-dc \
-                        educ-grad-batch-graduation-api-dc'
+                        educ-grad-batch-graduation-api-dc"
                 }
             }
             post {
@@ -78,7 +78,7 @@ pipeline {
             println 'Scaling Failed'
         }
         always {
-            sh 'oc project ${project}; oc get dc'
+            sh "oc project ${project}; oc get dc"
         }
     }
 }
