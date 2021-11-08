@@ -51,37 +51,24 @@ pipeline {
                 }
             }
         }
-        /*stage ('Scale-Pods') {
+        stage ('Scale-Pods') {
             steps {
                 script {
-                    oc scale dc --replicas=2 educ-grad-assessment-api-dc educ-grad-course-api-dc
+                    sh 'oc scale dc --replicas=${env.Desired_number_of_Pods} \
+                        educ-grad-assessment-api-dc \
+                        educ-grad-course-api-dc \
+                        educ-grad-batch-graduation-api-dc'
                 }
             }
             post {
                 success {
-                    echo 'Folder added Successfully'
+                    echo 'POD Scaling Complete'
                 }
                 failure {
-                    echo 'Failed adding folder'
+                    echo 'POD Scaling Failed'
                 }
             }
         }
-        stage ('print-apps') {
-            steps {
-                script {
-                    def slurper = new JsonSlurper()
-                    def inventory = slurper.parse(
-                            "https://raw.githubusercontent.com/bcgov/EDUC-GRAD-TOOLS/main/tools/jenkins/inventory.json".toURL()
-                    )
-                    def apps = inventory.applications
-                    println ''
-                    apps.each {
-                        app -> println app.name
-                    }
-                    println ''
-                }
-            }
-        }*/
     }
     post {
         success {
@@ -89,6 +76,9 @@ pipeline {
         }
         failure {
             println 'Scaling Failed'
+        }
+        always {
+            sh 'oc project ${project}; oc get dc'
         }
     }
 }
