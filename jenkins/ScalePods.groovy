@@ -20,7 +20,7 @@ pipeline {
         def ocpProject = "${projectPrefix}${envName}"
     }
     parameters {
-        choice(  name: 'Desired_number_of_Pods', choices: ['0', '1', '2', '3'] )
+        choice(  name: 'Desired_number_of_Pods', choices: ['2', '1', '0', '3'] )
         choice( name: 'Environment', choices: ['DEV', 'TEST'] )
     }
     stages {
