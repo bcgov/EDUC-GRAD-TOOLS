@@ -54,7 +54,7 @@ pipeline {
         stage ('Scale-Pods') {
             steps {
                 script {
-                    sh 'oc scale dc --replicas=${env.Desired_number_of_Pods} \
+                    sh 'oc scale dc --replicas=$env.Desired_number_of_Pods \
                         educ-grad-assessment-api-dc \
                         educ-grad-course-api-dc \
                         educ-grad-batch-graduation-api-dc'
