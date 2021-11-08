@@ -58,6 +58,6 @@ pipeline {
     post {
         success { println 'Scaling Complete' }
         failure { println 'Scaling Failed' }
-        always { sh "oc project ${project()} ; oc get dc" }
+        always { sh "oc project ${ocpProject} ; oc get dc" }
     }
 }
