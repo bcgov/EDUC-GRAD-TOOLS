@@ -62,11 +62,11 @@ pipeline {
                         educ-grad-assessment-api-dc \
                         educ-grad-course-api-dc \
                         educ-grad-batch-graduation-api-dc \
-                        educ-grad-program-api \
-                        educ-grad-report-api \
-                        educ-grad-student-api \
-                        educ-grad-trax-api \
-                        educ-grad-student-graduation-api"
+                        educ-grad-program-api-dc \
+                        educ-grad-report-api-dc \
+                        educ-grad-student-api-dc \
+                        educ-grad-trax-api-dc \
+                        educ-grad-student-graduation-api-dc"
                     sleep 15
                 }
             }
