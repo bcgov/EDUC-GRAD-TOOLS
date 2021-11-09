@@ -44,8 +44,8 @@ pipeline {
                 script {
                     sh "oc scale dc --replicas=${env.Desired_number_of_Pods} \
                         educ-grad-assessment-api-dc educ-grad-course-api-dc educ-grad-batch-graduation-api-dc \
-                        educ-grad-program-api-dc educ-grad-report-api-dc educ-grad-student-api-dc \
-                        educ-grad-trax-api-dc educ-grad-student-graduation-api-dc"
+                        educ-grad-program-api-dc educ-grad-report-api-dc educ-grad-graduation-report-api-dc \
+                        educ-grad-student-api-dc educ-grad-trax-api-dc educ-grad-student-graduation-api-dc"
                     sleep 15
                 }
             }
