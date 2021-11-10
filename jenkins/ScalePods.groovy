@@ -17,7 +17,7 @@ pipeline {
         def envName = 'DEV'
         def numPods = 2
         def projectPrefix = '77c02f-'
-        def ocpProject = "${projectPrefix}" + project(envName)
+        def ocpProject = "${projectPrefix}tools"
     }
     parameters {
         choice(  name: 'Desired_number_of_Pods', choices: ['2', '1', '0', '3'] )
