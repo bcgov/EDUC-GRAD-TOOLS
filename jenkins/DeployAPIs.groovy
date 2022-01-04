@@ -8,7 +8,7 @@ pipeline {
     environment {
         def projectPrefix = '77c02f-'
         def ocpProject = "${projectPrefix}tools"
-        def repos
+        def repos = ""
     }
     parameters {
         choice( name: 'Environment', choices: ['DEV', 'TEST'] )
