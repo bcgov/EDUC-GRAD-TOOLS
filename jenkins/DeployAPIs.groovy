@@ -1,4 +1,4 @@
-//import groovy.json.JsonSlurper
+import groovy.json.JsonSlurper
 
 pipeline {
     agent any
@@ -14,12 +14,6 @@ pipeline {
         choice( name: 'Environment', choices: ['DEV', 'TEST'] )
     }
     stages {
-        stage ('Init') {
-            // TODO: Get a list of all the GRAD repos from the inventory and populate the repos env variable
-            steps {
-                println "Init"
-            }
-        }
         stage ('Deploy-APIs') {
             steps {
                 // TODO: Use the defined list in the environment and loop through it instead
