@@ -1,0 +1,4 @@
+nodejs:latest
+http_request:latest
+git-parameter:latest
+build-user-vars-plugin:latest
