@@ -1,4 +1,4 @@
 nodejs:latest
 http_request:latest
-git-parameter:latest
+git-parameter:0.9.13
 build-user-vars-plugin:latest
