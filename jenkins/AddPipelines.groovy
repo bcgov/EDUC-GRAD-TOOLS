@@ -17,7 +17,7 @@ def newPipeline = { String folderName, String appName, String scmUrl, String scm
                         extensions { }  // required as otherwise it may try to tag the repo, which you may not want
                     }
                 }
-                scriptPath(scriptPath)
+                scriptPath("${scriptPath}")
             }
         }
         logRotator { numToKeep(5) }
