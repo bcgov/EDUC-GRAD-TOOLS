@@ -8,7 +8,7 @@ pipeline {
     environment {
         def projectPrefix = '77c02f-'
         def ocpProject = "${projectPrefix}tools"
-        def repos
+        def repos = ""
     }
     parameters {
         choice( name: 'Environment', choices: ['DEV', 'TEST'] )
@@ -16,6 +16,9 @@ pipeline {
     stages {
         stage ('Init') {
             // TODO: Get a list of all the GRAD repos from the inventory and populate the repos env variable
+            steps {
+                println "Init Stage"
+            }
         }
         stage ('Deploy-APIs') {
             steps {
