@@ -1,6 +1,6 @@
 ---
 applications:
-    - name: grad-algorithm-api
+    - name: educ-grad-algorithm-api
       kind: API
       tier: Backend
       Tech: Java Spring
@@ -21,7 +21,7 @@ applications:
             type: PRE-PROD
             ocp-namespace: 77c02f-dev
             ocp-env: DEV
-    - name: grad-assessment-api
+    - name: educ-grad-assessment-api
       kind: API
       tier: Backend
       Tech: Java Spring
@@ -42,7 +42,7 @@ applications:
             type: PRE-PROD
             ocp-namespace: 77c02f-dev
             ocp-env: DEV
-    - name: grad-batch-graduation-api
+    - name: educ-grad-batch-graduation-api
       kind: API
       tier: Backend
       Tech: Java Spring
@@ -63,7 +63,7 @@ applications:
             type: PRE-PROD
             ocp-namespace: 77c02f-dev
             ocp-env: DEV
-    - name: grad-course-api
+    - name: educ-grad-course-api
       kind: API
       tier: Backend
       Tech: Java Spring
@@ -84,7 +84,7 @@ applications:
             type: PRE-PROD
             ocp-namespace: 77c02f-dev
             ocp-env: DEV
-    - name: grad-data-conversion-api
+    - name: educ-grad-data-conversion-api
       kind: API
       tier: Backend
       Tech: Java Spring
@@ -126,7 +126,7 @@ applications:
           type: PRE-PROD
           ocp-namespace: 77c02f-dev
           ocp-env: DEV
-    - name: grad-graduation-report-api
+    - name: educ-grad-graduation-report-api
       kind: API
       tier: Backend
       Tech: Java Spring
@@ -147,7 +147,7 @@ applications:
           type: PRE-PROD
           ocp-namespace: 77c02f-dev
           ocp-env: DEV
-    - name: grad-program-api
+    - name: educ-grad-program-api
       kind: API
       tier: Backend
       Tech: Java Spring
@@ -168,7 +168,7 @@ applications:
             type: PRE-PROD
             ocp-namespace: 77c02f-dev
             ocp-env: DEV
-    - name: grad-report-api
+    - name: educ-grad-report-api
       kind: API
       tier: Backend
       Tech: Java Spring
@@ -189,7 +189,7 @@ applications:
           type: PRE-PROD
           ocp-namespace: 77c02f-dev
           ocp-env: DEV
-    - name: grad-student-api
+    - name: educ-grad-student-api
       kind: API
       tier: Backend
       Tech: Java Spring
@@ -210,7 +210,7 @@ applications:
             type: PRE-PROD
             ocp-namespace: 77c02f-dev
             ocp-env: DEV
-    - name: grad-student-graduation-api
+    - name: educ-grad-student-graduation-api
       kind: API
       tier: Backend
       Tech: Java Spring
@@ -231,7 +231,7 @@ applications:
           type: PRE-PROD
           ocp-namespace: 77c02f-dev
           ocp-env: DEV
-    - name: grad-trax-api
+    - name: educ-grad-trax-api
       kind: API
       tier: Backend
       Tech: Java Spring
@@ -252,7 +252,7 @@ applications:
           type: PRE-PROD
           ocp-namespace: 77c02f-dev
           ocp-env: DEV
-    - name: rule-engine-api
+    - name: educ-rule-engine-api
       kind: API
       tier: Backend
       Tech: Java Spring
