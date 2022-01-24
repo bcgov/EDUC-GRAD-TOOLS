@@ -6,7 +6,7 @@ def newFolder = { folderName ->
         displayName(folderName)
     }
 }
-def newPipeline = { String folderName, String appName, String scmUrl, String scmBranch ->
+def newPipeline = { String folderName, String appName, String scmUrl, String scmBranch, String scriptLoc ->
     pipelineJob("${folderName}/${appName}") {
         definition {
             cpsScm {
@@ -17,7 +17,7 @@ def newPipeline = { String folderName, String appName, String scmUrl, String scm
                         extensions { }  // required as otherwise it may try to tag the repo, which you may not want
                     }
                 }
-                scriptPath('tools/jenkins/DeployToTest.groovy')
+                scriptPath(scriptLoc)
             }
         }
         logRotator { numToKeep(5) }
@@ -36,7 +36,11 @@ apps = inventory.applications
 apps.each { app ->
     app.environments.each {
         if (envName.equalsIgnoreCase(it.acronym)) {
-            newPipeline(it.acronym, app.name, app.git, 'main')
+            if (envName.equalsIgnoreCase('DEV')) {
+                newPipeline(it.acronym, app.name, app.git, 'main', "tools/jenkins/Jenkinsfile-api")
+            } else if (envName.equalsIgnoreCase('TEST')) {
+                newPipeline(it.acronym, app.name, app.git, 'main', "tools/jenkins/DeployToTest.groovy")
+            }
         }
     }
 }
