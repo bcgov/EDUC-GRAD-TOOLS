@@ -37,9 +37,9 @@ apps.each { app ->
     app.environments.each {
         if (envName.equalsIgnoreCase(it.acronym)) {
             if (envName.equalsIgnoreCase('DEV')) {
-                newPipeline(it.acronym, app.name, app.git, 'main', 'tools/jenkins/Jenkinsfile-api')
+                newPipeline(it.acronym, app.name, app.git, 'main', "tools/jenkins/Jenkinsfile-api")
             } else if (envName.equalsIgnoreCase('TEST')) {
-                newPipeline(it.acronym, app.name, app.git, 'main', 'tools/jenkins/DeployToTest.groovy')
+                newPipeline(it.acronym, app.name, app.git, 'main', "tools/jenkins/DeployToTest.groovy")
             }
         }
     }
