@@ -352,7 +352,7 @@
       "description": "Java options for Jenkins",
       "displayName": "Jenkins JAVA Options",
       "name": "JENKINS_AVA_OPTIONS",
-      "value": "-Djava.awt.headless=true -Duser.timezone=America/Los_Angeles"
+      "value": "-Djava.awt.headless=true -Duser.timezone=America/Vancouver"
     }
   ]
 }
