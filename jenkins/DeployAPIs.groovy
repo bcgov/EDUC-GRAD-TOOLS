@@ -23,9 +23,8 @@ pipeline {
         stage ('Deploy-APIs') {
             steps {
                 // TODO: Use the defined list in the environment and loop through it instead
-                selectedEnv = params.Environment
-
                 script {
+                    selectedEnv = params.Environment
                     if ( "DEV".compareToIgnoreCase(selectedEnv) == 0 ) {
                         //build job: "${selectedEnv}/educ-grad-algorithm-api", parameters: [gitParameter(name: 'BRANCH_PARAM', value: "origin/${Branch}")]
                         build job: "${selectedEnv}/educ-grad-assessment-api", parameters: [gitParameter(name: 'BRANCH_PARAM', value: "origin/${Branch}")]
