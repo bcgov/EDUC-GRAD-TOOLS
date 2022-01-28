@@ -41,7 +41,7 @@ pipeline {
                         build job: "${selectedEnv}/educ-rule-engine-api", parameters: [gitParameter(name: 'BRANCH_PARAM', value: "origin/${Branch}")]
                     }
                     else if ( "TEST".compareToIgnoreCase(selectedEnv) == 0 ) {
-                        //build job: "${selectedEnv}/educ-grad-algorithm-api", parameters: [string(name: 'IMAGE_TAG', value: "${params.Tag}")]
+                        build job: "${selectedEnv}/educ-grad-algorithm-api", parameters: [string(name: 'IMAGE_TAG', value: "${params.Tag}")]
                         build job: "${selectedEnv}/educ-grad-assessment-api", parameters: [string(name: 'IMAGE_TAG', value: "${params.Tag}")]
                         build job: "${selectedEnv}/educ-grad-batch-graduation-api", parameters: [string(name: 'IMAGE_TAG', value: "${params.Tag}")]
                         build job: "${selectedEnv}/educ-grad-course-api", parameters: [string(name: 'IMAGE_TAG', value: "${params.Tag}")]
