@@ -6,12 +6,12 @@ pipeline {
         buildDiscarder(logRotator(daysToKeepStr: '', numToKeepStr: '5'))
     }
     environment {
-        def projectPrefix = '77c02f-'
-        def ocpProject = "${projectPrefix}tools"
-        def repos = ""
+        def selectedEnv = ""
     }
     parameters {
         choice( name: 'Environment', choices: ['DEV', 'TEST'] )
+        choice( name: 'Branch', choices: ['main', 'release/1.0.0'] )
+        choice( name: 'Tag', choices: ['latest', 'release-1.0.0', 'dev'] )
     }
     stages {
         stage ('Init') {
@@ -23,19 +23,38 @@ pipeline {
         stage ('Deploy-APIs') {
             steps {
                 // TODO: Use the defined list in the environment and loop through it instead
-                build "${params.Environment}/educ-grad-algorithm-api"
-                build "${params.Environment}/educ-grad-assessment-api"
-                build "${params.Environment}/educ-grad-batch-graduation-api"
-                build "${params.Environment}/educ-grad-course-api"
-                build "${params.Environment}/educ-grad-data-conversion-api"
-                build "${params.Environment}/educ-grad-graduation-api"
-                build "${params.Environment}/educ-grad-graduation-report-api"
-                build "${params.Environment}/educ-grad-program-api"
-                build "${params.Environment}/educ-grad-report-api"
-                build "${params.Environment}/educ-grad-student-api"
-                build "${params.Environment}/educ-grad-student-graduation-api"
-                build "${params.Environment}/educ-grad-trax-api"
-                build "${params.Environment}/educ-rule-engine-api"
+                selectedEnv = params.Environment
+
+                if ( "DEV".compareToIgnoreCase(selectedEnv) == 0 ) {
+                    //build job: "${selectedEnv}/educ-grad-algorithm-api", parameters: [gitParameter(name: 'BRANCH_PARAM', value: "origin/${Branch}")]
+                    build job: "${selectedEnv}/educ-grad-assessment-api", parameters: [gitParameter(name: 'BRANCH_PARAM', value: "origin/${Branch}")]
+                    /*build job: "${selectedEnv}/educ-grad-batch-graduation-api", parameters: [gitParameter(name: 'BRANCH_PARAM', value: "origin/${Branch}")]
+                    build job: "${selectedEnv}/educ-grad-course-api", parameters: [gitParameter(name: 'BRANCH_PARAM', value: "origin/${Branch}")]
+                    build job: "${selectedEnv}/educ-grad-data-conversion-api", parameters: [gitParameter(name: 'BRANCH_PARAM', value: "origin/${Branch}")]
+                    build job: "${selectedEnv}/educ-grad-graduation-api", parameters: [gitParameter(name: 'BRANCH_PARAM', value: "origin/${Branch}")]
+                    build job: "${selectedEnv}/educ-grad-graduation-report-api", parameters: [gitParameter(name: 'BRANCH_PARAM', value: "origin/${Branch}")]
+                    build job: "${selectedEnv}/educ-grad-program-api", parameters: [gitParameter(name: 'BRANCH_PARAM', value: "origin/${Branch}")]
+                    build job: "${selectedEnv}/educ-grad-report-api", parameters: [gitParameter(name: 'BRANCH_PARAM', value: "origin/${Branch}")]
+                    build job: "${selectedEnv}/educ-grad-student-api", parameters: [gitParameter(name: 'BRANCH_PARAM', value: "origin/${Branch}")]
+                    build job: "${selectedEnv}/educ-grad-student-graduation-api", parameters: [gitParameter(name: 'BRANCH_PARAM', value: "origin/${Branch}")]
+                    build job: "${selectedEnv}/educ-grad-trax-api", parameters: [gitParameter(name: 'BRANCH_PARAM', value: "origin/${Branch}")]
+                    build job: "${selectedEnv}/educ-rule-engine-api", parameters: [gitParameter(name: 'BRANCH_PARAM', value: "origin/${Branch}")]*/
+                }
+                else if ( "TEST".compareToIgnoreCase(selectedEnv) == 0 ) {
+                    //build job: "${selectedEnv}/educ-grad-algorithm-api", parameters: [string(name: 'IMAGE_TAG', value: "${params.Tag}")]
+                    build job: "${selectedEnv}/educ-grad-assessment-api", parameters: [string(name: 'IMAGE_TAG', value: "${params.Tag}")]
+                    /*build job: "${selectedEnv}/educ-grad-batch-graduation-api", parameters: [string(name: 'IMAGE_TAG', value: "${params.Tag}")]
+                    build job: "${selectedEnv}/educ-grad-course-api", parameters: [string(name: 'IMAGE_TAG', value: "${params.Tag}")]
+                    build job: "${selectedEnv}/educ-grad-data-conversion-api", parameters: [string(name: 'IMAGE_TAG', value: "${params.Tag}")]
+                    build job: "${selectedEnv}/educ-grad-graduation-api", parameters: [string(name: 'IMAGE_TAG', value: "${params.Tag}")]
+                    build job: "${selectedEnv}/educ-grad-graduation-report-api", parameters: [string(name: 'IMAGE_TAG', value: "${params.Tag}")]
+                    build job: "${selectedEnv}/educ-grad-program-api", parameters: [string(name: 'IMAGE_TAG', value: "${params.Tag}")]
+                    build job: "${selectedEnv}/educ-grad-report-api", parameters: [string(name: 'IMAGE_TAG', value: "${params.Tag}")]
+                    build job: "${selectedEnv}/educ-grad-student-api", parameters: [string(name: 'IMAGE_TAG', value: "${params.Tag}")]
+                    build job: "${selectedEnv}/educ-grad-student-graduation-api", parameters: [string(name: 'IMAGE_TAG', value: "${params.Tag}")]
+                    build job: "${selectedEnv}/educ-grad-trax-api", parameters: [string(name: 'IMAGE_TAG', value: "${params.Tag}")]
+                    build job: "${selectedEnv}/educ-rule-engine-api", parameters: [string(name: 'IMAGE_TAG', value: "${params.Tag}")]*/
+                }
             }
             post {
                 success { echo 'Deployments complete!' }
