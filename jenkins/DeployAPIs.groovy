@@ -9,7 +9,7 @@ pipeline {
         def selectedEnv = ""
     }
     parameters {
-        booleanParam( name: 'Refresh-Params', defaultValue: false, description: 'Selecting this option will only update the parameter values and not run the job.')
+        booleanParam( name: 'RefreshParams', defaultValue: false, description: 'Selecting this option will only update the parameter values and not run the job.')
         choice( name: 'Environment', choices: ['DEV', 'TEST'], description: 'Select the environment to run the jobs in.' )
         choice( name: 'Branch', choices: ['main', 'release/1.0.0', 'release/1.1.0'], description: 'This option is applicable if you have selected DEV for Environment above.' )
         choice( name: 'Tag', choices: ['latest', 'release-1.0.0', 'release/1.1.0', 'dev'], description: 'This option is applicable if you have NOT selected DEV for Environment above.' )
@@ -19,7 +19,7 @@ pipeline {
             // TODO: Get a list of all the GRAD repos from the inventory and populate the repos env variable
             when {
                 expression {
-                    return params.Refresh-Params
+                    return params.RefreshParams
                 }
             }
             steps {
@@ -31,7 +31,7 @@ pipeline {
                 // TODO: Use the defined list in the environment and loop through it instead
                 when {
                     expression {
-                        return !params.Refresh-Params
+                        return !params.RefreshParams
                     }
                 }
                 script {
