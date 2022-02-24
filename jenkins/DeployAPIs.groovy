@@ -27,13 +27,13 @@ pipeline {
             }
         }
         stage ('Deploy-APIs') {
+            when {
+                expression {
+                    return !params.RefreshParams
+                }
+            }
             steps {
                 // TODO: Use the defined list in the environment and loop through it instead
-                when {
-                    expression {
-                        return !params.RefreshParams
-                    }
-                }
                 script {
                     selectedEnv = params.Environment
                     if ( "DEV".compareToIgnoreCase(selectedEnv) == 0 ) {
