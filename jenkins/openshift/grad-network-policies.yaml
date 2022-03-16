@@ -10,7 +10,6 @@ objects:
     apiVersion: networking.k8s.io/v1
     metadata:
       name: deny-by-default
-      namespace: "${NAMESPACE}"
       labels:
         template: quickstart-network-security-policy
     spec:
@@ -47,8 +46,3 @@ objects:
                   network.openshift.io/policy-group: ingress
       policyTypes:
         - Ingress
-parameters:
-  - description: Name of the Openshift namespace
-    displayName: NAMESPACE
-    name: NAMESPACE
-    required: true
