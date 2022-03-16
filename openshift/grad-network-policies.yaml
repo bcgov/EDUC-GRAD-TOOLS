@@ -20,7 +20,6 @@ objects:
     apiVersion: networking.k8s.io/v1
     metadata:
       name: allow-same-namespace
-      namespace: "${NAMESPACE}"
       labels:
         template: quickstart-network-security-policy
     spec:
@@ -34,7 +33,6 @@ objects:
     apiVersion: networking.k8s.io/v1
     metadata:
       name: allow-from-openshift-ingress
-      namespace: "${NAMESPACE}"
       labels:
         template: quickstart-network-security-policy
     spec:
