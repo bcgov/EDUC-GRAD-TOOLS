@@ -18,10 +18,10 @@ objects:
       policyTypes:
         - Ingress
     parameters:
-    - description: Name of the Openshift namespace
-      displayName: NAMESPACE
-      name: NAMESPACE
-      required: true
+      - description: Name of the Openshift namespace
+        displayName: NAMESPACE
+        name: NAMESPACE
+        required: true
   - kind: NetworkPolicy
     apiVersion: networking.k8s.io/v1
     metadata:
@@ -37,10 +37,10 @@ objects:
       policyTypes:
         - Ingress
     parameters:
-    - description: Name of the Openshift namespace
-      displayName: NAMESPACE
-      name: NAMESPACE
-      required: true
+      - description: Name of the Openshift namespace
+        displayName: NAMESPACE
+        name: NAMESPACE
+        required: true
   - kind: NetworkPolicy
     apiVersion: networking.k8s.io/v1
     metadata:
@@ -58,7 +58,7 @@ objects:
       policyTypes:
         - Ingress
     parameters:
-    - description: Name of the Openshift namespace
-      displayName: NAMESPACE
-      name: NAMESPACE
-      required: true
+      - description: Name of the Openshift namespace
+        displayName: NAMESPACE
+        name: NAMESPACE
+        required: true
