@@ -1,0 +1,46 @@
+---
+apiVersion: v1
+kind: Template
+labels:
+  template: 'grad-network-policies'
+metadata:
+  name: 'grad-network-policies'
+objects:
+  - kind: NetworkPolicy
+    apiVersion: networking.k8s.io/v1
+    metadata:
+      name: deny-by-default
+      labels:
+        template: quickstart-network-security-policy
+    spec:
+      podSelector: {}
+      policyTypes:
+        - Ingress
+  - kind: NetworkPolicy
+    apiVersion: networking.k8s.io/v1
+    metadata:
+      name: allow-same-namespace
+      labels:
+        template: quickstart-network-security-policy
+    spec:
+      podSelector: {}
+      ingress:
+        - from:
+            - podSelector: {}
+      policyTypes:
+        - Ingress
+  - kind: NetworkPolicy
+    apiVersion: networking.k8s.io/v1
+    metadata:
+      name: allow-from-openshift-ingress
+      labels:
+        template: quickstart-network-security-policy
+    spec:
+      podSelector: {}
+      ingress:
+        - from:
+            - namespaceSelector:
+                matchLabels:
+                  network.openshift.io/policy-group: ingress
+      policyTypes:
+        - Ingress
