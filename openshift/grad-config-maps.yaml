@@ -1,0 +1,19 @@
+---
+apiVersion: v1
+kind: Template
+labels:
+  template: 'grad-config-maps'
+metadata:
+  name: 'grad-config-maps'
+objects:
+  - kind: ConfigMap
+    apiVersion: v1
+    metadata:
+      name: educ-grad-business-api-config-map
+    data:
+      APP_LOG_LEVEL: INFO
+      ENABLE_FLYWAY: 'true'
+      GRAD_GRADUATION_API: 'https://educ-grad-graduation-api-77c02f-dev.apps.silver.devops.gov.bc.ca/'
+      GRAD_STUDENT_API: 'https://educ-grad-student-api-77c02f-dev.apps.silver.devops.gov.bc.ca/'
+      KEYCLOAK_TOKEN_URL: 'https://soam-tools.apps.silver.devops.gov.bc.ca/'
+      PEN_API: 'https://student-api-75e61b-tools.apps.silver.devops.gov.bc.ca/'
