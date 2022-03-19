@@ -1,6 +1,6 @@
 def project = { envName ->
     if (envName == 'TEST')
-        return "${projectPrefix}dev"
+        return "${projectPrefix}test"
     else if (envName == 'UAT')
         return "${projectPrefix}test"
     else if (envName == 'PROD')
