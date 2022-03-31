@@ -1,15 +1,16 @@
 import groovy.json.JsonSlurper
 
+def jobList1 = ["educ-grad-trax-api", "educ-grad-student-api", "educ-grad-data-conversion-api", "educ-grad-student-graduation-api"] as String[]
+def jobList2 = ["educ-grad-report-api", "educ-grad-algorithm-api", "educ-grad-batch-graduation-api", "educ-rule-engine-api"] as String[]
+def jobList3 = ["educ-grad-program-api", "educ-grad-graduation-api", "educ-grad-graduation-report-api", "educ-grad-distribution-api", "educ-grad-business-api"] as String[]
+
 pipeline {
     agent any
     options {
-        buildDiscarder(logRotator(daysToKeepStr: '', numToKeepStr: '5'))
+        buildDiscarder(logRotator(daysToKeepStr: '', numToKeepStr: '10'))
     }
     environment {
         def selectedEnv = ""
-        def jobList1 = ['educ-grad-trax-api', 'educ-grad-student-api', 'educ-grad-data-conversion-api', 'educ-grad-student-graduation-api']
-        def jobList2 = ['educ-grad-report-api', 'educ-grad-algorithm-api', 'educ-grad-batch-graduation-api', 'educ-rule-engine-api']
-        def jobList3 = ['educ-grad-program-api', 'educ-grad-graduation-api', 'educ-grad-graduation-report-api', 'educ-grad-distribution-api', 'educ-grad-business-api']
     }
     parameters {
         booleanParam( name: 'RefreshParams', defaultValue: false, description: 'Selecting this option will only update the parameter values and not run the job.')
@@ -60,7 +61,7 @@ pipeline {
                     steps {
                         script {
                             selectedEnv = params.Environment
-                            jobList2.each { jobName ->
+                            jobList3.each { jobName ->
                                 if ( "DEV".compareToIgnoreCase(selectedEnv) == 0 ) {
                                     build job: "${selectedEnv}/${jobName}", parameters: [gitParameter(name: 'BRANCH_PARAM', value: "origin/${Branch}")]
                                 } else if ( "TEST".compareToIgnoreCase(selectedEnv) == 0 ) {
