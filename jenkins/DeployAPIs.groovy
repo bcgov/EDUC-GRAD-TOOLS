@@ -20,23 +20,13 @@ pipeline {
     stages {
         stage ('Init') {
             // TODO: Get a list of all the GRAD repos from the inventory and populate the repos env variable
-            when {
-                expression {
-                    return !params.RefreshParams
-                }
-            }
-            steps {
-                println "Init Stage"
-            }
+            when { expression { return !params.RefreshParams } }
+            steps { println "Init Stage" }
         }
         stage ('Deploy-APIs') {
             parallel {
                 stage('Deploy-APIs - 1 of 3') {
-                    when {
-                        expression {
-                            return !params.RefreshParams
-                        }
-                    }
+                    when { expression { return !params.RefreshParams } }
                     steps {
                         script {
                             selectedEnv = params.Environment
@@ -51,13 +41,8 @@ pipeline {
                     }
                 }
                 stage('Deploy-APIs - 2 of 3') {
-                    when {
-                        expression {
-                            return !params.RefreshParams
-                        }
-                    }
+                    when { expression { return !params.RefreshParams } }
                     steps {
-                        // TODO: Use the defined list in the environment and loop through it instead
                         script {
                             selectedEnv = params.Environment
                             jobList2.each { jobName ->
@@ -71,11 +56,7 @@ pipeline {
                     }
                 }
                 stage('Deploy-APIs - 3 of 3') {
-                    when {
-                        expression {
-                            return !params.RefreshParams
-                        }
-                    }
+                    when { expression { return !params.RefreshParams } }
                     steps {
                         script {
                             selectedEnv = params.Environment
