@@ -7,9 +7,9 @@ pipeline {
     }
     environment {
         def selectedEnv = ""
-        String[] jobList1 = ["educ-grad-trax-api", "educ-grad-student-api", "educ-grad-data-conversion-api", "educ-grad-student-graduation-api"]
-        String[] jobList2 = ["educ-grad-report-api", "educ-grad-algorithm-api", "educ-grad-batch-graduation-api", "educ-rule-engine-api"]
-        String[] jobList3 = ["educ-grad-program-api", "educ-grad-graduation-api", "educ-grad-graduation-report-api", "educ-grad-distribution-api", "educ-grad-business-api"]
+        def jobList1 = ['educ-grad-trax-api', 'educ-grad-student-api', 'educ-grad-data-conversion-api', 'educ-grad-student-graduation-api']
+        def jobList2 = ['educ-grad-report-api', 'educ-grad-algorithm-api', 'educ-grad-batch-graduation-api', 'educ-rule-engine-api']
+        def jobList3 = ['educ-grad-program-api', 'educ-grad-graduation-api', 'educ-grad-graduation-report-api', 'educ-grad-distribution-api', 'educ-grad-business-api']
     }
     parameters {
         booleanParam( name: 'RefreshParams', defaultValue: false, description: 'Selecting this option will only update the parameter values and not run the job.')
