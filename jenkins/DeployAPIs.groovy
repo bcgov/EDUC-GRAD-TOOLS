@@ -7,6 +7,9 @@ pipeline {
     }
     environment {
         def selectedEnv = ""
+        def jobList1 = ["educ-grad-trax-api", "educ-grad-student-api", "educ-grad-data-conversion-api", "educ-grad-student-graduation-api"]
+        def jobList2 = ["educ-grad-report-api", "educ-grad-algorithm-api", "educ-grad-batch-graduation-api", "educ-rule-engine-api"]
+        def jobList3 = ["educ-grad-program-api", "educ-grad-graduation-api", "educ-grad-graduation-report-api", "educ-grad-distribution-api", "educ-grad-business-api"]
     }
     parameters {
         booleanParam( name: 'RefreshParams', defaultValue: false, description: 'Selecting this option will only update the parameter values and not run the job.')
@@ -35,20 +38,14 @@ pipeline {
                         }
                     }
                     steps {
-                        // TODO: Use the defined list in the environment and loop through it instead
                         script {
                             selectedEnv = params.Environment
-                            if ( "DEV".compareToIgnoreCase(selectedEnv) == 0 ) {
-                                build job: "${selectedEnv}/educ-grad-trax-api", parameters: [gitParameter(name: 'BRANCH_PARAM', value: "origin/${Branch}")]
-                                build job: "${selectedEnv}/educ-grad-student-api", parameters: [gitParameter(name: 'BRANCH_PARAM', value: "origin/${Branch}")]
-                                build job: "${selectedEnv}/educ-grad-data-conversion-api", parameters: [gitParameter(name: 'BRANCH_PARAM', value: "origin/${Branch}")]
-                                build job: "${selectedEnv}/educ-grad-student-graduation-api", parameters: [gitParameter(name: 'BRANCH_PARAM', value: "origin/${Branch}")]
-                            }
-                            else if ( "TEST".compareToIgnoreCase(selectedEnv) == 0 ) {
-                                build job: "${selectedEnv}/educ-grad-trax-api", parameters: [string(name: 'IMAGE_TAG', value: "${params.Tag}")]
-                                build job: "${selectedEnv}/educ-grad-student-api", parameters: [string(name: 'IMAGE_TAG', value: "${params.Tag}")]
-                                build job: "${selectedEnv}/educ-grad-data-conversion-api", parameters: [string(name: 'IMAGE_TAG', value: "${params.Tag}")]
-                                build job: "${selectedEnv}/educ-grad-student-graduation-api", parameters: [string(name: 'IMAGE_TAG', value: "${params.Tag}")]
+                            jobList1.each { jobName ->
+                                if ( "DEV".compareToIgnoreCase(selectedEnv) == 0 ) {
+                                    build job: "${selectedEnv}/${jobName}", parameters: [gitParameter(name: 'BRANCH_PARAM', value: "origin/${Branch}")]
+                                } else if ( "TEST".compareToIgnoreCase(selectedEnv) == 0 ) {
+                                    build job: "${selectedEnv}/${jobName}", parameters: [string(name: 'IMAGE_TAG', value: "${params.Tag}")]
+                                }
                             }
                         }
                     }
@@ -63,17 +60,12 @@ pipeline {
                         // TODO: Use the defined list in the environment and loop through it instead
                         script {
                             selectedEnv = params.Environment
-                            if ( "DEV".compareToIgnoreCase(selectedEnv) == 0 ) {
-                                build job: "${selectedEnv}/educ-grad-report-api", parameters: [gitParameter(name: 'BRANCH_PARAM', value: "origin/${Branch}")]
-                                build job: "${selectedEnv}/educ-grad-algorithm-api", parameters: [gitParameter(name: 'BRANCH_PARAM', value: "origin/${Branch}")]
-                                build job: "${selectedEnv}/educ-grad-batch-graduation-api", parameters: [gitParameter(name: 'BRANCH_PARAM', value: "origin/${Branch}")]
-                                build job: "${selectedEnv}/educ-rule-engine-api", parameters: [gitParameter(name: 'BRANCH_PARAM', value: "origin/${Branch}")]
-                            }
-                            else if ( "TEST".compareToIgnoreCase(selectedEnv) == 0 ) {
-                                build job: "${selectedEnv}/educ-grad-report-api", parameters: [string(name: 'IMAGE_TAG', value: "${params.Tag}")]
-                                build job: "${selectedEnv}/educ-grad-algorithm-api", parameters: [string(name: 'IMAGE_TAG', value: "${params.Tag}")]
-                                build job: "${selectedEnv}/educ-grad-batch-graduation-api", parameters: [string(name: 'IMAGE_TAG', value: "${params.Tag}")]
-                                build job: "${selectedEnv}/educ-rule-engine-api", parameters: [string(name: 'IMAGE_TAG', value: "${params.Tag}")]
+                            jobList2.each { jobName ->
+                                if ( "DEV".compareToIgnoreCase(selectedEnv) == 0 ) {
+                                    build job: "${selectedEnv}/${jobName}", parameters: [gitParameter(name: 'BRANCH_PARAM', value: "origin/${Branch}")]
+                                } else if ( "TEST".compareToIgnoreCase(selectedEnv) == 0 ) {
+                                    build job: "${selectedEnv}/${jobName}", parameters: [string(name: 'IMAGE_TAG', value: "${params.Tag}")]
+                                }
                             }
                         }
                     }
@@ -85,22 +77,14 @@ pipeline {
                         }
                     }
                     steps {
-                        // TODO: Use the defined list in the environment and loop through it instead
                         script {
                             selectedEnv = params.Environment
-                            if ( "DEV".compareToIgnoreCase(selectedEnv) == 0 ) {
-                                build job: "${selectedEnv}/educ-grad-program-api", parameters: [gitParameter(name: 'BRANCH_PARAM', value: "origin/${Branch}")]
-                                build job: "${selectedEnv}/educ-grad-graduation-api", parameters: [gitParameter(name: 'BRANCH_PARAM', value: "origin/${Branch}")]
-                                build job: "${selectedEnv}/educ-grad-graduation-report-api", parameters: [gitParameter(name: 'BRANCH_PARAM', value: "origin/${Branch}")]
-                                build job: "${selectedEnv}/educ-grad-distribution-api", parameters: [gitParameter(name: 'BRANCH_PARAM', value: "origin/${Branch}")]
-                                build job: "${selectedEnv}/educ-grad-business-api", parameters: [gitParameter(name: 'BRANCH_PARAM', value: "origin/${Branch}")]
-                            }
-                            else if ( "TEST".compareToIgnoreCase(selectedEnv) == 0 ) {
-                                build job: "${selectedEnv}/educ-grad-program-api", parameters: [string(name: 'IMAGE_TAG', value: "${params.Tag}")]
-                                build job: "${selectedEnv}/educ-grad-graduation-api", parameters: [string(name: 'IMAGE_TAG', value: "${params.Tag}")]
-                                build job: "${selectedEnv}/educ-grad-graduation-report-api", parameters: [string(name: 'IMAGE_TAG', value: "${params.Tag}")]
-                                build job: "${selectedEnv}/educ-grad-distribution-api", parameters: [string(name: 'IMAGE_TAG', value: "${params.Tag}")]
-                                build job: "${selectedEnv}/educ-grad-business-api", parameters: [string(name: 'IMAGE_TAG', value: "${params.Tag}")]
+                            jobList2.each { jobName ->
+                                if ( "DEV".compareToIgnoreCase(selectedEnv) == 0 ) {
+                                    build job: "${selectedEnv}/${jobName}", parameters: [gitParameter(name: 'BRANCH_PARAM', value: "origin/${Branch}")]
+                                } else if ( "TEST".compareToIgnoreCase(selectedEnv) == 0 ) {
+                                    build job: "${selectedEnv}/${jobName}", parameters: [string(name: 'IMAGE_TAG', value: "${params.Tag}")]
+                                }
                             }
                         }
                     }
