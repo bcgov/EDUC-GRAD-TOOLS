@@ -14,8 +14,8 @@ pipeline {
     parameters {
         booleanParam( name: 'RefreshParams', defaultValue: false, description: 'Selecting this option will only update the parameter values and not run the job.')
         choice( name: 'Environment', choices: ['DEV', 'TEST'], description: 'Select the environment to run the jobs in.' )
-        choice( name: 'Branch', choices: ['main', 'grad-release', 'release/1.0.0', 'release/1.1.0'], description: 'This option is applicable if you have selected DEV for Environment above.' )
-        choice( name: 'Tag', choices: ['latest', 'release-1.0.0', 'release-1.1.0', 'dev'], description: 'This option is applicable if you have NOT selected DEV for Environment above.' )
+        choice( name: 'Branch', choices: ['main', 'grad-release', 'grad-hotfix'], description: 'This option is applicable if you have selected DEV for Environment above.' )
+        choice( name: 'Tag', choices: ['latest', 'grad-release', 'grad-hotfix', 'dev', 'test'], description: 'This option is applicable if you have NOT selected DEV for Environment above.' )
     }
     stages {
         stage ('Init') {
