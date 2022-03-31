@@ -61,7 +61,7 @@ pipeline {
                     steps {
                         script {
                             selectedEnv = params.Environment
-                            jobList2.each { jobName ->
+                            jobList3.each { jobName ->
                                 if ( "DEV".compareToIgnoreCase(selectedEnv) == 0 ) {
                                     build job: "${selectedEnv}/${jobName}", parameters: [gitParameter(name: 'BRANCH_PARAM', value: "origin/${Branch}")]
                                 } else if ( "TEST".compareToIgnoreCase(selectedEnv) == 0 ) {
