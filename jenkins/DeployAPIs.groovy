@@ -3,7 +3,7 @@ import groovy.json.JsonSlurper
 pipeline {
     agent any
     options {
-        buildDiscarder(logRotator(daysToKeepStr: '', numToKeepStr: '5'))
+        buildDiscarder(logRotator(daysToKeepStr: '', numToKeepStr: '10'))
     }
     environment {
         def selectedEnv = ""
