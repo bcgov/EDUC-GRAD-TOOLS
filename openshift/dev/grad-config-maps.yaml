@@ -127,6 +127,7 @@ objects:
       GRAD_REPORT_API: 'https://educ-grad-report-api-77c02f-dev.apps.silver.devops.gov.bc.ca/'
       GRAD_STUDENT_API: 'https://educ-grad-student-api-77c02f-dev.apps.silver.devops.gov.bc.ca/'
       GRAD_STUDENT_GRADUATION_API: 'https://educ-grad-student-graduation-api-77c02f-dev.apps.silver.devops.gov.bc.ca/'
+      PEN_API: 'https://student-api-75e61b-tools.apps.silver.devops.gov.bc.ca/'
   - kind: ConfigMap
     apiVersion: v1
     metadata:
