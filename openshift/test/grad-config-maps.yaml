@@ -155,7 +155,7 @@ objects:
       CRON_SCHEDULED_PROCESS_EVENTS_STAN: 0 0/5 * * * *
       CRON_SCHEDULED_PROCESS_EVENTS_STAN_LOCK_AT_LEAST_FOR: 800ms
       CRON_SCHEDULED_PROCESS_EVENTS_STAN_LOCK_AT_MOST_FOR: 900ms
-      NATS: 'nats://nats.75e61b-dev.svc.cluster.local:4222'
+      NATS: 'nats://nats.75e61b-test.svc.cluster.local:4222'
       NATS_MAX_RECONNECT: '60'
   - kind: ConfigMap
     apiVersion: v1
