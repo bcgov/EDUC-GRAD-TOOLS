@@ -5,271 +5,268 @@ applications:
       tier: Backend
       Tech: Java Spring
       labels:
-          - java
-          - spring
-          - REST
-          - API
+        - language: java
       git: https://github.com/bcgov/EDUC-GRAD-ALGORITHM-API
       environments:
-          - name: Development
-            acronym: DEV
-            type: PRE-PROD
-            ocp-namespace: 77c02f-tools
-            ocp-env: TOOLS
-          - name: Test
-            acronym: TEST
-            type: PRE-PROD
-            ocp-namespace: 77c02f-dev
-            ocp-env: DEV
+        - name: Development
+          acronym: DEV
+          type: PRE-PROD
+          ocp-namespace: 77c02f-dev
+          ocp-env: DEV
+        - name: Test
+          acronym: TEST
+          type: PRE-PROD
+          ocp-namespace: 77c02f-test
+          ocp-env: TEST
     - name: educ-grad-assessment-api
       kind: API
       tier: Backend
       Tech: Java Spring
       labels:
-          - java
-          - spring
-          - REST
-          - API
+        - language: java
       git: https://github.com/bcgov/EDUC-GRAD-ASSESSMENT-API
       environments:
-          - name: Development
-            acronym: DEV
-            type: PRE-PROD
-            ocp-namespace: 77c02f-tools
-            ocp-env: TOOLS
-          - name: Test
-            acronym: TEST
-            type: PRE-PROD
-            ocp-namespace: 77c02f-dev
-            ocp-env: DEV
+        - name: Development
+          acronym: DEV
+          type: PRE-PROD
+          ocp-namespace: 77c02f-dev
+          ocp-env: DEV
+        - name: Test
+          acronym: TEST
+          type: PRE-PROD
+          ocp-namespace: 77c02f-test
+          ocp-env: TEST
     - name: educ-grad-batch-graduation-api
       kind: API
       tier: Backend
       Tech: Java Spring
       labels:
-          - java
-          - spring
-          - REST
-          - API
+        - language: java
       git: https://github.com/bcgov/EDUC-GRAD-BATCH-GRADUATION-API
       environments:
-          - name: Development
-            acronym: DEV
-            type: PRE-PROD
-            ocp-namespace: 77c02f-tools
-            ocp-env: TOOLS
-          - name: Test
-            acronym: TEST
-            type: PRE-PROD
-            ocp-namespace: 77c02f-dev
-            ocp-env: DEV
+        - name: Development
+          acronym: DEV
+          type: PRE-PROD
+          ocp-namespace: 77c02f-dev
+          ocp-env: DEV
+        - name: Test
+          acronym: TEST
+          type: PRE-PROD
+          ocp-namespace: 77c02f-test
+          ocp-env: TEST
+    - name: educ-grad-business-api
+      kind: API
+      tier: Backend
+      Tech: Java Spring
+      labels:
+        - language: java
+      git: https://github.com/bcgov/EDUC-GRAD-BUSINESS-API
+      environments:
+        - name: Development
+          acronym: DEV
+          type: PRE-PROD
+          ocp-namespace: 77c02f-dev
+          ocp-env: DEV
+        - name: Test
+          acronym: TEST
+          type: PRE-PROD
+          ocp-namespace: 77c02f-test
+          ocp-env: TEST
     - name: educ-grad-course-api
       kind: API
       tier: Backend
       Tech: Java Spring
       labels:
-          - java
-          - spring
-          - REST
-          - API
+        - language: java
       git: https://github.com/bcgov/EDUC-GRAD-COURSE-API
       environments:
-          - name: Development
-            acronym: DEV
-            type: PRE-PROD
-            ocp-namespace: 77c02f-tools
-            ocp-env: TOOLS
-          - name: Test
-            acronym: TEST
-            type: PRE-PROD
-            ocp-namespace: 77c02f-dev
-            ocp-env: DEV
+        - name: Development
+          acronym: DEV
+          type: PRE-PROD
+          ocp-namespace: 77c02f-dev
+          ocp-env: DEV
+        - name: Test
+          acronym: TEST
+          type: PRE-PROD
+          ocp-namespace: 77c02f-test
+          ocp-env: TEST
     - name: educ-grad-data-conversion-api
       kind: API
       tier: Backend
       Tech: Java Spring
       labels:
-          - java
-          - spring
-          - REST
-          - API
+        - language: java
       git: https://github.com/bcgov/EDUC-GRAD-DATA-CONVERSION-API
       environments:
-          - name: Development
-            acronym: DEV
-            type: PRE-PROD
-            ocp-namespace: 77c02f-tools
-            ocp-env: TOOLS
-          - name: Test
-            acronym: TEST
-            type: PRE-PROD
-            ocp-namespace: 77c02f-dev
-            ocp-env: DEV
+        - name: Development
+          acronym: DEV
+          type: PRE-PROD
+          ocp-namespace: 77c02f-dev
+          ocp-env: DEV
+        - name: Test
+          acronym: TEST
+          type: PRE-PROD
+          ocp-namespace: 77c02f-test
+          ocp-env: TEST
+    - name: educ-grad-distribution-api
+      kind: API
+      tier: Backend
+      Tech: Java Spring
+      labels:
+        - language: java
+      git: https://github.com/bcgov/EDUC-GRAD-DISTRIBUTION-API
+      environments:
+        - name: Development
+          acronym: DEV
+          type: PRE-PROD
+          ocp-namespace: 77c02f-dev
+          ocp-env: DEV
+        - name: Test
+          acronym: TEST
+          type: PRE-PROD
+          ocp-namespace: 77c02f-test
+          ocp-env: TEST
     - name: educ-grad-graduation-api
       kind: API
       tier: Backend
       Tech: Java Spring
       labels:
-        - java
-        - spring
-        - REST
-        - API
+        - language: jav
       git: https://github.com/bcgov/EDUC-GRAD-GRADUATION-API
       environments:
         - name: Development
           acronym: DEV
           type: PRE-PROD
-          ocp-namespace: 77c02f-tools
-          ocp-env: TOOLS
+          ocp-namespace: 77c02f-dev
+          ocp-env: DEV
         - name: Test
           acronym: TEST
           type: PRE-PROD
-          ocp-namespace: 77c02f-dev
-          ocp-env: DEV
+          ocp-namespace: 77c02f-test
+          ocp-env: TEST
     - name: educ-grad-graduation-report-api
       kind: API
       tier: Backend
       Tech: Java Spring
       labels:
-        - java
-        - spring
-        - REST
-        - API
+        - language: jav
       git: https://github.com/bcgov/EDUC-GRAD-GRADUATION-REPORT-API
       environments:
         - name: Development
           acronym: DEV
           type: PRE-PROD
-          ocp-namespace: 77c02f-tools
-          ocp-env: TOOLS
+          ocp-namespace: 77c02f-dev
+          ocp-env: DEV
         - name: Test
           acronym: TEST
           type: PRE-PROD
-          ocp-namespace: 77c02f-dev
-          ocp-env: DEV
+          ocp-namespace: 77c02f-test
+          ocp-env: TEST
     - name: educ-grad-program-api
       kind: API
       tier: Backend
       Tech: Java Spring
       labels:
-          - java
-          - spring
-          - REST
-          - API
+        - language: java
       git: https://github.com/bcgov/EDUC-GRAD-PROGRAM-API
       environments:
-          - name: Development
-            acronym: DEV
-            type: PRE-PROD
-            ocp-namespace: 77c02f-tools
-            ocp-env: TOOLS
-          - name: Test
-            acronym: TEST
-            type: PRE-PROD
-            ocp-namespace: 77c02f-dev
-            ocp-env: DEV
+        - name: Development
+          acronym: DEV
+          type: PRE-PROD
+          ocp-namespace: 77c02f-dev
+          ocp-env: DEV
+        - name: Test
+          acronym: TEST
+          type: PRE-PROD
+          ocp-namespace: 77c02f-test
+          ocp-env: TEST
     - name: educ-grad-report-api
       kind: API
       tier: Backend
       Tech: Java Spring
       labels:
-        - java
-        - spring
-        - REST
-        - API
+        - language: jav
       git: https://github.com/bcgov/EDUC-GRAD-REPORT-API
       environments:
         - name: Development
           acronym: DEV
           type: PRE-PROD
-          ocp-namespace: 77c02f-tools
-          ocp-env: TOOLS
+          ocp-namespace: 77c02f-dev
+          ocp-env: DEV
         - name: Test
           acronym: TEST
           type: PRE-PROD
-          ocp-namespace: 77c02f-dev
-          ocp-env: DEV
+          ocp-namespace: 77c02f-test
+          ocp-env: TEST
     - name: educ-grad-student-api
       kind: API
       tier: Backend
       Tech: Java Spring
       labels:
-          - java
-          - spring
-          - REST
-          - API
+        - language: java
       git: https://github.com/bcgov/EDUC-GRAD-STUDENT-API
       environments:
-          - name: Development
-            acronym: DEV
-            type: PRE-PROD
-            ocp-namespace: 77c02f-tools
-            ocp-env: TOOLS
-          - name: Test
-            acronym: TEST
-            type: PRE-PROD
-            ocp-namespace: 77c02f-dev
-            ocp-env: DEV
+        - name: Development
+          acronym: DEV
+          type: PRE-PROD
+          ocp-namespace: 77c02f-dev
+          ocp-env: DEV
+        - name: Test
+          acronym: TEST
+          type: PRE-PROD
+          ocp-namespace: 77c02f-test
+          ocp-env: TEST
     - name: educ-grad-student-graduation-api
       kind: API
       tier: Backend
       Tech: Java Spring
       labels:
-        - java
-        - spring
-        - REST
-        - API
+        - language: jav
       git: https://github.com/bcgov/EDUC-GRAD-STUDENT-GRADUATION-API
       environments:
         - name: Development
           acronym: DEV
           type: PRE-PROD
-          ocp-namespace: 77c02f-tools
-          ocp-env: TOOLS
+          ocp-namespace: 77c02f-dev
+          ocp-env: DEV
         - name: Test
           acronym: TEST
           type: PRE-PROD
-          ocp-namespace: 77c02f-dev
-          ocp-env: DEV
+          ocp-namespace: 77c02f-test
+          ocp-env: TEST
     - name: educ-grad-trax-api
       kind: API
       tier: Backend
       Tech: Java Spring
       labels:
-        - java
-        - spring
-        - REST
-        - API
+        - language: jav
       git: https://github.com/bcgov/EDUC-GRAD-TRAX-API
       environments:
         - name: Development
           acronym: DEV
           type: PRE-PROD
-          ocp-namespace: 77c02f-tools
-          ocp-env: TOOLS
+          ocp-namespace: 77c02f-dev
+          ocp-env: DEV
         - name: Test
           acronym: TEST
           type: PRE-PROD
-          ocp-namespace: 77c02f-dev
-          ocp-env: DEV
+          ocp-namespace: 77c02f-test
+          ocp-env: TEST
     - name: educ-rule-engine-api
       kind: API
       tier: Backend
       Tech: Java Spring
       labels:
-          - java
-          - spring
-          - REST
-          - API
+        - language: java
       git: https://github.com/bcgov/EDUC-RULE-ENGINE-API
       environments:
-          - name: Development
-            acronym: DEV
-            type: PRE-PROD
-            ocp-namespace: 77c02f-tools
-            ocp-env: TOOLS
-          - name: Test
-            acronym: TEST
-            type: PRE-PROD
-            ocp-namespace: 77c02f-dev
-            ocp-env: DEV
+        - name: Development
+          acronym: DEV
+          type: PRE-PROD
+          ocp-namespace: 77c02f-dev
+          ocp-env: DEV
+        - name: Test
+          acronym: TEST
+          type: PRE-PROD
+          ocp-namespace: 77c02f-test
+          ocp-env: TEST

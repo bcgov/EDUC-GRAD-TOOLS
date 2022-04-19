@@ -11,15 +11,15 @@ objects:
     metadata:
       name: educ-grad-algorithm-api-config-map
     data:
-      GRAD_TRAX_API: 'https://educ-grad-trax-api-77c02f-dev.apps.silver.devops.gov.bc.ca/'
-      GRAD_STUDENT_API: 'https://educ-grad-student-api-77c02f-dev.apps.silver.devops.gov.bc.ca/'
-      GRAD_COURSE_API: 'https://educ-grad-course-api-77c02f-dev.apps.silver.devops.gov.bc.ca/'
+      GRAD_TRAX_API: 'http://educ-grad-trax-api.${GRAD_NAMESPACE}.svc.cluster.local:8080/'
+      GRAD_STUDENT_API: 'http://educ-grad-student-api.${GRAD_NAMESPACE}.svc.cluster.local:8080/'
+      GRAD_COURSE_API: 'http://educ-grad-course-api.${GRAD_NAMESPACE}.svc.cluster.local:8080/'
       APP_LOG_LEVEL: DEBUG
-      GRAD_ASSESSMENT_API: 'https://educ-grad-assessment-api-77c02f-dev.apps.silver.devops.gov.bc.ca/'
-      GRAD_PROGRAM_API: 'https://educ-grad-program-api-77c02f-dev.apps.silver.devops.gov.bc.ca/'
+      GRAD_ASSESSMENT_API: 'http://educ-grad-assessment-api.${GRAD_NAMESPACE}.svc.cluster.local:8080/'
+      GRAD_PROGRAM_API: 'http://educ-grad-program-api.${GRAD_NAMESPACE}.svc.cluster.local:8080/'
       MAX_RETRY_ATTEMPTS: '3'
-      GRAD_RULE_PROCESSOR_API: 'https://educ-rule-engine-api-77c02f-dev.apps.silver.devops.gov.bc.ca'
-      GRAD_STUDENT_GRADUATION_API: 'https://educ-grad-student-graduation-api-77c02f-dev.apps.silver.devops.gov.bc.ca/'
+      GRAD_RULE_PROCESSOR_API: 'http://educ-rule-engine-api.${GRAD_NAMESPACE}.svc.cluster.local:8080'
+      GRAD_STUDENT_GRADUATION_API: 'http://educ-grad-student-graduation-api.${GRAD_NAMESPACE}.svc.cluster.local:8080/'
   - kind: ConfigMap
     apiVersion: v1
     metadata:
@@ -35,50 +35,58 @@ objects:
       SPRING_WEB_LOG_LEVEL: INFO
       SPRING_BOOT_AUTOCONFIG_LOG_LEVEL: INFO
       SPRING_SECURITY_LOG_LEVEL: INFO
+      COMMON_NAMESPACE: '75e61b-dev'
+      GRAD_NAMESPACE: '77c02f-dev'
   - kind: ConfigMap
     apiVersion: v1
     metadata:
       name: educ-grad-assessment-api-config-map
     data:
-      APP_LOG_LEVEL: DEBUG
+      APP_LOG_LEVEL: INFO
       ENABLE_FLYWAY: 'true'
-      GRAD_PROGRAM_API: 'https://educ-grad-program-api-77c02f-dev.apps.silver.devops.gov.bc.ca/'
-      GRAD_TRAX_API: 'https://educ-grad-trax-api-77c02f-dev.apps.silver.devops.gov.bc.ca/'
+      GRAD_PROGRAM_API: 'http://educ-grad-program-api.${GRAD_NAMESPACE}.svc.cluster.local:8080/'
+      GRAD_TRAX_API: 'http://educ-grad-trax-api.${GRAD_NAMESPACE}.svc.cluster.local:8080/'
   - kind: ConfigMap
     apiVersion: v1
     metadata:
       name: educ-grad-batch-api-config-map
     data:
-      APP_LOG_LEVEL: DEBUG
+      APP_LOG_LEVEL: INFO
       ENABLE_FLYWAY: 'false'
-      GRADUATE_STUDENT: 'https://educ-grad-graduation-api-77c02f-dev.apps.silver.devops.gov.bc.ca/api/v1/graduate/studentid/%s/run/GS'
-      GRADUATE_STUDENT_REPORT_ONLY: 'https://educ-grad-graduation-api-77c02f-dev.apps.silver.devops.gov.bc.ca/api/v1/graduate/studentid/%s/run/FMR'
-      GRADUATION_STUDENT_RECORD: 'https://educ-grad-student-api-77c02f-dev.apps.silver.devops.gov.bc.ca/api/v1/student/studentid/%s'
-      INFO_FROM_PEN: 'https://student-api-75e61b-tools.apps.silver.devops.gov.bc.ca/api/v1/student?pen=%s'
-      KEYCLOAK_TOKEN_URL: 'https://soam-tools.apps.silver.devops.gov.bc.ca/auth/realms/master/protocol/openid-connect/token'
-      LIST_STUDENTS_FOR_GRADUATION: 'https://educ-grad-student-api-77c02f-dev.apps.silver.devops.gov.bc.ca/api/v1/student/recalculate'
+      GRADUATE_STUDENT: 'http://educ-grad-graduation-api.${GRAD_NAMESPACE}.svc.cluster.local:8080/api/v1/graduate/studentid/%s/run/GS'
+      GRADUATE_STUDENT_REPORT_ONLY: 'http://educ-grad-graduation-api.${GRAD_NAMESPACE}.svc.cluster.local:8080/api/v1/graduate/studentid/%s/run/FMR'
+      GRADUATION_STUDENT_RECORD: 'http://educ-grad-student-api.${GRAD_NAMESPACE}.svc.cluster.local:8080/api/v1/student/studentid/%s'
+      INFO_FROM_PEN: 'http://student-api-master.${COMMON_NAMESPACE}.svc.cluster.local:8080/api/v1/student?pen=%s'
+      KEYCLOAK_TOKEN_URL: 'https://soam-dev.apps.silver.devops.gov.bc.ca/auth/realms/master/protocol/openid-connect/token'
+      LIST_STUDENTS_FOR_GRADUATION: 'http://educ-grad-student-api.${GRAD_NAMESPACE}.svc.cluster.local:8080/api/v1/student/recalculate'
   - kind: ConfigMap
     apiVersion: v1
     metadata:
       name: educ-grad-batch-graduation-api-config-map
     data:
-      APP_LOG_LEVEL: DEBUG
+      APP_LOG_LEVEL: INFO
       ENABLE_FLYWAY: 'true'
-      GRAD_GRADUATION_API: 'https://educ-grad-graduation-api-77c02f-dev.apps.silver.devops.gov.bc.ca/'
-      GRAD_STUDENT_API: 'https://educ-grad-student-api-77c02f-dev.apps.silver.devops.gov.bc.ca/'
-      KEYCLOAK_TOKEN_URL: 'https://soam-tools.apps.silver.devops.gov.bc.ca/'
-      PEN_API: 'https://student-api-75e61b-tools.apps.silver.devops.gov.bc.ca/'
+      GRAD_STUDENT_API: 'http://educ-grad-student-api.${GRAD_NAMESPACE}.svc.cluster.local:8080/'
+      GRAD_GRADUATION_REPORT_API: 'http://educ-grad-graduation-report-api.${GRAD_NAMESPACE}.svc.cluster.local:8080/'
+      GRAD_DISTRIBUTION_API: 'http://educ-grad-distribution-api.${GRAD_NAMESPACE}.svc.cluster.local:8080/'
+      PEN_API: 'http://student-api-master.${COMMON_NAMESPACE}.svc.cluster.local:8080/'
+      KEEP_ALIVE_TIME: '180000'
+      GRAD_GRADUATION_API: 'http://educ-grad-graduation-api.${GRAD_NAMESPACE}.svc.cluster.local:8080/'
+      NUMBER_OF_PARTITIONS: '10'
+      KEYCLOAK_TOKEN_URL: 'https://soam-dev.apps.silver.devops.gov.bc.ca/'
   - kind: ConfigMap
     apiVersion: v1
     metadata:
       name: educ-grad-business-api-config-map
     data:
       APP_LOG_LEVEL: DEBUG
-      GRAD_GRADUATION_API: 'https://educ-grad-graduation-api-77c02f-dev.apps.silver.devops.gov.bc.ca/'
-      GRAD_STUDENT_API: 'https://educ-grad-student-api-77c02f-dev.apps.silver.devops.gov.bc.ca/'
-      KEYCLOAK_TOKEN_URL: 'https://soam-tools.apps.silver.devops.gov.bc.ca/'
+      GRAD_GRADUATION_API: 'http://educ-grad-graduation-api.${GRAD_NAMESPACE}.svc.cluster.local:8080/'
+      GRAD_REPORT_API: 'http://educ-grad-report-api.${GRAD_NAMESPACE}.svc.cluster.local:8080/'
+      GRAD_STUDENT_API: 'http://educ-grad-student-api.${GRAD_NAMESPACE}.svc.cluster.local:8080/'
+      GRAD_STUDENT_GRADUATION_API: 'http://educ-grad-student-graduation-api.${GRAD_NAMESPACE}.svc.cluster.local:8080/'
+      KEYCLOAK_TOKEN_URL: 'https://soam-dev.apps.silver.devops.gov.bc.ca/'
       MAX_RETRY_ATTEMPTS: '3'
-      PEN_API: 'https://student-api-75e61b-tools.apps.silver.devops.gov.bc.ca/'
+      PEN_API: 'http://student-api-master.${COMMON_NAMESPACE}.svc.cluster.local:8080/'
   - kind: ConfigMap
     apiVersion: v1
     metadata:
@@ -86,47 +94,53 @@ objects:
     data:
       APP_LOG_LEVEL: INFO
       ENABLE_FLYWAY: 'true'
-      GRAD_PROGRAM_API: 'https://educ-grad-program-api-77c02f-dev.apps.silver.devops.gov.bc.ca/'
+      GRAD_PROGRAM_API: 'http://educ-grad-program-api.${GRAD_NAMESPACE}.svc.cluster.local:8080/'
       MAX_RETRY_ATTEMPTS: '3'
   - kind: ConfigMap
     apiVersion: v1
     metadata:
       name: educ-grad-data-conversion-api-config-map
     data:
-      GRAD_STUDENT_API: 'https://educ-grad-student-api-77c02f-dev.apps.silver.devops.gov.bc.ca/'
+      GRAD_STUDENT_API: 'http://educ-grad-student-api.${GRAD_NAMESPACE}.svc.cluster.local:8080/'
       BASELINE_ON_MIGRATE: 'false'
       ENABLE_STUDENT_ID_PEN_XREF: 'true'
+      GRAD_COURSE_API: 'http://educ-grad-course-api.${GRAD_NAMESPACE}.svc.cluster.local:8080/'
       APP_LOG_LEVEL: INFO
-      GRAD_PROGRAM_API: 'https://educ-grad-program-api-77c02f-dev.apps.silver.devops.gov.bc.ca/'
-      PEN_STUDENT_API: 'https://student-api-75e61b-tools.apps.silver.devops.gov.bc.ca/'
-      PAGE_SIZE: '2000'
+      GRAD_ASSESSMENT_API: 'https://educ-grad-assessment-api.${GRAD_NAMESPACE}.svc.cluster.local:8080/'
+      GRAD_PROGRAM_API: 'http://educ-grad-program-api.${GRAD_NAMESPACE}.svc.cluster.local:8080/'
+      PEN_STUDENT_API: 'http://student-api-master.${COMMON_NAMESPACE}.svc.cluster.local:8080/'
       ENABLE_FLYWAY: 'true'
-      KEYCLOAK_TOKEN_URL: 'https://soam-tools.apps.silver.devops.gov.bc.ca/'
+      KEEP_ALIVE_TIME: '180000'
+      NUMBER_OF_PARTITIONS: '5'
+      KEYCLOAK_TOKEN_URL: 'https://soam-dev.apps.silver.devops.gov.bc.ca/'
       ENABLE_GRAD_UPDATE: 'true'
   - kind: ConfigMap
     apiVersion: v1
     metadata:
       name: educ-grad-distribution-api-config-map
     data:
-      APP_LOG_LEVEL: DEBUG
-      GRAD_GRADUATION_REPORT_API: 'https://educ-grad-graduation-report-api-77c02f-dev.apps.silver.devops.gov.bc.ca/'
-      GRAD_REPORT_API: 'https://educ-grad-report-api-77c02f-dev.apps.silver.devops.gov.bc.ca/'
-      GRAD_STUDENT_API: 'https://educ-grad-student-api-77c02f-dev.apps.silver.devops.gov.bc.ca/'
-      GRAD_TRAX_API: 'https://educ-grad-trax-api-77c02f-dev.apps.silver.devops.gov.bc.ca/'
-      KEYCLOAK_TOKEN_URL: 'https://soam-tools.apps.silver.devops.gov.bc.ca/'
+      APP_LOG_LEVEL: INFO
+      BCMAIL_SFTP_HOST: SOLIMAR1.qp.gov.bc.ca
+      BCMAIL_SFTP_USER: edgrad_sftp
+      GRAD_GRADUATION_REPORT_API: 'http://educ-grad-graduation-report-api.${GRAD_NAMESPACE}.svc.cluster.local:8080/'
+      GRAD_REPORT_API: 'http://educ-grad-report-api.${GRAD_NAMESPACE}.svc.cluster.local:8080/'
+      GRAD_STUDENT_API: 'http://educ-grad-student-api.${GRAD_NAMESPACE}.svc.cluster.local:8080/'
+      GRAD_TRAX_API: 'http://educ-grad-trax-api.${GRAD_NAMESPACE}.svc.cluster.local:8080/'
+      KEYCLOAK_TOKEN_URL: 'https://soam-dev.apps.silver.devops.gov.bc.ca/'
   - kind: ConfigMap
     apiVersion: v1
     metadata:
       name: educ-grad-graduation-api-config-map
     data:
-      APP_LOG_LEVEL: DEBUG
-      EDUC_SCHOOL_API: 'https://school-api-75e61b-tools.apps.silver.devops.gov.bc.ca/'
-      GRAD_ALGORITHM_API: 'https://educ-grad-algorithm-api-77c02f-dev.apps.silver.devops.gov.bc.ca/'
-      GRAD_GRADUATION_REPORT_API: 'https://educ-grad-graduation-report-api-77c02f-dev.apps.silver.devops.gov.bc.ca/'
-      GRAD_PROGRAM_API: 'https://educ-grad-program-api-77c02f-dev.apps.silver.devops.gov.bc.ca/'
-      GRAD_REPORT_API: 'https://educ-grad-report-api-77c02f-dev.apps.silver.devops.gov.bc.ca/'
-      GRAD_STUDENT_API: 'https://educ-grad-student-api-77c02f-dev.apps.silver.devops.gov.bc.ca/'
-      GRAD_STUDENT_GRADUATION_API: 'https://educ-grad-student-graduation-api-77c02f-dev.apps.silver.devops.gov.bc.ca/'
+      GRAD_REPORT_API: 'http://educ-grad-report-api.${GRAD_NAMESPACE}.svc.cluster.local:8080/'
+      EDUC_SCHOOL_API: 'http://school-api-master.${COMMON_NAMESPACE}.svc.cluster.local:8080/'
+      GRAD_STUDENT_API: 'http://educ-grad-student-api.${GRAD_NAMESPACE}.svc.cluster.local:8080/'
+      APP_LOG_LEVEL: INFO
+      GRAD_PROGRAM_API: 'http://educ-grad-program-api.${GRAD_NAMESPACE}.svc.cluster.local:8080/'
+      GRAD_GRADUATION_REPORT_API: 'http://educ-grad-graduation-report-api.${GRAD_NAMESPACE}.svc.cluster.local:8080/'
+      PEN_API: 'http://student-api-master.${COMMON_NAMESPACE}.svc.cluster.local:8080/'
+      GRAD_ALGORITHM_API: 'http://educ-grad-algorithm-api.${GRAD_NAMESPACE}.svc.cluster.local:8080/'
+      GRAD_STUDENT_GRADUATION_API: 'http://educ-grad-student-graduation-api.${GRAD_NAMESPACE}.svc.cluster.local:8080/'
   - kind: ConfigMap
     apiVersion: v1
     metadata:
@@ -141,7 +155,7 @@ objects:
       CRON_SCHEDULED_PROCESS_EVENTS_STAN: 0 0/5 * * * *
       CRON_SCHEDULED_PROCESS_EVENTS_STAN_LOCK_AT_LEAST_FOR: 800ms
       CRON_SCHEDULED_PROCESS_EVENTS_STAN_LOCK_AT_MOST_FOR: 900ms
-      NATS: 'nats://nats.75e61b-tools.svc.cluster.local:4222'
+      NATS: 'nats://nats.75e61b-dev.svc.cluster.local:4222'
       NATS_MAX_RECONNECT: '60'
   - kind: ConfigMap
     apiVersion: v1
@@ -157,8 +171,10 @@ objects:
     data:
       APP_LOG_LEVEL: DEBUG
       ENABLE_FLYWAY: 'true'
-      GRAD_REPORT_API: 'https://educ-grad-report-api-77c02f-dev.apps.silver.devops.gov.bc.ca/'
-      GRAD_TRAX_API: 'https://educ-grad-trax-api-77c02f-dev.apps.silver.devops.gov.bc.ca/'
+      GRAD_REPORT_API: 'http://educ-grad-report-api.${GRAD_NAMESPACE}.svc.cluster.local:8080/'
+      GRAD_STUDENT_API: 'http://educ-grad-student-api.${GRAD_NAMESPACE}.svc.cluster.local:8080/'
+      GRAD_TRAX_API: 'http://educ-grad-trax-api.${GRAD_NAMESPACE}.svc.cluster.local:8080/'
+      PEN_API: 'http://student-api-master.${COMMON_NAMESPACE}.svc.cluster.local:8080/'
   - kind: ConfigMap
     apiVersion: v1
     metadata:
@@ -170,14 +186,15 @@ objects:
     metadata:
       name: educ-grad-student-api-config-map
     data:
-      APP_LOG_LEVEL: DEBUG
-      ENABLE_FLYWAY: 'true'
-      GRAD_GRADUATION_REPORT_API: 'https://educ-grad-graduation-report-api-77c02f-dev.apps.silver.devops.gov.bc.ca/'
-      GRAD_PROGRAM_API: 'https://educ-grad-program-api-77c02f-dev.apps.silver.devops.gov.bc.ca/'
-      GRAD_STUDENT_GRADUATION_API: 'https://educ-grad-student-graduation-api-77c02f-dev.apps.silver.devops.gov.bc.ca/'
-      GRAD_TRAX_API: 'https://educ-grad-trax-api-77c02f-dev.apps.silver.devops.gov.bc.ca/'
+      GRAD_TRAX_API: 'http://educ-grad-trax-api.${GRAD_NAMESPACE}.svc.cluster.local:8080/'
+      EDUC_SCHOOL_API: 'http://school-api-master.${COMMON_NAMESPACE}.svc.cluster.local:8080/'
+      APP_LOG_LEVEL: INFO
+      GRAD_PROGRAM_API: 'http://educ-grad-program-api.${GRAD_NAMESPACE}.svc.cluster.local:8080/'
+      GRAD_GRADUATION_REPORT_API: 'http://educ-grad-graduation-report-api.${GRAD_NAMESPACE}.svc.cluster.local:8080/'
+      PEN_API: 'http://student-api-master.${COMMON_NAMESPACE}.svc.cluster.local:8080/'
       MAX_RETRY_ATTEMPTS: '3'
-      PEN_API: 'https://student-api-75e61b-tools.apps.silver.devops.gov.bc.ca/'
+      ENABLE_FLYWAY: 'true'
+      GRAD_STUDENT_GRADUATION_API: 'https://educ-grad-student-graduation-api.${GRAD_NAMESPACE}.svc.cluster.local:8080/'
   - kind: ConfigMap
     apiVersion: v1
     metadata:
@@ -201,18 +218,20 @@ objects:
     metadata:
       name: grad-admin-frontend-config-map
     data:
-      VUE_APP_TRAX_API_HOST: 'https://educ-grad-trax-api-77c02f-dev.apps.silver.devops.gov.bc.ca'
-      VUE_APP_BATCH_GRADUATION_API_HOST: 'https://educ-grad-batch-graduation-api-77c02f-dev.apps.silver.devops.gov.bc.ca'
-      VUE_APP_STUDENT_GRADUATION_API_HOST: 'https://educ-grad-student-graduation-api-77c02f-dev.apps.silver.devops.gov.bc.ca'
-      VUE_APP_GRADUATION_API_HOST: 'https://educ-grad-graduation-api-77c02f-dev.apps.silver.devops.gov.bc.ca'
-      VUE_APP_KEYCLOAK_AUTH_HOST: 'https://soam-tools.apps.silver.devops.gov.bc.ca'
-      VUE_APP_ASSESSMENT_API_HOST: 'https://educ-grad-assessment-api-77c02f-dev.apps.silver.devops.gov.bc.ca'
+      GRAD_NAMESPACE: 77c02f-dev
+      VUE_APP_TRAX_API_HOST: 'http://educ-grad-trax-api.${GRAD_NAMESPACE}.svc.cluster.local:8080/'
+      VUE_APP_BATCH_GRADUATION_API_HOST: 'http://educ-grad-batch-graduation-api.${GRAD_NAMESPACE}.svc.cluster.local:8080/'
+      VUE_APP_STUDENT_GRADUATION_API_HOST: 'http://educ-grad-student-graduation-api.${GRAD_NAMESPACE}.svc.cluster.local:8080'
+      VUE_APP_GRADUATION_API_HOST: 'http://educ-grad-graduation-api.${GRAD_NAMESPACE}.svc.cluster.local:8080'
+      VUE_APP_KEYCLOAK_AUTH_HOST: 'https://soam-dev.apps.silver.devops.gov.bc.ca'
+      KEYCLOAK_AUTH_HOST: 'https://soam-dev.apps.silver.devops.gov.bc.ca'
+      VUE_APP_ASSESSMENT_API_HOST: 'http://educ-grad-assessment-api.${GRAD_NAMESPACE}.svc.cluster.local:8080'
       VUE_APP_BASE_URL: 'https://dev.grad.gov.bc.ca/'
-      VUE_APP_COURSE_API_HOST: 'https://educ-grad-course-api-77c02f-dev.apps.silver.devops.gov.bc.ca'
-      VUE_APP_STUDENTS_API_HOST: 'https://educ-grad-student-api-77c02f-dev.apps.silver.devops.gov.bc.ca'
-      VUE_APP_GRADUATION_REPORT_API_HOST: 'https://educ-grad-graduation-report-api-77c02f-dev.apps.silver.devops.gov.bc.ca'
-      VUE_APP_GRAD_REPORT_API_HOST: 'https://educ-grad-report-api-77c02f-dev.apps.silver.devops.gov.bc.ca'
-      VUE_APP_PROGRAM_API_HOST: 'https://educ-grad-program-api-77c02f-dev.apps.silver.devops.gov.bc.ca'
+      VUE_APP_COURSE_API_HOST: 'http://educ-grad-course-api.${GRAD_NAMESPACE}.svc.cluster.local:8080'
+      VUE_APP_STUDENTS_API_HOST: 'http://educ-grad-student-api.${GRAD_NAMESPACE}.svc.cluster.local:8080'
+      VUE_APP_GRADUATION_REPORT_API_HOST: 'http://educ-grad-graduation-report-api.${GRAD_NAMESPACE}.svc.cluster.local:8080'
+      VUE_APP_GRAD_REPORT_API_HOST: 'http://educ-grad-report-api.${GRAD_NAMESPACE}.svc.cluster.local:8080'
+      VUE_APP_PROGRAM_API_HOST: 'http://educ-grad-program-api.${GRAD_NAMESPACE}.svc.cluster.local:8080'
 
   #==========================================================================#
  # Fluent Bit Config Maps (Move these to Secrets as they contain the token) #
