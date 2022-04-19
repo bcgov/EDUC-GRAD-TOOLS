@@ -106,7 +106,7 @@ objects:
       ENABLE_STUDENT_ID_PEN_XREF: 'true'
       GRAD_COURSE_API: 'http://educ-grad-course-api.${GRAD_NAMESPACE}.svc.cluster.local:8080/'
       APP_LOG_LEVEL: INFO
-      GRAD_ASSESSMENT_API: 'https://educ-grad-assessment-api.${GRAD_NAMESPACE}.svc.cluster.local:8080/'
+      GRAD_ASSESSMENT_API: 'http://educ-grad-assessment-api.${GRAD_NAMESPACE}.svc.cluster.local:8080/'
       GRAD_PROGRAM_API: 'http://educ-grad-program-api.${GRAD_NAMESPACE}.svc.cluster.local:8080/'
       PEN_STUDENT_API: 'http://student-api-master.${COMMON_NAMESPACE}.svc.cluster.local:8080/'
       ENABLE_FLYWAY: 'true'
@@ -194,7 +194,7 @@ objects:
       PEN_API: 'http://student-api-master.${COMMON_NAMESPACE}.svc.cluster.local:8080/'
       MAX_RETRY_ATTEMPTS: '3'
       ENABLE_FLYWAY: 'true'
-      GRAD_STUDENT_GRADUATION_API: 'https://educ-grad-student-graduation-api.${GRAD_NAMESPACE}.svc.cluster.local:8080/'
+      GRAD_STUDENT_GRADUATION_API: 'http://educ-grad-student-graduation-api.${GRAD_NAMESPACE}.svc.cluster.local:8080/'
   - kind: ConfigMap
     apiVersion: v1
     metadata:
