@@ -6,5 +6,6 @@ do
   --header "Authorization: Bearer $2" \
   --header "Content-Type: application/json" \
   --data-raw "$line")
-  echo $RESULT
+  echo $RESULT | grep -E 'POST\|Host\|201 Created\|location\|errorMessage'
+  echo "\n"
 done < grad-roles.dat
