@@ -1,0 +1,3 @@
+{"name": "GRAD_SYSTEM_COORDINATOR","description": "Role for GRAD System Coordinator. Has full access to GRAD","composite": false, "clientRole": false, "containerId": "master"}
+{"name": "GRAD_PROGRAM_AREA_BA","description": "Role for GRAD Business Analyst","composite": false,"clientRole": false,"containerId": "master"}
+{"name": "GRAD_INFO_OFFICER","description": "Role for GRAD Info Officer","composite": false,"clientRole": false,"containerId": "master"}
