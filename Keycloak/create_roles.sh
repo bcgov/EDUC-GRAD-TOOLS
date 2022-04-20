@@ -1,9 +1,9 @@
 #!/bin/bash
-echo $BEARER
+# Usage: ./create_roles.sh $URL $BEARER
 while read line
 do
-  curl --location --request POST 'https://soam-test.apps.silver.devops.gov.bc.ca/auth/admin/realms/master/roles' \
-  --header "Authorization: Bearer $BEARER" \
+  curl --location --request POST "$1" \
+  --header "Authorization: Bearer $2" \
   --header "Content-Type: application/json" \
-  --data-raw '$line'
+  --data-raw "$line"
 done < grad-roles.dat
