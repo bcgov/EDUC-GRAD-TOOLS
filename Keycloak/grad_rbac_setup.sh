@@ -18,11 +18,17 @@ done < grad-roles.dat
 
 #Create Client Scopes
 echo -e "CREATE Client Scopes\n============\nURL: $1$CREATE_CLIENT_SCOPE\n"
-while read line
+while read CLIENT_SCOPE
 do
+  #Trim scope if it's more than 38 chars long
+  CLIENT_SCOPE_TRIMMED=$CLIENT_SCOPE
+  if [ ${#str} -ge 38 ] then
+    CLIENT_SCOPE_TRIMMED=${CLIENT_SCOPE:0:37}
+  fi
+
   curl --write-out 'URL: %{url_effective}, Response: %{response_code}' --location --request POST "$1$CREATE_CLIENT_SCOPE" \
   --header "Authorization: Bearer $2" \
   --header "Content-Type: application/json" \
-  --data-raw "$line"
+  --data-raw "{\"id\": \"$CLIENT_SCOPE_TRIMMED\", \"name\": \"$CLIENT_SCOPE\", \"protocol\": \"openid-connect\", \"attributes\": { \"include.in.token.scope\": \"true\", \"display.on.consent.screen\": \"false\"}}"
   echo -e "\n"
-done < grad-client-scopes.dat
+done < grad-client-scopes.lst
