@@ -14,6 +14,7 @@ do
   --header "Authorization: Bearer $2" \
   --header "Content-Type: application/json" \
   --data-raw "$line"
+  echo -e "\n"
 done < grad-roles.dat
 
 #Create Client Scopes
@@ -22,7 +23,7 @@ while read CLIENT_SCOPE
 do
   #Trim scope if it's more than 38 chars long
   CLIENT_SCOPE_TRIMMED=$CLIENT_SCOPE
-  if [ ${#str} -ge 38 ] then
+  if [ ${#str} -ge 38 ]; then
     CLIENT_SCOPE_TRIMMED=${CLIENT_SCOPE:0:37}
   fi
 
@@ -30,6 +31,7 @@ do
   --header "Authorization: Bearer $2" \
   --header "Content-Type: application/json" \
   --data-raw "{\"id\": \"$CLIENT_SCOPE_TRIMMED\", \"name\": \"$CLIENT_SCOPE\", \"protocol\": \"openid-connect\", \"attributes\": { \"include.in.token.scope\": \"true\", \"display.on.consent.screen\": \"false\"}}"
+  echo -e "\n"
 done < grad-client-scopes.lst
 
 #Add
@@ -44,7 +46,7 @@ while read CLIENT_SCOPE
 do
   #Trim scope if it's more than 38 chars long
   CLIENT_SCOPE_TRIMMED=$CLIENT_SCOPE
-  if [ ${#str} -ge 38 ] then
+  if [ ${#str} -ge 38 ]; then
     CLIENT_SCOPE_TRIMMED=${CLIENT_SCOPE:0:37}
   fi
 
@@ -52,4 +54,5 @@ do
   --header "Authorization: Bearer $2" \
   --header "Content-Type: application/json" \
   --data-raw "[{\"id\": \"$CLIENT_SCOPE_TRIMMED\"}]"
+  echo -e "\n"
 done < grad-client-scopes.lst
