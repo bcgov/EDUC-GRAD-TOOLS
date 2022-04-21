@@ -14,7 +14,6 @@ do
   --header "Authorization: Bearer $2" \
   --header "Content-Type: application/json" \
   --data-raw "$line"
-  echo -e "\n"
 done < grad-roles.dat
 
 #Create Client Scopes
@@ -31,7 +30,6 @@ do
   --header "Authorization: Bearer $2" \
   --header "Content-Type: application/json" \
   --data-raw "{\"id\": \"$CLIENT_SCOPE_TRIMMED\", \"name\": \"$CLIENT_SCOPE\", \"protocol\": \"openid-connect\", \"attributes\": { \"include.in.token.scope\": \"true\", \"display.on.consent.screen\": \"false\"}}"
-  echo -e "\n"
 done < grad-client-scopes.lst
 
 #Add
@@ -54,5 +52,4 @@ do
   --header "Authorization: Bearer $2" \
   --header "Content-Type: application/json" \
   --data-raw "[{\"id\": \"$CLIENT_SCOPE_TRIMMED\"}]"
-  echo -e "\n"
 done < grad-client-scopes.lst
