@@ -23,7 +23,7 @@ while read CLIENT_SCOPE
 do
   #Trim scope if it's more than 38 chars long
   CLIENT_SCOPE_TRIMMED=$CLIENT_SCOPE
-  if [ ${#str} -ge 38 ]; then
+  if [ ${#CLIENT_SCOPE} -ge 38 ]; then
     CLIENT_SCOPE_TRIMMED=${CLIENT_SCOPE:0:37}
   fi
 
@@ -50,7 +50,7 @@ do
   fi
 
   # Replace the placeholder with the client-scope value
-  URL=$(echo "$1$ASSIGN_ROLES_TO_CLIENT_SCOPE" | sed -e "s/{client-scope}/${ROLE}/g")
+  URL=$(echo "$1$ASSIGN_ROLES_TO_CLIENT_SCOPE" | sed -i "s|{client-scope}|$CLIENT_SCOPE_TRIMMED|g")
 
   curl --write-out 'URL: %{url_effective}, Response: %{response_code}' --location --request POST "$URL" \
   --header "Authorization: Bearer $2" \
