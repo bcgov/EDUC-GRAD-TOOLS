@@ -23,7 +23,7 @@ while read CLIENT_SCOPE
 do
   #Trim scope if it's more than 36 chars long
   CLIENT_SCOPE_TRIMMED=$CLIENT_SCOPE
-  if [ ${#CLIENT_SCOPE} -ge 36 ]; then
+  if [ ${#CLIENT_SCOPE} -gt 36 ]; then
     CLIENT_SCOPE_TRIMMED=${CLIENT_SCOPE:0:36}
     echo "Scope Trimmed $CLIENT_SCOPE_TRIMMED"
   fi
@@ -48,7 +48,7 @@ while read CLIENT_SCOPE
 do
   #Trim scope if it's more than 36 chars long
   CLIENT_SCOPE_TRIMMED=$CLIENT_SCOPE
-  if [ ${#CLIENT_SCOPE} -ge 36 ]; then
+  if [ ${#CLIENT_SCOPE} -gt 36 ]; then
     CLIENT_SCOPE_TRIMMED=${CLIENT_SCOPE:0:36}
     echo "Scope Trimmed $CLIENT_SCOPE_TRIMMED"
   fi
