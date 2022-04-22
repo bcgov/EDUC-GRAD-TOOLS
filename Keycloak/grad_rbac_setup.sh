@@ -35,12 +35,14 @@ do
   echo -e "\n"
 done < grad-client-scopes.lst
 
-#Add
-# cat temp.json | jq .[] | jq 'select(.name == "GRAD_SYSTEM_COORDINATOR")' | jq -r .name
+#Assign ROLES to client scopes
 echo -e "Assign Roles to Client Scopes\n============\nURL: $1$ASSIGN_ROLES_TO_CLIENT_SCOPE\n"
 
 # ADD GRAD_SYSTEM_COORDINATOR Role
 ROLE="GRAD_SYSTEM_COORDINATOR"
+# Get Role ID by Role
+ROLE_ID=$(curl --write-out 'URL: %{url_effective}, Response: %{response_code}' --location --request POST "$1$CREATE_ROLE\$ROLE" \
+  --header "Authorization: Bearer $2" | jq .[] | jq 'select(.name == "GRAD_SYSTEM_COORDINATOR")' | jq -r .id)
 
 while read CLIENT_SCOPE
 do
@@ -57,6 +59,6 @@ do
   curl --write-out 'URL: %{url_effective}, Response: %{response_code}' --location --request POST "$URL" \
   --header "Authorization: Bearer $2" \
   --header "Content-Type: application/json" \
-  --data-raw "[{\"id\": \"$ROLE\"}]"
+  --data-raw "[{\"id\": \"$ROLE_ID\"}]"
   echo -e "\n"
 done < grad-client-scopes.lst
