@@ -21,10 +21,10 @@ done < grad-roles.dat
 echo -e "CREATE Client Scopes\n============\nURL: $1$CREATE_CLIENT_SCOPE\n"
 while read CLIENT_SCOPE
 do
-  #Trim scope if it's more than 38 chars long
+  #Trim scope if it's more than 36 chars long
   CLIENT_SCOPE_TRIMMED=$CLIENT_SCOPE
-  if [ ${#CLIENT_SCOPE} -ge 38 ]; then
-    CLIENT_SCOPE_TRIMMED=${CLIENT_SCOPE:0:37}
+  if [ ${#CLIENT_SCOPE} -ge 36 ]; then
+    CLIENT_SCOPE_TRIMMED=${CLIENT_SCOPE:0:36}
     echo "Scope Trimmed $CLIENT_SCOPE_TRIMMED"
   fi
 
@@ -44,10 +44,10 @@ ROLE="GRAD_SYSTEM_COORDINATOR"
 
 while read CLIENT_SCOPE
 do
-  #Trim scope if it's more than 38 chars long
+  #Trim scope if it's more than 36 chars long
   CLIENT_SCOPE_TRIMMED=$CLIENT_SCOPE
-  if [ ${#CLIENT_SCOPE} -ge 38 ]; then
-    CLIENT_SCOPE_TRIMMED=${CLIENT_SCOPE:0:37}
+  if [ ${#CLIENT_SCOPE} -ge 36 ]; then
+    CLIENT_SCOPE_TRIMMED=${CLIENT_SCOPE:0:36}
     echo "Scope Trimmed $CLIENT_SCOPE_TRIMMED"
   fi
 
