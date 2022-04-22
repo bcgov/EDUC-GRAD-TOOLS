@@ -25,12 +25,13 @@ do
   CLIENT_SCOPE_TRIMMED=$CLIENT_SCOPE
   if [ ${#CLIENT_SCOPE} -ge 38 ]; then
     CLIENT_SCOPE_TRIMMED=${CLIENT_SCOPE:0:37}
+    echo "Scope Trimmed $CLIENT_SCOPE_TRIMMED"
   fi
 
   curl --write-out 'URL: %{url_effective}, Response: %{response_code}' --location --request POST "$1$CREATE_CLIENT_SCOPE" \
   --header "Authorization: Bearer $2" \
   --header "Content-Type: application/json" \
-  --data-raw "{\"id\": $CLIENT_SCOPE_TRIMMED, \"name\": $CLIENT_SCOPE, \"protocol\": \"openid-connect\", \"attributes\": { \"include.in.token.scope\": \"true\", \"display.on.consent.screen\": \"false\"}}"
+  --data-raw "{\"id\": \"$CLIENT_SCOPE_TRIMMED\", \"name\": \"$CLIENT_SCOPE\", \"protocol\": \"openid-connect\", \"attributes\": { \"include.in.token.scope\": \"true\", \"display.on.consent.screen\": \"false\"}}"
   echo -e "\n"
 done < grad-client-scopes.lst
 
@@ -47,6 +48,7 @@ do
   CLIENT_SCOPE_TRIMMED=$CLIENT_SCOPE
   if [ ${#CLIENT_SCOPE} -ge 38 ]; then
     CLIENT_SCOPE_TRIMMED=${CLIENT_SCOPE:0:37}
+    echo "Scope Trimmed $CLIENT_SCOPE_TRIMMED"
   fi
 
   # Replace the placeholder with the client-scope value
@@ -55,6 +57,6 @@ do
   curl --write-out 'URL: %{url_effective}, Response: %{response_code}' --location --request POST "$URL" \
   --header "Authorization: Bearer $2" \
   --header "Content-Type: application/json" \
-  --data-raw "[{\"id\": $ROLE}]"
+  --data-raw "[{\"id\": \"$ROLE\"}]"
   echo -e "\n"
 done < grad-client-scopes.lst
