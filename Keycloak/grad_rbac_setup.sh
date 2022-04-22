@@ -50,7 +50,7 @@ do
   fi
 
   # Replace the placeholder with the client-scope value
-  URL=$(echo "$1$ASSIGN_ROLES_TO_CLIENT_SCOPE" | sed -i "s|{client-scope}|$CLIENT_SCOPE_TRIMMED|g")
+  URL=$(echo "$1$ASSIGN_ROLES_TO_CLIENT_SCOPE" | sed -e "s|{client-scope}|$CLIENT_SCOPE_TRIMMED|g")
 
   curl --write-out 'URL: %{url_effective}, Response: %{response_code}' --location --request POST "$URL" \
   --header "Authorization: Bearer $2" \
