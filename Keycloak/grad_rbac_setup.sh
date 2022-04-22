@@ -41,8 +41,7 @@ echo -e "Assign Roles to Client Scopes\n============\nURL: $1$ASSIGN_ROLES_TO_CL
 # ADD GRAD_SYSTEM_COORDINATOR Role
 ROLE="GRAD_SYSTEM_COORDINATOR"
 # Get Role ID by Role
-ROLE_ID=$(curl --write-out 'URL: %{url_effective}, Response: %{response_code}' --location --request GET "$1$CREATE_ROLE/$ROLE" \
-  --header "Authorization: Bearer $2" | jq -r .id)
+ROLE_ID=$(curl --location --request GET "$1$CREATE_ROLE/$ROLE" --header "Authorization: Bearer $2" | jq -r .id)
 
 while read CLIENT_SCOPE
 do
