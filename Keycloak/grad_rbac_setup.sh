@@ -40,7 +40,6 @@ echo -e "Assign Roles to Client Scopes\n============\nURL: $1$ASSIGN_ROLES_TO_CL
 
 # ADD GRAD_SYSTEM_COORDINATOR Role
 ROLE="GRAD_SYSTEM_COORDINATOR"
-echo "$1$ASSIGN_ROLES_TO_CLIENT_SCOPE" | sed -e "s/{client-scope}/${ROLE}/g"
 
 while read CLIENT_SCOPE
 do
@@ -50,9 +49,12 @@ do
     CLIENT_SCOPE_TRIMMED=${CLIENT_SCOPE:0:37}
   fi
 
-  curl --write-out 'URL: %{url_effective}, Response: %{response_code}' --location --request POST "$1$ASSIGN_ROLES_TO_CLIENT_SCOPE" \
+  # Replace the placeholder with the client-scope value
+  URL=$(echo "$1$ASSIGN_ROLES_TO_CLIENT_SCOPE" | sed -e "s/{client-scope}/${ROLE}/g")
+
+  curl --write-out 'URL: %{url_effective}, Response: %{response_code}' --location --request POST "$URL" \
   --header "Authorization: Bearer $2" \
   --header "Content-Type: application/json" \
-  --data-raw "[{\"id\": \"$CLIENT_SCOPE_TRIMMED\"}]"
+  --data-raw "[{\"id\": \"$ROLE\"}]"
   echo -e "\n"
 done < grad-client-scopes.lst
