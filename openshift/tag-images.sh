@@ -1,3 +1,4 @@
+#/bin/bash
 # Create Openshift imagestream tags
 # Login to Openshift using the CLI login command before you run this script
 # ex: oc login --token=sha256~vNdSnB***********tWS9sQ --server=https://api.silver.devops.gov.bc.ca:6443
