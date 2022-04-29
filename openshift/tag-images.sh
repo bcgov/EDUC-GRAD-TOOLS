@@ -4,7 +4,7 @@
 # ex: oc login --token=sha256~vNdSnB***********tWS9sQ --server=https://api.silver.devops.gov.bc.ca:6443
 # Pass the tag name as a command-line parameter
 # ex: sh tag-images.sh v1.3.0
-printf "TAG Images in Openshift"
+printf "\nTAG Images in Openshift\n\n"
 
 oc registry login
 oc project 77c02f-tools
