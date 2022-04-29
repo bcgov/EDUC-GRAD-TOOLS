@@ -12,7 +12,7 @@ oc project 77c02f-tools
 while read line
 do
   oc tag "$line":latest "$line":"$1"
-  echo -e "\n"
+  printf "\n"
 done < grad-apis.lst
 
 oc tag educ-grad-admin-frontend:latest educ-grad-admin-frontend:"$1"
