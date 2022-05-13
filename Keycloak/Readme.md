@@ -1,12 +1,13 @@
-#STEPS
+# STEPS
 
-##Clone the Repository
+## Clone the Repository
 
-##Change directory to Keycloak
+## Change directory to Keycloak
 
-##Update script permissions
+## Update script permissions
 `chmod 744 grad_rbac_setup.sh`
-##SET Env Variables
+
+## SET Env Variables
 ```
 URL=https://soam-test.apps.silver.devops.gov.bc.ca
 BEARER=$(curl -k -s -X POST -H 'Content-type: application/x-www-form-urlencoded' \
@@ -15,5 +16,5 @@ BEARER=$(curl -k -s -X POST -H 'Content-type: application/x-www-form-urlencoded'
         | jq -r '.access_token')
 ```
 
-##RUN shell script
+## RUN shell script
 `./grad_rbac_setup.sh $URL $BEARER`
