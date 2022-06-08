@@ -20,7 +20,7 @@ do
 
   while read SECRET_KEY
   do
-    #echo $SECRET_KEY
+    echo $SECRET_KEY
     SECRET_VALUE=$(oc get secret gh-actions -n 77c02f-tools -o go-template --template="{{.data.$SECRET_KEY|base64decode}}")
     #echo $SECRET_VALUE
 
