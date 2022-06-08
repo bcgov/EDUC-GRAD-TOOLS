@@ -24,18 +24,18 @@ do
     SECRET_VALUE=$(oc get secret gh-actions -n 77c02f-tools -o go-template --template="{{.data.$SECRET_KEY|base64decode}}")
     echo $SECRET_VALUE
 
-    ENCRYPTED_VALUE=$(python encryptsecret.py $PUBKEY $SECRET_VALUE)
+    ENCRYPTED_VALUE=$(py encryptsecret.py $PUBKEY $SECRET_VALUE)
 
     echo -e "Encrypted Value:"$ENCRYPTED_VALUE
 
     CREATE_SECRET_EP="https://api.github.com/repos/bcgov/$REPO_NAME/actions/secrets/$SECRET_KEY"
 
-    echo '{"key_id": "'$KEY_ID'","encrypted_value":"'$ENCRYPTED_VALUE'"}'
+    echo "{\"key_id\": \"$KEY_ID\",\"encrypted_value\":\"$ENCRYPTED_VALUE\"}"
 
     curl -s --location --request PUT "$CREATE_SECRET_EP" \
       --header "Authorization: Bearer $GITHUB_TOKEN" \
       --header "Content-Type: application/json" \
-      -d '{"key_id": "'$KEY_ID'","encrypted_value":"'$ENCRYPTED_VALUE'"}'
+      -d "{\"key_id\": \"$KEY_ID\",\"encrypted_value\":\"$ENCRYPTED_VALUE\"}"
 
       echo -e "\n"
   done < secrets.lst
