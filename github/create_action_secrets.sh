@@ -31,13 +31,10 @@ do
     CREATE_SECRET_EP="https://api.github.com/repos/bcgov/$REPO_NAME/actions/secrets/$SECRET_KEY"
 
     #echo "{\"key_id\": \"$KEY_ID\",\"encrypted_value\":\"$ENCRYPTED_VALUE\"}"
-
     curl -s --location --request PUT "$CREATE_SECRET_EP" \
       --header "Authorization: Bearer $GITHUB_TOKEN" \
       --header "Content-Type: application/json" \
       --data-raw "{\"key_id\": \"$KEY_ID\",\"encrypted_value\":\"$ENCRYPTED_VALUE\"}"
-
-      echo -e "\n"
   done < secrets.lst
 
   echo -e "\n"
