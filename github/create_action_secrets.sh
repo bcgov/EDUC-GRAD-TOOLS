@@ -24,7 +24,7 @@ do
     SECRET_VALUE=$(oc get secret gh-actions -n 77c02f-tools -o go-template --template="{{.data.$SECRET_KEY|base64decode}}")
     echo $SECRET_VALUE
 
-    ENCRYPTED_VALUE=$(py ./encryptsecret.py $PUBKEY $SECRET_VALUE)
+    ENCRYPTED_VALUE=$(python3 encryptsecret.py $PUBKEY $SECRET_VALUE)
 
     echo -e "Encrypted Value:"$ENCRYPTED_VALUE
 
