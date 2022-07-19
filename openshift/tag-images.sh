@@ -14,5 +14,5 @@ do
   oc tag "$line":latest "$line":"$1"
 done < grad-apis.lst
 
+oc project bbe4c3-tools
 oc tag educ-grad-admin-frontend:latest educ-grad-admin-frontend:"$1"
-oc tag educ-grad-admin-frontend-static:latest educ-grad-admin-frontend-static:"$1"
