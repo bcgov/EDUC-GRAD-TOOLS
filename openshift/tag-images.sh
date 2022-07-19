@@ -16,3 +16,4 @@ done < grad-apis.lst
 
 oc project bbe4c3-tools
 oc tag educ-grad-admin-frontend:latest educ-grad-admin-frontend:"$1"
+oc tag educ-grad-admin-backend:latest educ-grad-admin-backend:"$1"
