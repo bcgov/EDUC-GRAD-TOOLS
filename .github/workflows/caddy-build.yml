@@ -112,8 +112,8 @@ jobs:
           # Or, perform a source-to-image build using https://github.com/redhat-actions/s2i-build
           # Otherwise, point this to your Dockerfile/Containerfile relative to the repository root.
           dockerfiles: |
-            ./caddy/.s2i/Dockerfile
-          context: ./caddy/.s2i
+            ./caddy/Dockerfile
+          context: ./caddy
 
         # https://github.com/redhat-actions/push-to-registry#readme
       - name: Push CADDY to registry
