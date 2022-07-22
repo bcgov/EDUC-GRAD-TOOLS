@@ -2,7 +2,7 @@
 
 ## Clone the Repository
 
-## Change directory to Keycloak
+## Change directory to github
 
 ## Update script permissions
 `chmod 744 grad_rbac_setup.sh`

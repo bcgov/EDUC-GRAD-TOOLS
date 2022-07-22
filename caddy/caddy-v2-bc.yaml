@@ -1,0 +1,28 @@
+kind: BuildConfig
+apiVersion: build.openshift.io/v1
+metadata:
+  name: caddy
+spec:
+  nodeSelector: null
+  output:
+    to:
+      kind: ImageStreamTag
+      name: 'caddy:v2'
+  resources: {}
+  successfulBuildsHistoryLimit: 5
+  failedBuildsHistoryLimit: 5
+  strategy:
+    type: Docker
+    dockerStrategy:
+      pullSecret:
+        name: artifactory-creds
+      env:
+        - name: BUILD_LOGLEVEL
+          value: '2'
+  postCommit: {}
+  source:
+    type: Git
+    git:
+      uri: 'https://github.com/caddyserver/caddy-docker'
+    contextDir: 2.5/alpine
+  runPolicy: Serial
