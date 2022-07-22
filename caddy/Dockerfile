@@ -30,7 +30,7 @@ RUN apk del devs
 LABEL io.openshift.s2i.scripts-url=image:///tmp/scripts
 
 ## Copy the S2I scripts into place
-COPY s2i/bin/ /tmp/scripts
+COPY ./.s2i/bin/ /tmp/scripts
 
 ADD Caddyfile /etc/Caddyfile
 
