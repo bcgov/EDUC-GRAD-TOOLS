@@ -1,0 +1,243 @@
+# VPAs for resource recommendations (Vertical Pod Autoscalers)
+# https://docs.openshift.com/container-platform/4.7/nodes/pods/nodes-pods-vertical-autoscaler.html
+# All autoscalers are running in updateMode: "Off". This ensures that no resources are affected
+# but recommendations can be made. To see resource recommendations, use the 
+# 'oc get vpa' or 'oc get vpa [name]'
+
+#GRAD-ALGORITHM-API
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: vpa-recommender-educ-grad-algorithm-api
+spec:
+  targetRef:
+    apiVersion: "apps.openshift.io/v1"
+    kind:       DeploymentConfig 
+    name:       educ-grad-algorithm-api-dc
+  updatePolicy:
+    updateMode: "Off"
+
+---
+
+#GRAD-ASSESSMENT-API
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: vpa-recommender-educ-grad-assessment-api-dc
+spec:
+  targetRef:
+    apiVersion: "apps.openshift.io/v1"
+    kind:       DeploymentConfig 
+    name:       educ-grad-assessment-api-dc 
+  updatePolicy:
+    updateMode: "Off"
+
+---
+
+#BATCH-GRADUATION-API
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: vpa-recommender-educ-grad-batch-graduation-api-dc
+spec:
+  targetRef:
+    apiVersion: "apps.openshift.io/v1"
+    kind:       DeploymentConfig 
+    name:       educ-grad-batch-graduation-api-dc 
+  updatePolicy:
+    updateMode: "Off"
+
+---
+
+#GRAD-BUSINESS-API
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: vpa-recommender-educ-grad-business-api-dc
+spec:
+  targetRef:
+    apiVersion: "apps.openshift.io/v1"
+    kind:       DeploymentConfig 
+    name:       educ-grad-business-api-dc 
+  updatePolicy:
+    updateMode: "Off"
+
+---
+
+#GRAD-COURSE-API
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: vpa-recommender-educ-grad-course-api-dc
+spec:
+  targetRef:
+    apiVersion: "apps.openshift.io/v1"
+    kind:       DeploymentConfig 
+    name:       educ-grad-course-api-dc 
+  updatePolicy:
+    updateMode: "Off"
+
+---
+
+#DATA-CONVERSION-API
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: vpa-recommender-educ-grad-data-conversion-api-dc
+spec:
+  targetRef:
+    apiVersion: "apps.openshift.io/v1"
+    kind:       DeploymentConfig 
+    name:       educ-grad-data-conversion-api-dc 
+  updatePolicy:
+    updateMode: "Off"
+
+---
+
+#DISTRIBUTION-API
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: vpa-recommender-educ-grad-distribution-api-dc
+spec:
+  targetRef:
+    apiVersion: "apps.openshift.io/v1"
+    kind:       DeploymentConfig 
+    name:       educ-grad-distribution-api-dc 
+  updatePolicy:
+    updateMode: "Off"
+
+---
+
+#GRADUATION-API
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: vpa-recommender-educ-grad-graduation-api-dc
+spec:
+  targetRef:
+    apiVersion: "apps.openshift.io/v1"
+    kind:       DeploymentConfig 
+    name:       educ-grad-graduation-api-dc 
+  updatePolicy:
+    updateMode: "Off"
+
+---
+
+#GRADUATION-REPORT-API
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: vpa-recommender-educ-grad-graduation-report-api-dc
+spec:
+  targetRef:
+    apiVersion: "apps.openshift.io/v1"
+    kind:       DeploymentConfig 
+    name:       educ-grad-graduation-report-api-dc 
+  updatePolicy:
+    updateMode: "Off"
+
+---
+
+#PROGRAM-API
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: vpa-recommender-educ-grad-program-api-dc
+spec:
+  targetRef:
+    apiVersion: "apps.openshift.io/v1"
+    kind:       DeploymentConfig 
+    name:       educ-grad-program-api-dc 
+  updatePolicy:
+    updateMode: "Off"
+
+---
+
+#REPORT-API
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: vpa-recommender-educ-grad-report-api-dc
+spec:
+  targetRef:
+    apiVersion: "apps.openshift.io/v1"
+    kind:       DeploymentConfig 
+    name:       educ-grad-report-api-dc 
+  updatePolicy:
+    updateMode: "Off"
+
+---
+
+#STUDENT-API
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: vpa-recommender-educ-grad-student-api-dc
+spec:
+  targetRef:
+    apiVersion: "apps.openshift.io/v1"
+    kind:       DeploymentConfig 
+    name:       educ-grad-student-api-dc 
+  updatePolicy:
+    updateMode: "Off"
+
+---
+
+#STUDENT-GRADUATION-API
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: vpa-recommender-educ-grad-student-graduation-api-dc
+spec:
+  targetRef:
+    apiVersion: "apps.openshift.io/v1"
+    kind:       DeploymentConfig 
+    name:       educ-grad-student-graduation-api-dc 
+  updatePolicy:
+    updateMode: "Off"
+
+---
+
+#TRAX-API
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: vpa-recommender-educ-grad-trax-api-dc
+spec:
+  targetRef:
+    apiVersion: "apps.openshift.io/v1"
+    kind:       DeploymentConfig 
+    name:       educ-grad-trax-api-dc
+  updatePolicy:
+    updateMode: "Off"
+
+---
+
+#RULE-ENGINE-API
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: vpa-recommender-educ-rule-engine-api-dc
+spec:
+  targetRef:
+    apiVersion: "apps.openshift.io/v1"
+    kind:       DeploymentConfig 
+    name:       educ-rule-engine-api-dc
+  updatePolicy:
+    updateMode: "Off"
+
+---
+
+#GRAD-ADMIN
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: vpa-recommender-grad-admin-frontend-main
+spec:
+  targetRef:
+    apiVersion: "apps.openshift.io/v1"
+    kind:       DeploymentConfig 
+    name:       grad-admin-frontend-main
+  updatePolicy:
+    updateMode: "Off"
