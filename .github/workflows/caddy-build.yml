@@ -19,10 +19,10 @@ env:
   DOCKER_ARTIFACTORY_REPO: docker-remote.artifacts.developer.gov.bc.ca
   ARTIFACTORY_REPO: artifacts.developer.gov.bc.ca
 
-  APP_NAME: 'educ-grad-admin'
-  REPO_NAME: "educ-grad-admin"
-  BRANCH: "feature/nodejs"
-  APP_NAME_FRONTEND: "educ-grad-admin-frontend"
+  APP_NAME: 'educ-grad-tools'
+  REPO_NAME: "educ-grad-tools"
+  BRANCH: "main"
+  APP_NAME_FRONTEND: "educ-grad-tools"
   NAMESPACE: bbe4c3
   NAMESPACE_TOOLS: bbe4c3-tools
   COMMON_NAMESPACE: 75e61b
@@ -112,69 +112,16 @@ jobs:
           # Or, perform a source-to-image build using https://github.com/redhat-actions/s2i-build
           # Otherwise, point this to your Dockerfile/Containerfile relative to the repository root.
           dockerfiles: |
-            ./frontend/Dockerfile
-          context: ./frontend
+            ./caddy/.s2i/Dockerfile
+          context: ./caddy/.s2i
 
         # https://github.com/redhat-actions/push-to-registry#readme
-      - name: Push frontend to registry
-        id: push-image-frontend
+      - name: Push CADDY to registry
+        id: push-image-caddy
         uses: redhat-actions/push-to-registry@v2
         with:
-          image: ${{ steps.build-image-frontend.outputs.image }}
-          tags: ${{ steps.build-image-frontend.outputs.tags }}
+          image: ${{ steps.build-image-caddy.outputs.image }}
+          tags: ${{ steps.build-image-caddy.outputs.tags }}
           registry: ${{ env.IMAGE_REGISTRY }}
           username: ${{ env.IMAGE_REGISTRY_USER }}
           password: ${{ env.IMAGE_REGISTRY_PASSWORD }}
-
-      - name: Install oc
-        uses: redhat-actions/openshift-tools-installer@v1
-        with:
-          oc: 4
-
-        # https://github.com/redhat-actions/oc-login#readme
-      - uses: actions/checkout@v2
-      - name: Build frontend static
-        id: build-image-frontend-static
-        run: |
-          set -eux
-          # Login to OpenShift and select project
-          oc login --token=${{ env.OPENSHIFT_TOKEN }} --server=${{ env.OPENSHIFT_SERVER }}
-          oc project ${{ env.NAMESPACE_TOOLS }}
-
-          # Create the image stream if it doesn't exist
-          oc create imagestream ${{ env.REPO_NAME }}-frontend 2> /dev/null || true && echo "Frontend image stream in place"
-          oc tag ${{ steps.push-image-frontend.outputs.registry-path }} ${{ env.REPO_NAME }}-frontend:${{ env.TAG }}
-
-          # Process and apply build template
-          oc process -f tools/openshift/frontend-static.bc.yaml -p REPO_NAME=educ-grad-admin -p NAMESPACE=${{ env.NAMESPACE_TOOLS }} \
-           | oc apply -n bbe4c3-tools -f -
-
-          # Start build (if necessary) and follow it
-          oc start-build bc/${{ env.IMAGE_NAME }}-static -F 2> /dev/null \
-          || true && echo "Build in progress"
-
-        # https://github.com/redhat-actions/oc-login#readme
-      - uses: actions/checkout@v2
-      - name: Deploy
-        run: |
-          set -eux
-          # Login to OpenShift and select project
-          oc login --token=${{ env.OPENSHIFT_TOKEN }} --server=${{ env.OPENSHIFT_SERVER }}
-          oc project ${{ env.OPENSHIFT_NAMESPACE }}
-          
-          # Cancel any rollouts in progress
-          oc rollout cancel dc/${{ env.IMAGE_NAME }}-dc 2> /dev/null \
-          || true && echo "No rollout in progress"
-          
-          # Process and apply deployment template
-          oc process -f tools/openshift/frontend-static.dc.ocp4.yaml -p REPO_NAME=educ-grad-admin \
-          -p HOST_ROUTE=educ-grad-admin-bbe4c3-dev.apps.silver.devops.gov.bc.ca -p NAMESPACE=${{ env.NAMESPACE_TOOLS }} \
-          -p APP_NAME=educ-grad-admin -p TAG=latest -p MIN_REPLICAS=2 -p MAX_REPLICAS=3 -p MIN_CPU=50m -p MAX_CPU=100m \
-          -p MIN_MEM=200Mi -p MAX_MEM=250Mi | oc apply -n bbe4c3-dev -f -
-          
-          # Start rollout (if necessary) and follow it
-          oc rollout latest dc/${{ env.IMAGE_NAME }}-dc 2> /dev/null \
-          || true && echo "Rollout in progress"
-          oc logs -f dc/${{ env.IMAGE_NAME }}-dc
-          # Get status, returns 0 if rollout is successful
-          oc rollout status dc/${{ env.IMAGE_NAME }}-dc
