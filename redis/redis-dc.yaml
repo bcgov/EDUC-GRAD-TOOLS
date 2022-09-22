@@ -77,7 +77,7 @@ spec:
             - name: redis-data
               mountPath: /var/lib/redis/data
           terminationMessagePolicy: File
-          image: docker-remote.artifacts.developer.gov.bc.ca/redis:6.0.9-alpine
+          image: artifacts.developer.gov.bc.ca/docker-remote/redis:6.0.9-alpine
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
       dnsPolicy: ClusterFirst
