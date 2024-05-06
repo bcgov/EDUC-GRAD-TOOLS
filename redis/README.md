@@ -6,12 +6,8 @@ Redis HA can be deployed by cloning this repository locally from Git
 
 - Switch to the correct project/namespace you're targetting
 - Navigate to the `./openshift/redis` folder
-- For DEV, Run the following command:
 
-```
-oc apply -f redis.dc.yaml
-```
-- For other environments, Run the following command:
+Run the following command:
 
 ```
 oc apply -f redis-ha.dc.yaml
