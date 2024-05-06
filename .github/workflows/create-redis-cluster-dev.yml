@@ -1,0 +1,14 @@
+name: Create Redis Cluster - Dev
+on:
+  workflow_dispatch:
+jobs:
+  create-redis-cluster:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Deploy Redis
+      run: |
+        echo "Deploying Redis..."
+    - name: Create Cluster
+      run: |
+        echo "Creating Cluster..."
+    
