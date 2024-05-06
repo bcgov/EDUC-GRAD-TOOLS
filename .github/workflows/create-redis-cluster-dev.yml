@@ -8,6 +8,10 @@ jobs:
     - name: Deploy Redis
       run: |
         echo "Deploying Redis..."
+    - name: Wait for Readiness
+      run: |
+        echo "Waiting for pods to be ready..."
+        sleep 30
     - name: Create Cluster
       run: |
         echo "Creating Cluster..."
