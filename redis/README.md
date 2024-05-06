@@ -9,12 +9,12 @@ Redis HA can be deployed by cloning this repository locally from Git
 - For DEV, Run the following command:
 
 ```
-oc apply -f https://raw.githubusercontent.com/bcgov/EDUC-GRAD-TOOLS/master/openshift/redis/redis.dc.yaml
+oc apply -f redis.dc.yaml
 ```
 - For other environments, Run the following command:
 
 ```
-oc apply -f https://raw.githubusercontent.com/bcgov/EDUC-GRAD-TOOLS/master/openshift/redis/redis-ha.dc.yaml
+oc apply -f redis-ha.dc.yaml
 ```
 
 - Once the pods are running, run the following command to initialize the cluster:
