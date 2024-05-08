@@ -25,11 +25,13 @@ jobs:
           # Login to OpenShift and select project
           oc login --token=${{ env.OPENSHIFT_TOKEN }} --server=${{ env.OPENSHIFT_SERVER }}
           oc project ${{ env.OPENSHIFT_NAMESPACE }}
+          oc apply -f redis-ha.dc.yaml
       - name: Wait for Readiness
         run: |
           echo "Waiting for pods to be ready..."
-          sleep 30
+          sleep 300
       - name: Create Cluster
         run: |
           echo "Creating Cluster..."
+          oc exec -it redis-0 -- redis-cli --cluster create --cluster-replicas 1 $(oc get pods -l app=redis -o jsonpath='{range.items[*]}{.status.podIP}:6379 {end}')
     
