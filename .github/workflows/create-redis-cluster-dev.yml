@@ -25,7 +25,7 @@ jobs:
           # Login to OpenShift and select project
           oc login --token=${{ env.OPENSHIFT_TOKEN }} --server=${{ env.OPENSHIFT_SERVER }}
           oc project ${{ env.OPENSHIFT_NAMESPACE }}
-          oc apply -f redis-ha.dc.yaml
+          oc apply -f redis/redis-ha.dc.yaml
       - name: Wait for Readiness
         run: |
           echo "Waiting for pods to be ready..."
