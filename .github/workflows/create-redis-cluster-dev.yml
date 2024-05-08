@@ -34,4 +34,6 @@ jobs:
         run: |
           echo "Creating Cluster..."
           oc exec -it redis-0 -- redis-cli --cluster create --cluster-replicas 1 $(oc get pods -l app=redis -o jsonpath='{range.items[*]}{.status.podIP}:6379 {end}')
+          expect "Can I set the above configuration? (type 'yes' to accept)"
+          send "yes\r"
     
