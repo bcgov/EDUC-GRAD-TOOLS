@@ -2,9 +2,9 @@
 apiVersion: template.openshift.io/v1
 kind: Template
 labels:
-  template: "${REPO_NAME}-deploy-template"
+  template: "redis-template"
 metadata:
-  name: "${REPO_NAME}-deploy-template"
+  name: "redis-template"
 objects:
   - apiVersion: v1
     kind: ConfigMap
