@@ -2,25 +2,32 @@
 
 ## Redis HA Deployment
 
-Redis HA can be deployed by cloning this repository locally from Git
+### GitHub Actions:
+- Goto GitHub Actions Tab
+- Run **Create Redis Cluster - DEV**  workflow for DEV environment
+- For TEST and PROD, run the workflow ending with TEST and PROD respectively
 
-- Switch to the correct project/namespace you're targetting
-- Navigate to the `./openshift/redis` folder
+### Command-line: 
+###### Redis HA can be deployed by cloning this repository locally from Git
 
-Run the following command:
+- Clone the repository
+- Navigate to the `./redis` directory
+- Logon to Openshift using **oc** commandline tool
+- Switch to the correct project/namespace you're targeting
+
+###### Delete previous installation if any
+- Run the following command for cleanup:
+```
+oc delete -n <namespace-env> all,rc,svc,dc,route,pvc,secret,configmap,sa,RoleBinding -l app=redis
+```
+###### Deploy Redis
+```
+oc process -f redis/redis-ha.dc.yaml -p REPLICAS=6 | oc apply -f -
+```
+ 
+###### Create Redis Cluster
+- Once all the pods are running, run the following command to initialize the cluster:
 
 ```
-oc apply -f redis-ha.dc.yaml
+oc exec -it redis-0 -- redis-cli --cluster create --cluster-replicas 1 $(oc get pods -l app=redis -o jsonpath='{range.items[*]}{.status.podIP}:6379 {end}') --cluster-yes
 ```
-
-- Once the pods are running, run the following command to initialize the cluster:
-
-```
-oc exec -it redis-0 -- redis-cli --cluster create --cluster-replicas 1 $(oc get pods -l app=redis -o jsonpath='{range.items[*]}{.status.podIP}:6379 {end}')
-```
-
-#Delete Scripts
-##Redis
-`oc -n <namespace-env> delete secret,service,dc redis`
-##Redis HA
-`oc delete -n <namespace-env> all,rc,svc,dc,route,pvc,secret,configmap,sa,RoleBinding -l app=redis`
