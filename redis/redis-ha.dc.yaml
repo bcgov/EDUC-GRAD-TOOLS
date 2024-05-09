@@ -127,7 +127,7 @@ objects:
             accessModes: [ "ReadWriteOnce" ]
             resources:
               requests:
-                storage: 100Mi
+                storage: 1Gi
 parameters:
   - name: REPLICAS
     description: Number of Replicas for the Redis cluster
