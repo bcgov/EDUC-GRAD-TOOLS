@@ -33,4 +33,5 @@ jobs:
       - name: Create Cluster
         run: |
           echo "Creating Cluster..."
-          yes | oc exec -i redis-0 -- redis-cli --cluster create --cluster-replicas 1 $(oc get pods -l app=redis -o jsonpath='{range.items[*]}{.status.podIP}:6379 {end}') --cluster-yes
+          oc exec -i redis-0 -- redis-cli --cluster create --cluster-replicas 1 $(oc get pods -l app=redis -o jsonpath='{range.items[*]}{.status.podIP}:6379 {end}') --cluster-yes
+          echo "Success!"
