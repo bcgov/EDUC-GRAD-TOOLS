@@ -6,7 +6,7 @@ env:
   COMMON_NAMESPACE: ${{ vars.COMMON_NAMESPACE }}
   GRAD_NAMESPACE: ${{ vars.GRAD_NAMESPACE }}
   BUSINESS_NAMESPACE: ${{ vars.GRAD_BUSINESS_NAMESPACE }}
-  REPLICAS: 2
+  REPLICAS: 6
 on:
   workflow_dispatch:
 jobs:
