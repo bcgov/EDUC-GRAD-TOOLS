@@ -2,10 +2,11 @@ name: Create Redis Cluster - PROD
 env:
   OPENSHIFT_SERVER: ${{ vars.OPENSHIFT_SERVER }}
   OPENSHIFT_TOKEN: ${{ secrets.OPENSHIFT_TOKEN }}
-  OPENSHIFT_NAMESPACE: ${{ vars.GRAD_NAMESPACE }}-prod
+  OPENSHIFT_NAMESPACE: ${{ vars.GRAD_NAMESPACE }}-dev
   COMMON_NAMESPACE: ${{ vars.COMMON_NAMESPACE }}
   GRAD_NAMESPACE: ${{ vars.GRAD_NAMESPACE }}
   BUSINESS_NAMESPACE: ${{ vars.GRAD_BUSINESS_NAMESPACE }}
+  REPLICAS: 6
 on:
   workflow_dispatch:
 jobs:
@@ -18,18 +19,24 @@ jobs:
         uses: redhat-actions/openshift-tools-installer@v1
         with:
           oc: 4
-      - name: Deploy Redis
-        run: |
-          echo "Deploying Redis..."          
+      - name: init
+        run : |
+          echo "Initializing..."          
           set -eux
           # Login to OpenShift and select project
           oc login --token=${{ env.OPENSHIFT_TOKEN }} --server=${{ env.OPENSHIFT_SERVER }}
           oc project ${{ env.OPENSHIFT_NAMESPACE }}
-          oc apply -f redis/redis-ha.dc.yaml
+      - name: cleanup
+        run : |
+          echo "Cleaning up previous installation (if any)..."
+          oc delete all,rc,svc,dc,route,pvc,secret,configmap,sa,RoleBinding -l app=redis
+      - name: Deploy Redis
+        run: |
+          oc apply -f redis/redis-ha.dc.yaml -p REPLICAS=${{ env.REPLICAS }}
       - name: Wait for Readiness
         run: |
           echo "Waiting for pods to be ready..."
-          sleep 300
+          sleep "$((${{ env.REPLICAS }}*50))"
       - name: Create Cluster
         run: |
           echo "Creating Cluster..."
