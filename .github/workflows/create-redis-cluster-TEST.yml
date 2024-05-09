@@ -1,0 +1,37 @@
+name: Create Redis Cluster - TEST
+env:
+  OPENSHIFT_SERVER: ${{ vars.OPENSHIFT_SERVER }}
+  OPENSHIFT_TOKEN: ${{ secrets.OPENSHIFT_TOKEN }}
+  OPENSHIFT_NAMESPACE: ${{ vars.GRAD_NAMESPACE }}-test
+  COMMON_NAMESPACE: ${{ vars.COMMON_NAMESPACE }}
+  GRAD_NAMESPACE: ${{ vars.GRAD_NAMESPACE }}
+  BUSINESS_NAMESPACE: ${{ vars.GRAD_BUSINESS_NAMESPACE }}
+on:
+  workflow_dispatch:
+jobs:
+  create-redis-cluster:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+      - name: Install oc
+        uses: redhat-actions/openshift-tools-installer@v1
+        with:
+          oc: 4
+      - name: Deploy Redis
+        run: |
+          echo "Deploying Redis..."          
+          set -eux
+          # Login to OpenShift and select project
+          oc login --token=${{ env.OPENSHIFT_TOKEN }} --server=${{ env.OPENSHIFT_SERVER }}
+          oc project ${{ env.OPENSHIFT_NAMESPACE }}
+          oc apply -f redis/redis-ha.dc.yaml
+      - name: Wait for Readiness
+        run: |
+          echo "Waiting for pods to be ready..."
+          sleep 300
+      - name: Create Cluster
+        run: |
+          echo "Creating Cluster..."
+          oc exec -i redis-0 -- redis-cli --cluster create --cluster-replicas 1 $(oc get pods -l app=redis -o jsonpath='{range.items[*]}{.status.podIP}:6379 {end}') --cluster-yes
+          echo "Success!"
