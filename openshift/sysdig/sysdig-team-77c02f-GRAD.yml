@@ -1,0 +1,27 @@
+apiVersion: ops.gov.bc.ca/v1alpha1
+kind: SysdigTeam
+metadata:
+  name: 77c02f-sysdigteam
+  namespace: 77c02f-tools
+spec:
+  team:
+    description: The Sysdig Team for the GRAD project
+    users:
+    - name: harshit.kohli@gov.bc.ca
+      role: ROLE_TEAM_MANAGER
+    - name: derek.so@gov.bc.ca
+      role: ROLE_TEAM_MANAGER
+    - name: chris.ditcher@gov.bc.ca
+      role: ROLE_TEAM_MANAGER
+    - name: trevor.richards@gov.bc.ca
+      role: ROLE_TEAM_EDIT
+    - name: mamatha.chinthakindi@gov.bc.ca
+      role: ROLE_TEAM_EDIT
+    - name: erin.eckerman@gov.bc.ca
+      role: ROLE_TEAM_EDIT
+    - name: christopher.mcdermid@gov.bc.ca
+      role: ROLE_TEAM_EDIT
+    - name: kamal.mohammed@outlook.com
+      role: ROLE_TEAM_EDIT
+    - name: infstar@gmail.com
+      role: ROLE_TEAM_EDIT
