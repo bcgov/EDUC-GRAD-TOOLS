@@ -1,0 +1,26 @@
+name: Test Action
+env:
+  OPENSHIFT_SERVER: ${{ vars.OPENSHIFT_SERVER }}
+  OPENSHIFT_TOKEN: ${{ secrets.OPENSHIFT_TOKEN }}
+  OPENSHIFT_NAMESPACE: ${{ vars.GRAD_NAMESPACE }}-dev
+  COMMON_NAMESPACE: ${{ vars.COMMON_NAMESPACE }}
+  GRAD_NAMESPACE: ${{ vars.GRAD_NAMESPACE }}
+  BUSINESS_NAMESPACE: ${{ vars.GRAD_BUSINESS_NAMESPACE }}
+  REPLICAS: 6
+on:
+  workflow_dispatch:
+jobs:
+  test-action:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+      - name: Install oc
+        uses: redhat-actions/openshift-tools-installer@v1
+        with:
+          oc: 4
+      - name: init
+        run : |
+          echo "Initializing..."          
+          set -eux
+          openssl rand -base64 12
