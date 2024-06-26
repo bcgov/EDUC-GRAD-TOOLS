@@ -29,8 +29,8 @@ jobs:
       - name: cleanup
         run : |
           echo "Cleaning up previous installation (if any)..."
-          oc delete all,rc,svc,dc,route,pvc,secret,configmap,sa,RoleBinding -l app=redis
-      - name: Deploy Redis
+          oc delete all,rc,svc,dc,route,pvc,secret,configmap,sa,RoleBinding -l app=redis-ha
+      - name: Deploy Redis pods
         run: |
           oc process -f redis/redis-ha.dc.yaml -p REPLICAS=${{ env.REPLICAS }} | oc apply -f -
       - name: Wait for Readiness
@@ -39,6 +39,8 @@ jobs:
           sleep "$((${{ env.REPLICAS }}*50))"
       - name: Create Cluster
         run: |
+          echo "Retrieve redis password..."
+          REDIS_PASSWORD=$(oc -o json get secret redis-ha | sed -n 's/.*"REDIS_PASSWORD": "\(.*\)",/\1/p' | base64 --decode)
           echo "Creating Cluster..."
-          oc exec -i redis-0 -- redis-cli --cluster create --cluster-replicas 1 $(oc get pods -l app=redis -o jsonpath='{range.items[*]}{.status.podIP}:6379 {end}') --cluster-yes
+          oc exec -i redis-ha-0 -- redis-cli --cluster create --cluster-replicas 1 $(oc get pods -l app=redis-ha -o jsonpath='{range.items[*]}{.status.podIP}:6379 {end}') --cluster-yes -a $REDIS_PASSWORD
           echo "Success!"
