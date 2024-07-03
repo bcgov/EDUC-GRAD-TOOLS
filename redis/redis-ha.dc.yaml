@@ -34,6 +34,7 @@ objects:
         appendonly yes
         protected-mode no
         requirepass ${REDIS_PASSWORD}
+        masterauth ${REDIS_PASSWORD}
   - kind: Secret
     apiVersion: v1
     metadata:
