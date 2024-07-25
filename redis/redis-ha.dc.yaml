@@ -35,6 +35,22 @@ objects:
         protected-mode no
         requirepass ${REDIS_PASSWORD}
         masterauth ${REDIS_PASSWORD}
+      redis-readiness.sh: |
+        #!/bin/sh
+        export REDISCLI_AUTH=$REDIS_PASSWORD
+        response=$(timeout 3 $1 redis-cli -h $HOSTNAME -p 6379 ping)
+        if [ "$response" != "PONG" ]; then
+          echo "$response"
+          exit 1
+        fi
+      redis-liveness.sh: |
+        #!/bin/sh
+        export REDISCLI_AUTH=$REDIS_PASSWORD
+        response=$(timeout 3 $1 redis-cli -h $HOSTNAME -p 6379 ping)
+        if [ "$response" != "PONG" ] && [ "$response" != "LOADING Redis is loading the dataset in memory" ]; then
+          echo "$response"
+          exit 1
+        fi
   - kind: Secret
     apiVersion: v1
     metadata:
@@ -93,20 +109,22 @@ objects:
               command: ["/conf/fix-ip.sh", "redis-server", "/conf/redis.conf"]
               readinessProbe:
                 exec:
-                  command:
-                    - sh
-                    - -c
-                    - "redis-cli -h $(hostname) ping"
-                initialDelaySeconds: 15
+                  command: ["/conf/redis-readiness.sh"]
+                enabled: true
+                initialDelaySeconds: 20
+                periodSeconds: 5
                 timeoutSeconds: 5
+                successThreshold: 1
+                failureThreshold: 5
               livenessProbe:
                 exec:
-                  command:
-                    - sh
-                    - -c
-                    - "redis-cli -h $(hostname) ping"
+                  command: ["/conf/redis-liveness.sh"]
+                enabled: true
                 initialDelaySeconds: 20
-                periodSeconds: 3
+                periodSeconds: 5
+                timeoutSeconds: 1
+                successThreshold: 1
+                failureThreshold: 5
               env:
                 - name: POD_IP
                   valueFrom:
