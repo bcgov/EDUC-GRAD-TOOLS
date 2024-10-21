@@ -28,4 +28,21 @@ Go to *Settings / Features in development / Enable host networking*
 
 The script will provision the necessary volume structure and set up the necessary docker containers etc.
 
+### Troubleshooting
+
+In the event that you see a port conflict when starting the redis cluster (Windows):
+
+1. Open a command prompt and locate the duplicte process listening on port 7000: `netstat -aon | find /i "listening" | find "7000"`
+2. If you see a process listening on [::1] make a not of the last number in the table which will be the PID (Process ID)
+3. Kill the process by issuing the following: `taskkill /F /PID your-PID-here`
+4. Restart the redis cluster (Note you may still see a warning about duplicate ports, but it should now work)
+
+In the event that NATs fails to connect due to missing STREAM.
+
+1. Ensure you have NATs running in docker and that you have nats-cli installed.
+2. Create the required stream (using INSTITUTE_EVENTS as an example) `nats stream add`
+3. Enter the name at the prompt: INSTITUTE_EVENTS
+4. Enter at least one subject when prompted: INSTITUTE_EVENTS_TOPIC
+5. Use defaults for the reamaining prompts
+
 
