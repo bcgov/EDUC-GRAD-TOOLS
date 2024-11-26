@@ -1,0 +1,18 @@
+name: Update Keycloak
+env:
+  BRANCH: "Keycloack_scripts"
+  REPO_NAME: educ-grad-tools
+ 
+on:
+  workflow_dispatch:
+jobs:
+  update-keycolak:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+      - name: Update Keycloak
+        run: >
+         curl -s https://raw.githubusercontent.com/bcgov/${{ env.REPO_NAME }}/${{ env.BRANCH }}/Keycloak/update-kc-client.sh | bash /dev/stdin  ${{ env.REPO_NAME }} 
+        
+            
