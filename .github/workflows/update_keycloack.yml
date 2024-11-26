@@ -2,6 +2,16 @@ name: Update Keycloak
 env:
   BRANCH: "Keycloack_scripts"
   REPO_NAME: educ-grad-tools
+  ENV=$1
+  COMMON_NAMESPACE=$2
+  SOAM_KC_REALM_ID=$3
+  CLIENT_ID=$4
+  BRANCH=$5
+  REPO_NAME=$6
+  CLIENT_SECRET_NAME=$7
+  CLIENT_SECRET_NAME_KEY=$8
+  CLIENT_SECRET_SECRET_KEY=$9
+  SOAM_KC=soam-$ENV.apps.silver.devops.gov.bc.ca
  
 on:
   workflow_dispatch:
