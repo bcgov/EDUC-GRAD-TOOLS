@@ -6,6 +6,7 @@ KC_PASSWORD=$2
 KC_USERNAME=$3
 KC_REALM_ID=$4
 SCRIPTS_PATH=$5
+KC_TOKEN_URL=$6
 
 curl -o roles.sh $SCRIPTS_PATH/grad-roles.dat
 echo Fetching SOAM token
@@ -14,7 +15,7 @@ TKN=$(curl -s -w \
   -d "username=$KC_USERNAME" \
   -d "password=$KC_PASSWORD" \
   -d "grant_type=password" \
-  "$KC_BASE_URL/$KC_REALM_ID/protocol/openid-connect/token" | jq -r '.access_token')
+  "$KC_TOKEN_URL/$KC_REALM_ID/protocol/openid-connect/token" | jq -r '.access_token')
 
 
 #Create Roles
