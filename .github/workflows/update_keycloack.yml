@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
   push:
    branches:
-     -Keycloack_scripts
+     -keycloack_scripts
 jobs:
   update-keycolak:
     runs-on: ubuntu-latest
