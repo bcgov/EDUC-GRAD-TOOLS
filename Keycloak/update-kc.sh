@@ -19,7 +19,7 @@ TKN=$(curl -s \
 
 #Create Roles
 echo -e "CREATE Roles \n"
-echo "$SCRIPTS_PATH"
+echo "https://$KC_BASE_URL/$KC_REALM_ID/roles"
 while read line
 do
   result=$(curl -s -w "%{http_code}"    -X  POST "https://$KC_BASE_URL/$KC_REALM_ID/roles" \
