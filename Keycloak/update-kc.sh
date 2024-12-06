@@ -9,7 +9,7 @@ SCRIPTS_PATH=$5
 
 curl -o roles.sh $SCRIPTS_PATH/grad-roles.dat
 echo Fetching SOAM token
-TKN=$(curl -s \
+TKN=$(curl -s -w \
   -d "client_id=admin-cli" \
   -d "username=$KC_USERNAME" \
   -d "password=$KC_PASSWORD" \
@@ -19,7 +19,7 @@ TKN=$(curl -s \
 
 #Create Roles
 echo -e "CREATE Roles \n"
-echo "https://$KC_BASE_URL/$KC_REALM_ID/roles"
+echo "$KC_BASE_URL/$KC_REALM_ID/roles"
 while read line
 do
   result=$(curl -s -v -w "%{http_code}"    -X  POST "$KC_BASE_URL/$KC_REALM_ID/roles" \
