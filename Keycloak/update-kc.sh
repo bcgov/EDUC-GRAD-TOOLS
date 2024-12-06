@@ -24,6 +24,5 @@ do
   --header "Authorization: Bearer $TKN" \
   --header "Content-Type: application/json" \
   --data-raw "$line"
-  
 done < grad-roles.dat
 
