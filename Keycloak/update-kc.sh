@@ -20,9 +20,9 @@ TKN=$(curl -s \
 echo -e "CREATE Roles \n"
 while read line
 do
-  curl -sX POST "https://$KC_BASE_URL/$KC_REALM_ID/roles" \
-  --header "Authorization: Bearer $TKN" \
-  --header "Content-Type: application/json" \
-  --data-raw "$line"
+  #curl -sX POST "https://$KC_BASE_URL/$KC_REALM_ID/roles" \
+  #--header "Authorization: Bearer $TKN" \
+  #--header "Content-Type: application/json" \
+  #--data-raw "$line"
   echo -e "\n"
 done < grad-roles.dat
