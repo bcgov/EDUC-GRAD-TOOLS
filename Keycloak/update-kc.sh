@@ -22,9 +22,9 @@ echo -e "CREATE Roles \n"
 echo "$SCRIPTS_PATH"
 while read line
 do
-  curl -sX --write-out 'URL: %{url_effective}, Response: %{response_code}' POST "https://$KC_BASE_URL/$KC_REALM_ID/roles" \
+  result = $(curl -sX --write-out  POST "https://$KC_BASE_URL/$KC_REALM_ID/roles" \
   --header "Authorization: Bearer $TKN" \
   --header "Content-Type: application/json" \
-  --data-raw "$line"
-  echo -e " $line\n"
+  --data-raw "$line")
+  echo -e " $result\n"
 done < roles.sh 
