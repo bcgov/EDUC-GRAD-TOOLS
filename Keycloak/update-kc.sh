@@ -21,8 +21,6 @@ TKN=$(curl -s -v  -w POST \
   "$KC_TOKEN_URL/$KC_REALM_ID/protocol/openid-connect/token" | jq -r '.access_token')
 
 
-
-
 #Create Roles
 echo -e "CREATE Roles \n"
 
