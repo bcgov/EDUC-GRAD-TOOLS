@@ -7,7 +7,7 @@ KC_USERNAME=$3
 KC_REALM_ID=$4
 SCRIPTS_PATH=$5
 
-
+curl -o roles.sh $SCRIPTS_PATH/grad-roles.dat
 echo Fetching SOAM token
 TKN=$(curl -s \
   -d "client_id=admin-cli" \
@@ -27,4 +27,4 @@ do
   #--header "Content-Type: application/json" \
   #--data-raw "$line"
   echo -e "\n"
-done < $SCRIPTS_PATH/grad-roles.dat
+done < roles.sh 
