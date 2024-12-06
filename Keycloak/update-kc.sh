@@ -22,7 +22,7 @@ echo -e "CREATE Roles \n"
 echo "$SCRIPTS_PATH"
 while read line
 do
-  result = $(curl -sX   POST "https://$KC_BASE_URL/$KC_REALM_ID/roles" \
+  result=$(curl -sX   POST "https://$KC_BASE_URL/$KC_REALM_ID/roles" \
   --header "Authorization: Bearer $TKN" \
   --header "Content-Type: application/json" \
   --data-raw "$line")
