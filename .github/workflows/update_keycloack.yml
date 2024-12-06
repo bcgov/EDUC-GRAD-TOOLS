@@ -6,6 +6,7 @@ env:
   KC_PASSWORD: ${{ secrets.KC_PASSWORD}}
   KC_USERNAME: ${{ secrets.KC_USERNAME}}
   KC_REALM_ID: master
+  SCRIPTS_PATH: https://raw.githubusercontent.com/bcgov/${{ env.REPO_NAME }}/${{ env.BRANCH }}/Keycloak
  
 on:
   workflow_dispatch:
@@ -21,6 +22,6 @@ jobs:
         uses: actions/checkout@v3
       - name: Update Keycloak
         run: >
-         curl -s https://raw.githubusercontent.com/bcgov/${{ env.REPO_NAME }}/${{ env.BRANCH }}/Keycloak/update-kc.sh | bash /dev/stdin  ${{ env.KC_BASE_URL }} ${{ env.KC_PASSWORD }} ${{ env.KC_USERNAME }} ${{ env.KC_REALM_ID }} 
+         curl -s ${{ env.SCRIPTS_PATH }}/update-kc.sh | bash /dev/stdin  ${{ env.KC_BASE_URL }} ${{ env.KC_PASSWORD }} ${{ env.KC_USERNAME }} ${{ env.KC_REALM_ID }} ${{ env.SCRIPTS_PATH }} 
         
             
