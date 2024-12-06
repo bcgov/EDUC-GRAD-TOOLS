@@ -7,7 +7,7 @@ KC_USERNAME=$3
 KC_REALM_ID=$4
 SCRIPTS_PATH=$5
 KC_TOKEN_URL=$6
-"
+
 
 curl -o roles.sh $SCRIPTS_PATH/grad-roles.dat
 curl -o client_scopes.sh $SCRIPTS_PATH/grad-client-scopes.lst
@@ -50,4 +50,4 @@ do
   --header "Content-Type: application/json" \
   --data-raw "{\"id\": \"$CLIENT_SCOPE_TRIMMED\", \"name\": \"$CLIENT_SCOPE\", \"protocol\": \"openid-connect\", \"attributes\": { \"include.in.token.scope\": \"true\", \"display.on.consent.screen\": \"false\"}}")
   echo -e " Response : $result\n"
-done < client_scope.sh
+done < client_scopes.sh
