@@ -26,5 +26,5 @@ do
   --header "Authorization: Bearer $TKN" \
   --header "Content-Type: application/json" \
   --data-raw "$line")
-  echo -e " $result\n"
+  echo -e " Response : $result\n"
 done < roles.sh 
