@@ -14,7 +14,7 @@ echo "$KC_TOKEN_URL"
 
 curl -o roles.sh $SCRIPTS_PATH/grad-roles.dat
 echo Fetching SOAM token
-TKN=$(curl -s -v  -w \
+TKN=$(curl -s -v  -w POST\
   -d "client_id=admin-cli" \
   -d "username=$KC_USERNAME" \
   -d "password=$KC_PASSWORD" \
