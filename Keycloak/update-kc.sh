@@ -7,12 +7,10 @@ KC_USERNAME=$3
 KC_REALM_ID=$4
 SCRIPTS_PATH=$5
 KC_TOKEN_URL=$6
-
-echo "$KC_USERNAME"
-echo "$KC_PASSWORD"
-echo "$KC_TOKEN_URL"
+"
 
 curl -o roles.sh $SCRIPTS_PATH/grad-roles.dat
+curl -o client_scopes.sh $SCRIPTS_PATH/grad-client-scopes.lst
 echo Fetching SOAM token
 TKN=$(curl -s -v  -w POST \
   -d "client_id=admin-cli" \
@@ -29,9 +27,27 @@ echo -e "CREATE Roles \n"
 echo "$KC_BASE_URL/$KC_REALM_ID/roles"
 while read line
 do
-  result=$(curl -s -v -w "%{http_code}"    -X  POST "$KC_BASE_URL/$KC_REALM_ID/roles" \
+  result=$(curl -s -v -w "%{http_code}"   -X  POST "$KC_BASE_URL/$KC_REALM_ID/roles" \
   --header "Authorization: Bearer $TKN" \
   --header "Content-Type: application/json" \
   --data-raw "$line")
   echo -e " Response : $result\n"
-done < roles.sh 
+done < roles.sh
+
+#Create Client Scopes
+echo -e "CREATE Client Scopes\n"
+while read CLIENT_SCOPE
+do
+  #Trim scope if it's more than 36 chars long
+  CLIENT_SCOPE_TRIMMED=$CLIENT_SCOPE
+  if [ ${#CLIENT_SCOPE} -gt 36 ]; then
+    CLIENT_SCOPE_TRIMMED=${CLIENT_SCOPE:0:36}
+    echo "Scope Trimmed $CLIENT_SCOPE_TRIMMED"
+  fi
+
+   result=$(curl  -s -v -w "%{http_code}"   -X  POST "$KC_BASE_URL/$KC_REALM_ID/client-scopes" \
+  --header "Authorization: Bearer $TKN"  \
+  --header "Content-Type: application/json" \
+  --data-raw "{\"id\": \"$CLIENT_SCOPE_TRIMMED\", \"name\": \"$CLIENT_SCOPE\", \"protocol\": \"openid-connect\", \"attributes\": { \"include.in.token.scope\": \"true\", \"display.on.consent.screen\": \"false\"}}")
+  echo -e " Response : $result\n"
+done < client_scope.sh
