@@ -5,6 +5,7 @@ KC_BASE_URL=$1
 KC_PASSWORD=$2
 KC_USERNAME=$3
 KC_REALM_ID=$4
+SCRIPTS_PATH=$5
 
 
 echo Fetching SOAM token
@@ -18,6 +19,7 @@ TKN=$(curl -s \
 
 #Create Roles
 echo -e "CREATE Roles \n"
+echo "$SCRIPTS_PATH"
 while read line
 do
   #curl -sX POST "https://$KC_BASE_URL/$KC_REALM_ID/roles" \
@@ -25,4 +27,4 @@ do
   #--header "Content-Type: application/json" \
   #--data-raw "$line"
   echo -e "\n"
-done < grad-roles.dat
+done < $SCRIPTS_PATH/grad-roles.dat
