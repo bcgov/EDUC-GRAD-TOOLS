@@ -64,4 +64,4 @@ do
   --header "Content-Type: application/json" \
   --data-raw "$line")
   echo -e " Response : $result\n"
-done < roles.sh
+done < clients.sh
