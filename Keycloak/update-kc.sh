@@ -11,6 +11,7 @@ KC_TOKEN_URL=$6
 
 curl -o roles.sh $SCRIPTS_PATH/grad-roles.dat
 curl -o client_scopes.sh $SCRIPTS_PATH/grad-client-scopes.lst
+curl -o clients.sh $SCRIPTS_PATH/clients.dat
 echo Fetching SOAM token
 TKN=$(curl -s -v  -w POST \
   -d "client_id=admin-cli" \
@@ -24,7 +25,7 @@ TKN=$(curl -s -v  -w POST \
 
 #Create Roles
 echo -e "CREATE Roles \n"
-echo "$KC_BASE_URL/$KC_REALM_ID/roles"
+
 while read line
 do
   result=$(curl -s -v -w "%{http_code}"   -X  POST "$KC_BASE_URL/$KC_REALM_ID/roles" \
@@ -51,3 +52,16 @@ do
   --data-raw "{\"id\": \"$CLIENT_SCOPE_TRIMMED\", \"name\": \"$CLIENT_SCOPE\", \"protocol\": \"openid-connect\", \"attributes\": { \"include.in.token.scope\": \"true\", \"display.on.consent.screen\": \"false\"}}")
   echo -e " Response : $result\n"
 done < client_scopes.sh
+
+
+#Create Clients
+echo -e "CREATE Clients \n"
+
+while read line
+do
+  result=$(curl -s -v -w "%{http_code}"   -X  POST "$KC_BASE_URL/$KC_REALM_ID/clients" \
+  --header "Authorization: Bearer $TKN" \
+  --header "Content-Type: application/json" \
+  --data-raw "$line")
+  echo -e " Response : $result\n"
+done < roles.sh
