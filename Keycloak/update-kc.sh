@@ -22,7 +22,7 @@ echo -e "CREATE Roles \n"
 echo "https://$KC_BASE_URL/$KC_REALM_ID/roles"
 while read line
 do
-  result=$(curl -s -w "%{http_code}"    -X  POST "https://$KC_BASE_URL/$KC_REALM_ID/roles" \
+  result=$(curl -s -v -w "%{http_code}"    -X  POST "https://$KC_BASE_URL/$KC_REALM_ID/roles" \
   --header "Authorization: Bearer $TKN" \
   --header "Content-Type: application/json" \
   --data-raw "$line")
