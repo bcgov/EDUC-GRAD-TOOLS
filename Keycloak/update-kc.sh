@@ -20,7 +20,7 @@ TKN=$(curl -s \
 echo -e "CREATE Roles \n"
 while read line
 do
-  curl -sX POST "https://$KC_BASE_URL/$KC_REALM_ID/roles \
+  curl -sX POST "https://$KC_BASE_URL/$KC_REALM_ID/roles" \
   --header "Authorization: Bearer $TKN" \
   --header "Content-Type: application/json" \
   --data-raw "$line"
