@@ -63,5 +63,7 @@ do
   --data-raw "$line")
   echo -e " Response : $result\n"
   default_scopes=$(echo "$line" | jq -r '.defaultClientScopes[]')
-  echo "default scopes: $default_scopes"
+  echo "$default_scopes"  | while read -r scope; do
+    echo "$scope" 
+  done
 done < clients.sh
