@@ -21,12 +21,12 @@ oc delete -n <namespace-env> all,rc,svc,dc,route,pvc,secret,configmap,sa,RoleBin
 ```
 ###### Deploy Redis
 ```
-oc process -f redis/redis-ha.dc.yaml -p REPLICAS=6 | oc apply -f -
+oc process -f redis/redis-ha.dc.yaml -p REPLICAS=9 | oc apply -f -
 ```
  
 ###### Create Redis Cluster
 - Once all the pods are running, run the following command to initialize the cluster:
 
 ```
-oc exec -it redis-ha-0 -- redis-cli --cluster create --cluster-replicas 1 $(oc get pods -l app=redis-ha -o jsonpath='{range.items[*]}{.status.podIP}:6379 {end}') --cluster-yes -a <password>
+oc exec -it redis-ha-0 -- redis-cli --cluster create --cluster-replicas 2 $(oc get pods -l app=redis-ha -o jsonpath='{range.items[*]}{.status.podIP}:6379 {end}') --cluster-yes -a <password>
 ```

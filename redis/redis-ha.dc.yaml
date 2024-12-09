@@ -142,11 +142,11 @@ objects:
                     name: redis-ha
               resources:
                 requests:
-                  cpu: "10m"
-                  memory: "50Mi"
-                limits:
                   cpu: "50m"
-                  memory: "250Mi"
+                  memory: "256Mi"
+                limits:
+                  cpu: "200m"
+                  memory: "512Mi"
           volumes:
             - name: conf
               configMap:
@@ -161,7 +161,7 @@ objects:
             accessModes: [ "ReadWriteOnce" ]
             resources:
               requests:
-                storage: 1Gi
+                storage: "100Mi"
 parameters:
   - name: REPLICAS
     description: Number of Replicas for the Redis cluster

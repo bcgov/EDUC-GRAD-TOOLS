@@ -6,7 +6,7 @@ env:
   COMMON_NAMESPACE: ${{ vars.COMMON_NAMESPACE }}
   GRAD_NAMESPACE: ${{ vars.GRAD_NAMESPACE }}
   BUSINESS_NAMESPACE: ${{ vars.GRAD_BUSINESS_NAMESPACE }}
-  REPLICAS: 6
+  REPLICAS: 9
 on:
   workflow_dispatch:
 jobs:
@@ -42,5 +42,5 @@ jobs:
           echo "Retrieve redis password..."
           REDIS_PASSWORD=$(oc -o json get secret redis-ha | sed -n 's|.*"REDIS_PASSWORD": "\([^"]*\)".*|\1|p' | base64 --decode)
           echo "Creating Cluster..."
-          oc exec -i redis-ha-0 -- redis-cli --cluster create --cluster-replicas 1 $(oc get pods -l app=redis-ha -o jsonpath='{range.items[*]}{.status.podIP}:6379 {end}') --cluster-yes -a $REDIS_PASSWORD
+          oc exec -i redis-ha-0 -- redis-cli --cluster create --cluster-replicas 2 $(oc get pods -l app=redis-ha -o jsonpath='{range.items[*]}{.status.podIP}:6379 {end}') --cluster-yes -a $REDIS_PASSWORD
           echo "Success!"
