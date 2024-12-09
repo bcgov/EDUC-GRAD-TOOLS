@@ -63,7 +63,7 @@ do
   --data-raw "$line")
   echo -e " Response : $result\n"
   default_scopes=$(echo "$line" | jq -r '.defaultClientScopes[]')
-  CLIENT_UUID=$(curl -s -v   -X  GET "$KC_BASE_URL/$KC_REALM_ID/clients" \
+  CLIENT_UUID=$(curl -s -X  GET "$KC_BASE_URL/$KC_REALM_ID/clients" \
       -H "Content-Type: application/json" \
       -H "Authorization: Bearer $TKN" \
       | jq '.[] | select(.clientId=="'"$CLIENT_ID"'")' | jq -r '.id')
