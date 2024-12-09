@@ -62,4 +62,6 @@ do
   --header "Content-Type: application/json" \
   --data-raw "$line")
   echo -e " Response : $result\n"
+  default_scopes=$(echo "$line" | jq -r '.defaultClientScopes[]')
+  echo "$default_scopes"
 done < clients.sh
