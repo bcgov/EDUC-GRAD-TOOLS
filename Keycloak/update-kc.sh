@@ -63,7 +63,16 @@ do
   --data-raw "$line")
   echo -e " Response : $result\n"
   default_scopes=$(echo "$line" | jq -r '.defaultClientScopes[]')
+  clientId=$(echo "$line" | jq -r '.clientId')
   echo "$default_scopes"  | while read -r scope; do
-    echo "$scope" 
+    echo "$clientId"
+    echo "$scope"
+    #PUT /{realm}/clients/{id}/default-client-scopes/{clientScopeId}
+    result=$(curl -s -v -w "%{http_code}"   -X  PUT "$KC_BASE_URL/$KC_REALM_ID/clients/$clientId/default-client-scopes/$scope" \
+    --header "Authorization: Bearer $TKN" \
+    --header "Content-Type: application/json" \
+    )
+   echo -e " Response : $result\n"
+
   done
 done < clients.sh
