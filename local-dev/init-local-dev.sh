@@ -22,6 +22,7 @@ appendonly yes
 requirepass secret
 masterauth secret" > redis/node-$((i+1))/conf/redis.conf
 done
+chmod -R 777 redis
 # fire up docker
 docker compose --project-name "$PROJECT_NAME" up -d
 CONTAINER_ID=$(docker ps --all --filter name="$PROJECT_NAME-$REDIS_MASTER_NODE_NAME" --format="{{.ID}}" | head -n 1)
