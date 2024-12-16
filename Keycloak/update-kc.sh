@@ -64,6 +64,7 @@ do
   echo -e " Response : $result\n"
   default_scopes=$(echo "$line" | jq -r '.defaultClientScopes[]')
   clientId=$(echo "$line" | jq -r '.clientId')
+  echo -e " clientId : $clientId\n"
   CLIENT_UUID=$(curl -s -X  GET "$KC_BASE_URL/$KC_REALM_ID/clients" \
       -H "Content-Type: application/json" \
       -H "Authorization: Bearer $TKN" \
