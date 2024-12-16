@@ -26,7 +26,7 @@ echo -e "CREATE Roles \n"
 
 while read line
 do
-  result=$(curl -s -v -w "%{http_code}"   -X  POST "$KC_BASE_URL/$KC_REALM_ID/roles" \
+  result=$(curl -s  -w "%{http_code}"   -X  POST "$KC_BASE_URL/$KC_REALM_ID/roles" \
   --header "Authorization: Bearer $TKN" \
   --header "Content-Type: application/json" \
   --data-raw "$line")
@@ -44,7 +44,7 @@ do
     echo "Scope Trimmed $CLIENT_SCOPE_TRIMMED"
   fi
 
-   result=$(curl  -s -v -w "%{http_code}"   -X  POST "$KC_BASE_URL/$KC_REALM_ID/client-scopes" \
+   result=$(curl  -s  -w "%{http_code}"   -X  POST "$KC_BASE_URL/$KC_REALM_ID/client-scopes" \
   --header "Authorization: Bearer $TKN"  \
   --header "Content-Type: application/json" \
   --data-raw "{\"id\": \"$CLIENT_SCOPE_TRIMMED\", \"name\": \"$CLIENT_SCOPE\", \"protocol\": \"openid-connect\", \"attributes\": { \"include.in.token.scope\": \"true\", \"display.on.consent.screen\": \"false\"}}")
@@ -57,7 +57,7 @@ echo -e "CREATE Clients \n"
 
 
 jq -c '.[]' clients.sh | while read -r client; do
-  result=$(curl -s -v -w "%{http_code}"   -X  POST "$KC_BASE_URL/$KC_REALM_ID/clients" \
+  result=$(curl -s  -w "%{http_code}"   -X  POST "$KC_BASE_URL/$KC_REALM_ID/clients" \
   --header "Authorization: Bearer $TKN" \
   --header "Content-Type: application/json" \
   --data-raw "$client")
@@ -74,7 +74,7 @@ jq -c '.[]' clients.sh | while read -r client; do
     echo "$CLIENT_UUID"
     echo "$scope"
     #PUT /{realm}/clients/{id}/default-client-scopes/{clientScopeId}
-    result=$(curl -s -v -w "%{http_code}"   -X  PUT "$KC_BASE_URL/$KC_REALM_ID/clients/$CLIENT_UUID/default-client-scopes/$scope" \
+    result=$(curl -s  -w "%{http_code}"   -X  PUT "$KC_BASE_URL/$KC_REALM_ID/clients/$CLIENT_UUID/default-client-scopes/$scope" \
     --header "Authorization: Bearer $TKN" \
     --header "Content-Type: application/json" \
     )
