@@ -55,16 +55,16 @@ done < client_scopes.sh
 #Create Clients
 echo -e "CREATE Clients \n"
 
-while read line
-do
+
+jq -c '.[]' clients.sh | while read -r client; do
   result=$(curl -s -v -w "%{http_code}"   -X  POST "$KC_BASE_URL/$KC_REALM_ID/clients" \
   --header "Authorization: Bearer $TKN" \
   --header "Content-Type: application/json" \
-  --data-raw "$line")
+  --data-raw "$client")
   echo -e " Response : $result\n"
-  default_scopes=$(echo "$line" | jq -r '.defaultClientScopes[]')
-  clientId=$(echo "$line" | jq -r '.clientId')
-  echo -e "line : $line\n"
+  default_scopes=$(echo "$client" | jq -r '.defaultClientScopes[]')
+  clientId=$(echo "$client" | jq -r '.clientId')
+
   CLIENT_UUID=$(curl -s -X  GET "$KC_BASE_URL/$KC_REALM_ID/clients" \
       -H "Content-Type: application/json" \
       -H "Authorization: Bearer $TKN" \
