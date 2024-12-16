@@ -57,6 +57,7 @@ echo -e "CREATE Clients \n"
 
 
 jq -c '.[]' clients.sh | while read -r client; do
+  echo -e "client json : $client\n"
   result=$(curl -s -v -w "%{http_code}"   -X  POST "$KC_BASE_URL/$KC_REALM_ID/clients" \
   --header "Authorization: Bearer $TKN" \
   --header "Content-Type: application/json" \
