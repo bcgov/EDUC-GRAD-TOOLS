@@ -17,8 +17,9 @@ on:
 
      
 jobs:
-  update-keycolak:
+  update-keycolak-sandbox:
     runs-on: ubuntu-latest
+    environment: sandbox
     steps:
       - name: Set Scripts path
         run: echo "SCRIPTS_PATH=https://raw.githubusercontent.com/bcgov/${{ env.REPO_NAME }}/${{ env.BRANCH }}/Keycloak" >> $GITHUB_ENV
