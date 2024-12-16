@@ -81,4 +81,4 @@ jq -c '.[]' clients.sh | while read -r client; do
    echo -e " Response : $result\n"
 
   done
-done < clients.sh
+done 
