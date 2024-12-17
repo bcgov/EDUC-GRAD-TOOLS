@@ -30,8 +30,8 @@ while true; do
     -d "refresh_token=$REFRESH_TOKEN" \
     "$KC_TOKEN_URL/$KC_REALM_ID/protocol/openid-connect/token")
     TKN=$(echo "$response"  | jq -r '.access_token')
-    REFRESH_TOKEN=$(echo "$response"  | jq -r '.refresh_token')
     echo "refresh"
+    REFRESH_TOKEN=$(echo "$response"  | jq -r '.refresh_token')
     sleep 30
   done &
   REFRESH_PID=$!
