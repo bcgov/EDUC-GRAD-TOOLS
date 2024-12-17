@@ -1,0 +1,32 @@
+name: Update Keycloak
+env:
+  BRANCH: "Keycloack_scripts"
+  REPO_NAME: educ-grad-tools
+  KC_BASE_URL: ${{ secrets.KC_BASE_URL}}
+  KC_PASSWORD: ${{ secrets.KC_PASSWORD}}
+  KC_USERNAME: ${{ secrets.KC_USERNAME}}
+  KC_TOKEN_URL: ${{ secrets.KC_TOKEN_URL}}
+  KC_REALM_ID: master
+  
+ 
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - Keycloack_scripts
+
+     
+jobs:
+  update-keycolak-sandbox:
+    runs-on: ubuntu-latest
+    environment: sandbox
+    steps:
+      - name: Set Scripts path
+        run: echo "SCRIPTS_PATH=https://raw.githubusercontent.com/bcgov/${{ env.REPO_NAME }}/${{ env.BRANCH }}/Keycloak" >> $GITHUB_ENV
+      - name: Check out repository
+        uses: actions/checkout@v3
+      - name: Update Keycloak
+        run: >
+         curl -s $SCRIPTS_PATH/update-kc.sh | bash /dev/stdin  ${{ env.KC_BASE_URL }} ${{ env.KC_PASSWORD }} ${{ env.KC_USERNAME }} ${{ env.KC_REALM_ID }}  $SCRIPTS_PATH ${{ env.KC_TOKEN_URL }}  
+        
+            
