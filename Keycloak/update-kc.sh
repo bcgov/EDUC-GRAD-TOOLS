@@ -95,4 +95,4 @@ jq -c '.[]' clients.sh | while read -r client; do
    echo -e " Response : $result\n"
   done
 done 
-kill REFRESH_PID
+kill $REFRESH_PID
