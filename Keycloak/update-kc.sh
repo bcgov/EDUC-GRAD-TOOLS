@@ -12,15 +12,29 @@ KC_TOKEN_URL=$6
 curl -o roles.sh $SCRIPTS_PATH/grad-roles.dat
 curl -o client_scopes.sh $SCRIPTS_PATH/grad-client-scopes.lst
 curl -o clients.sh $SCRIPTS_PATH/clients.dat
-echo Fetching SOAM token
-TKN=$(curl -s -v  -w POST \
+echo Fetching SOAM initial  token
+response=$(curl -s -v  -w POST \
   -d "client_id=admin-cli" \
   -d "username=$KC_USERNAME" \
   -d "password=$KC_PASSWORD" \
   -d "grant_type=password" \
-  "$KC_TOKEN_URL/$KC_REALM_ID/protocol/openid-connect/token" | jq -r '.access_token')
+  "$KC_TOKEN_URL/$KC_REALM_ID/protocol/openid-connect/token")
+  TKN=$(echo "$response"  | jq -r '.access_token')
+  REFRESH_TOKEN=$(echo "$response"  | jq -r '.refresh_token')
+  
 
-
+while true; do
+  response=$(curl -s -v  -w POST \
+    -d "client_id=admin-cli" \
+    -d "grant_type=refresh_token" \
+    -d "refresh_token=$REFRESH_TOKEN" \
+    "$KC_TOKEN_URL/$KC_REALM_ID/protocol/openid-connect/token")
+    TKN=$(echo "$response"  | jq -r '.access_token')
+    REFRESH_TOKEN=$(echo "$response"  | jq -r '.refresh_token')
+    sleep 30
+  done &
+  REFRESH_PID=$!
+  
 #Create Roles
 echo -e "CREATE Roles \n"
 
@@ -79,6 +93,6 @@ jq -c '.[]' clients.sh | while read -r client; do
     --header "Content-Type: application/json" \
     )
    echo -e " Response : $result\n"
-
   done
 done 
+kill REFRESH_PID
