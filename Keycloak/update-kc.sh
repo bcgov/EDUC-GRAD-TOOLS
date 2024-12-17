@@ -21,6 +21,7 @@ response=$(curl -s -v  -w POST \
   "$KC_TOKEN_URL/$KC_REALM_ID/protocol/openid-connect/token")
   TKN=$(echo "$response"  | jq -r '.access_token')
   REFRESH_TOKEN=$(echo "$response"  | jq -r '.refresh_token')
+  echo "initial refresh token $REFRESH_TOKEN"
   
 
 while true; do
