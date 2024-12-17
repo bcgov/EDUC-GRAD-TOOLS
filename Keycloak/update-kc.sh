@@ -78,7 +78,7 @@ echo -e "CREATE Clients \n"
 
 jq -c '.[]' clients.sh | while read -r client; do
   result=$(curl -s  -w "%{http_code}"   -X  POST "$KC_BASE_URL/$KC_REALM_ID/clients" \
-  --header "Authorization: Bearer "$(cat "$TKN_FILE")" " \
+  --header "Authorization: Bearer "$(cat  Bearer "$(cat "$TKN_FILE")" "  \
   --header "Content-Type: application/json" \
   --data-raw "$client")
   echo -e " Response : $result\n"
@@ -95,7 +95,7 @@ jq -c '.[]' clients.sh | while read -r client; do
     echo "$scope"
     #PUT /{realm}/clients/{id}/default-client-scopes/{clientScopeId}
     result=$(curl -s  -w "%{http_code}"   -X  PUT "$KC_BASE_URL/$KC_REALM_ID/clients/$CLIENT_UUID/default-client-scopes/$scope" \
-    --header "Authorization: Bearer "$(cat "$TKN_FILE")" "  \
+    --header "Authorization:  Bearer "$(cat "$TKN_FILE")" "   \
     --header "Content-Type: application/json" \
     )
    echo -e " Response : $result\n"
