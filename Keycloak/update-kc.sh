@@ -73,6 +73,7 @@ done < client_scopes.sh
 
 
 #Create Clients
+cat "$TKN_FILE"
 echo -e "CREATE Clients \n"
 
 
