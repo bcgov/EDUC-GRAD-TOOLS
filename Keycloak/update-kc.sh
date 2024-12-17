@@ -8,7 +8,7 @@ KC_REALM_ID=$4
 SCRIPTS_PATH=$5
 KC_TOKEN_URL=$6
 TKN=""
-REFRESH_TOKEN==""
+REFRESH_TOKEN=""
 
 
 curl -o roles.sh $SCRIPTS_PATH/grad-roles.dat
