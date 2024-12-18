@@ -44,33 +44,26 @@ while true; do
   
 #Create Roles
 echo -e "CREATE Roles \n"
-
-while read line
-do
+jq -c '.[]' roles.sh | while read -r role; do
   result=$(curl -s  -w "%{http_code}"   -X  POST "$KC_BASE_URL/$KC_REALM_ID/roles" \
-  --header "Authorization: Bearer  "$(cat "$TKN_FILE")" " \
-  --header "Content-Type: application/json" \
-  --data-raw "$line")
-  echo -e " Response : $result\n"
-done < roles.sh
-
-#Create Client Scopes
-echo -e "CREATE Client Scopes\n"
-while read CLIENT_SCOPE
-do
-  #Trim scope if it's more than 36 chars long
-  CLIENT_SCOPE_TRIMMED=$CLIENT_SCOPE
-  if [ ${#CLIENT_SCOPE} -gt 36 ]; then
-    CLIENT_SCOPE_TRIMMED=${CLIENT_SCOPE:0:36}
-    echo "Scope Trimmed $CLIENT_SCOPE_TRIMMED"
-  fi
-
-   result=$(curl  -s  -w "%{http_code}"   -X  POST "$KC_BASE_URL/$KC_REALM_ID/client-scopes" \
   --header "Authorization: Bearer "$(cat "$TKN_FILE")" "  \
   --header "Content-Type: application/json" \
-  --data-raw "{\"id\": \"$CLIENT_SCOPE_TRIMMED\", \"name\": \"$CLIENT_SCOPE\", \"protocol\": \"openid-connect\", \"attributes\": { \"include.in.token.scope\": \"true\", \"display.on.consent.screen\": \"false\"}}")
-  echo -e " Response : $result\n"
-done < client_scopes.sh
+  --data-raw "$role")
+   echo -e " Response : $result\n"
+done
+
+
+
+#Create Scopes
+echo -e "CREATE Scopes\n"
+jq -c '.[]' client_scopes.sh | while read -r scope; do
+  result=$(curl -s  -w "%{http_code}"   -X  POST "$KC_BASE_URL/$KC_REALM_ID/client-scopes" \
+  --header "Authorization: Bearer "$(cat "$TKN_FILE")" "  \
+  --header "Content-Type: application/json" \
+  --data-raw "$scope")
+   echo -e " Response : $result\n"
+done
+
 
 
 #Create Clients
