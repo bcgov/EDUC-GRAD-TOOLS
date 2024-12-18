@@ -91,7 +91,7 @@ jq -c '.[]' clients.sh | while read -r client; do
     --header "Authorization:  Bearer "$(cat "$TKN_FILE")" "   \
     --header "Content-Type: application/json" \
     )
-   echo -e " Response : $result\n"
+   echo -e " Response assign scope "$scope" to client "$clientId" : $result\n"
   done
 done 
 kill $REFRESH_PID
