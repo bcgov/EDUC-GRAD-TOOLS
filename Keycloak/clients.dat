@@ -428,6 +428,22 @@
     {
         "clientId": "educ-grad-api-service",
         "name": "educ-grad-api-service",
+          "attributes": {
+                "saml.assertion.signature": "false",
+                "saml.multivalued.roles": "false",
+                "saml.force.post.binding": "false",
+                "saml.encrypt": "false",
+                "saml.server.signature": "false",
+                "saml.server.signature.keyinfo.ext": "false",
+                "exclude.session.state.from.auth.response": "false",
+                "client_credentials.use_refresh_token": "false",
+                "saml_force_name_id_format": "false",
+                "saml.client.signature": "false",
+                "tls.client.certificate.bound.access.tokens": "false",
+                "saml.authnstatement": "false",
+                "display.on.consent.screen": "false",
+                "saml.onetimeuse.condition": "false"
+            },
         "defaultClientScopes": [
             "CREATE_GRAD_SPECIAL_PROGRAM_RULES_DATA",
             "READ_GRAD_STUDENT_NOTES_DATA",
