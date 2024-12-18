@@ -49,7 +49,7 @@ jq -c '.[]' roles.sh | while read -r role; do
   --header "Authorization: Bearer "$(cat "$TKN_FILE")" "  \
   --header "Content-Type: application/json" \
   --data-raw "$role")
-   echo -e " Response  : $result\n"
+   echo -e " Response create role  : $result\n"
 done
 
 
@@ -61,7 +61,7 @@ jq -c '.[]' client_scopes.sh | while read -r scope; do
   --header "Authorization: Bearer "$(cat "$TKN_FILE")" "  \
   --header "Content-Type: application/json" \
   --data-raw "$scope")
-   echo -e "Create scope "$scope"  Response : $result\n"
+   echo -e "Create scope  Response : $result\n"
 done
 
 
@@ -78,20 +78,5 @@ jq -c '.[]' clients.sh | while read -r client; do
   clientId=$(echo "$client" | jq -r '.clientId')
   echo -e " Response client  "$clientId"  create : $result\n"
 
-  CLIENT_UUID=$(curl -s -X  GET "$KC_BASE_URL/$KC_REALM_ID/clients" \
-      -H "Content-Type: application/json" \
-      -H "Authorization: Bearer "$(cat "$TKN_FILE")" "  \
-      | jq '.[] | select(.clientId=="'"$clientId"'")' | jq -r '.id')
-  
-  echo "$default_scopes"  | while read -r scope; do
-    echo "$CLIENT_UUID"
-    echo "$scope"
-    #PUT /{realm}/clients/{id}/default-client-scopes/{clientScopeId}
-    result=$(curl -s  -w "%{http_code}"   -X  PUT "$KC_BASE_URL/$KC_REALM_ID/clients/$CLIENT_UUID/default-client-scopes/$scope" \
-    --header "Authorization:  Bearer "$(cat "$TKN_FILE")" "   \
-    --header "Content-Type: application/json" \
-    )
-   echo -e " Response assign scope "$scope" to client "$clientId" : $result\n"
-  done
 done 
 kill $REFRESH_PID
