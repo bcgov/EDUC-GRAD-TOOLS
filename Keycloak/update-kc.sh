@@ -49,7 +49,7 @@ jq -c '.[]' roles.sh | while read -r role; do
   --header "Authorization: Bearer "$(cat "$TKN_FILE")" "  \
   --header "Content-Type: application/json" \
   --data-raw "$role")
-   echo -e " Response : $result\n"
+   echo -e " Response  : $result\n"
 done
 
 
@@ -74,9 +74,9 @@ jq -c '.[]' clients.sh | while read -r client; do
   --header "Authorization: Bearer "$(cat "$TKN_FILE")" "  \
   --header "Content-Type: application/json" \
   --data-raw "$client")
-  echo -e " Response : $result\n"
   default_scopes=$(echo "$client" | jq -r '.defaultClientScopes[]')
   clientId=$(echo "$client" | jq -r '.clientId')
+  echo -e " Response client  "$clientId"  create : $result\n"
 
   CLIENT_UUID=$(curl -s -X  GET "$KC_BASE_URL/$KC_REALM_ID/clients" \
       -H "Content-Type: application/json" \
