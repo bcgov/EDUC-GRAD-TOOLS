@@ -61,7 +61,7 @@ jq -c '.[]' client_scopes.sh | while read -r scope; do
   --header "Authorization: Bearer "$(cat "$TKN_FILE")" "  \
   --header "Content-Type: application/json" \
   --data-raw "$scope")
-   echo -e " Response : $result\n"
+   echo -e "Create scope "$scope"  Response : $result\n"
 done
 
 
