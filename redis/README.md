@@ -1,6 +1,26 @@
 # Redis
 
-## Redis HA Deployment
+## Redis  Deployment
+
+### Command-line:
+###### Redis can be deployed by cloning this repository locally from Git
+
+- Clone the repository
+- Logon to Openshift using **oc** commandline tool
+- Switch to the correct project/namespace you're targeting
+
+### Redis Stndalone Deployment
+###### Delete previous installation if any
+- Run the following command for cleanup:
+```
+oc delete -n 77c02f-tools all,replicaset,svc,deployment,pvc,secret,configmap,sa,RoleBinding -l app=redis
+```
+###### Deploy Redis
+```
+oc process -f redis/redis-sa.yaml | oc apply -f -
+```
+
+### Redis HA Deployment
 
 ### GitHub Actions:
 - Goto GitHub Actions Tab
