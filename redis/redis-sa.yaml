@@ -69,7 +69,7 @@ objects:
           app: "${DATABASE_SERVICE_NAME}"
       spec:
         containers:
-          - name: redis
+          - name: "${DATABASE_SERVICE_NAME}"
             image: artifacts.developer.gov.bc.ca/docker-remote/redis:${REDIS_VERSION}
             ports:
               - containerPort: 6379
