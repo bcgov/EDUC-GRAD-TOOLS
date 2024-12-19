@@ -42,24 +42,35 @@ while true; do
   done &
   REFRESH_PID=$!
   
+#Create Roles
+echo -e "CREATE Roles \n"
+jq -c '.[]' roles.sh | while read -r role; do
+  result=$(curl -s  -w "%{http_code}"   -X  POST "$KC_BASE_URL/$KC_REALM_ID/roles" \
+  --header "Authorization: Bearer "$(cat "$TKN_FILE")" "  \
+  --header "Content-Type: application/json" \
+  --data-raw "$role")
+   echo -e " Response create role  : $result\n"
+done
 
-
+#Create Scopes
+echo -e "CREATE Scopes\n"
+jq -c '.[]' client_scopes.sh | while read -r scope; do
+  result=$(curl -s  -w "%{http_code}"   -X  POST "$KC_BASE_URL/$KC_REALM_ID/client-scopes" \
+  --header "Authorization: Bearer "$(cat "$TKN_FILE")" "  \
+  --header "Content-Type: application/json" \
+  --data-raw "$scope")
+   echo -e "Create scope  Response : $result\n"
+done
 
 #Create Clients
 echo -e "CREATE Clients \n"
 
-jq -c '.[]' roles.sh | while read -r client; do
-  
-  clientId=$(echo "$client" | jq -r '.name')
-  CLIENT_UUID=$(curl -s -X  GET "$KC_BASE_URL/$KC_REALM_ID/roles" \
-      -H "Content-Type: application/json" \
-      -H "Authorization: Bearer "$(cat "$TKN_FILE")" "  \
-      | jq '.[] | select(.name=="'"$clientId"'")' | jq -r '.id')
-  result=$(curl -s  -w "%{http_code}"   -X  DELETE "$KC_BASE_URL/$KC_REALM_ID/roles/$clientId" \
+jq -c '.[]' clients.sh | while read -r client; do
+  result=$(curl -s  -w "%{http_code}"   -X  POST "$KC_BASE_URL/$KC_REALM_ID/clients" \
   --header "Authorization: Bearer "$(cat "$TKN_FILE")" "  \
-  --header "Content-Type: application/json" )
-  
+  --header "Content-Type: application/json" \
+  --data-raw "$client")
+  clientId=$(echo "$client" | jq -r '.clientId')
   echo -e " Response client  "$clientId"  create : $result\n"
-
 done 
 kill $REFRESH_PID
