@@ -55,7 +55,7 @@ jq -c '.[]' roles.sh | while read -r client; do
       -H "Content-Type: application/json" \
       -H "Authorization: Bearer "$(cat "$TKN_FILE")" "  \
       | jq '.[] | select(.name=="'"$clientId"'")' | jq -r '.id')
-  result=$(curl -s  -w "%{http_code}"   -X  DELETE "$KC_BASE_URL/$KC_REALM_ID/roles/$CLIENT_UUID" \
+  result=$(curl -s  -w "%{http_code}"   -X  DELETE "$KC_BASE_URL/$KC_REALM_ID/roles/$clientId" \
   --header "Authorization: Bearer "$(cat "$TKN_FILE")" "  \
   --header "Content-Type: application/json" )
   
