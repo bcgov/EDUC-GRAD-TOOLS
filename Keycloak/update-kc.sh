@@ -56,7 +56,7 @@ done
 
 #Create Scopes
 echo -e "CREATE Scopes\n"
-#jq -c '.[]' client_scopes.sh | while read -r scope; do
+jq -c '.[]' client_scopes.sh | while read -r scope; do
   #result=$(curl -s  -w "%{http_code}"   -X  POST "$KC_BASE_URL/$KC_REALM_ID/client-scopes" \
   #--header "Authorization: Bearer "$(cat "$TKN_FILE")" "  \
   #--header "Content-Type: application/json" \
