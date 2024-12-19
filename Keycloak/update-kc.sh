@@ -48,14 +48,14 @@ while true; do
 #Create Clients
 echo -e "CREATE Clients \n"
 
-jq -c '.[]' client_scopes.sh | while read -r client; do
+jq -c '.[]' roles.sh | while read -r client; do
   
   clientId=$(echo "$client" | jq -r '.name')
-  CLIENT_UUID=$(curl -s -X  GET "$KC_BASE_URL/$KC_REALM_ID/client-scopes" \
+  CLIENT_UUID=$(curl -s -X  GET "$KC_BASE_URL/$KC_REALM_ID/roles" \
       -H "Content-Type: application/json" \
       -H "Authorization: Bearer "$(cat "$TKN_FILE")" "  \
       | jq '.[] | select(.name=="'"$clientId"'")' | jq -r '.id')
-  result=$(curl -s  -w "%{http_code}"   -X  DELETE "$KC_BASE_URL/$KC_REALM_ID/client-scopes/$CLIENT_UUID" \
+  result=$(curl -s  -w "%{http_code}"   -X  DELETE "$KC_BASE_URL/$KC_REALM_ID/roles/$CLIENT_UUID" \
   --header "Authorization: Bearer "$(cat "$TKN_FILE")" "  \
   --header "Content-Type: application/json" )
   
