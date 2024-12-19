@@ -1,4007 +1,1035 @@
 [
-  {
-    "id": "1da36d30-981e-4a56-acee-8a1509300ef0",
-    "name": "offline_access",
-    "description": "OpenID Connect built-in scope: offline_access",
-    "protocol": "openid-connect",
-    "attributes": {
-      "consent.screen.text": "${offlineAccessScopeConsentText}",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "0e9311fe-ad50-47b4-841b-9953f7542f3b",
-    "name": "role_list",
-    "description": "SAML role list",
-    "protocol": "saml",
-    "attributes": {
-      "consent.screen.text": "${samlRoleListScopeConsentText}",
-      "display.on.consent.screen": "true"
+    {
+        "id": "356a7c84-08d4-4e71-8a9e-131138e6a24f",
+        "name": "READ_GRAD_ALGORITHM_RULES_DATA",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
     },
-    "protocolMappers": [
-      {
-        "id": "77ea5381-88bc-4ca0-8746-04f42a521cb7",
-        "name": "role list",
-        "protocol": "saml",
-        "protocolMapper": "saml-role-list-mapper",
-        "consentRequired": false,
-        "config": {
-          "single": "false",
-          "attribute.nameformat": "Basic",
-          "attribute.name": "Role"
+    {
+        "id": "b45a0f74-c3f4-4418-a740-8cb4055c94ac",
+        "name": "READ_GRAD_ASSESSMENT_DATA",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
         }
-      }
-    ]
-  },
-  {
-    "id": "6fd7df53-bad6-4ec4-b1bf-8bc2108c9674",
-    "name": "profile",
-    "description": "OpenID Connect built-in scope: profile",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true",
-      "consent.screen.text": "${profileScopeConsentText}"
     },
-    "protocolMappers": [
-      {
-        "id": "49306a6f-c6ff-40b7-870c-ff7efbe0926c",
-        "name": "zoneinfo",
+    {
+        "id": "c07dd39c-60d6-481f-b9ef-65a0603874a4",
+        "name": "READ_GRAD_CAREER_PROGRAM_CODE_DATA",
         "protocol": "openid-connect",
-        "protocolMapper": "oidc-usermodel-attribute-mapper",
-        "consentRequired": false,
-        "config": {
-          "userinfo.token.claim": "true",
-          "user.attribute": "zoneinfo",
-          "id.token.claim": "true",
-          "access.token.claim": "true",
-          "claim.name": "zoneinfo",
-          "jsonType.label": "String"
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
         }
-      },
-      {
-        "id": "ccf9f29e-c2bf-492f-92e9-ae515b565915",
-        "name": "username",
-        "protocol": "openid-connect",
-        "protocolMapper": "oidc-usermodel-property-mapper",
-        "consentRequired": false,
-        "config": {
-          "userinfo.token.claim": "true",
-          "user.attribute": "username",
-          "id.token.claim": "true",
-          "access.token.claim": "true",
-          "claim.name": "preferred_username",
-          "jsonType.label": "String"
-        }
-      },
-      {
-        "id": "f9ef7ca6-6f71-47c4-bc3e-9250fa485324",
-        "name": "nickname",
-        "protocol": "openid-connect",
-        "protocolMapper": "oidc-usermodel-attribute-mapper",
-        "consentRequired": false,
-        "config": {
-          "userinfo.token.claim": "true",
-          "user.attribute": "nickname",
-          "id.token.claim": "true",
-          "access.token.claim": "true",
-          "claim.name": "nickname",
-          "jsonType.label": "String"
-        }
-      },
-      {
-        "id": "7e473d73-7d63-494b-a1db-396a1ba4936e",
-        "name": "updated at",
-        "protocol": "openid-connect",
-        "protocolMapper": "oidc-usermodel-attribute-mapper",
-        "consentRequired": false,
-        "config": {
-          "userinfo.token.claim": "true",
-          "user.attribute": "updatedAt",
-          "id.token.claim": "true",
-          "access.token.claim": "true",
-          "claim.name": "updated_at",
-          "jsonType.label": "String"
-        }
-      },
-      {
-        "id": "734e15a1-fb93-45d6-9711-171236a93803",
-        "name": "given name",
-        "protocol": "openid-connect",
-        "protocolMapper": "oidc-usermodel-property-mapper",
-        "consentRequired": false,
-        "config": {
-          "userinfo.token.claim": "true",
-          "user.attribute": "firstName",
-          "id.token.claim": "true",
-          "access.token.claim": "true",
-          "claim.name": "given_name",
-          "jsonType.label": "String"
-        }
-      },
-      {
-        "id": "e99de96c-9fb3-444c-8bc0-a090957faae4",
-        "name": "profile",
-        "protocol": "openid-connect",
-        "protocolMapper": "oidc-usermodel-attribute-mapper",
-        "consentRequired": false,
-        "config": {
-          "userinfo.token.claim": "true",
-          "user.attribute": "profile",
-          "id.token.claim": "true",
-          "access.token.claim": "true",
-          "claim.name": "profile",
-          "jsonType.label": "String"
-        }
-      },
-      {
-        "id": "3251ba5e-736a-4ea0-9b55-d65bd20a65f4",
-        "name": "website",
-        "protocol": "openid-connect",
-        "protocolMapper": "oidc-usermodel-attribute-mapper",
-        "consentRequired": false,
-        "config": {
-          "userinfo.token.claim": "true",
-          "user.attribute": "website",
-          "id.token.claim": "true",
-          "access.token.claim": "true",
-          "claim.name": "website",
-          "jsonType.label": "String"
-        }
-      },
-      {
-        "id": "83301ee9-0ccc-43eb-9773-1c5866334c72",
-        "name": "birthdate",
-        "protocol": "openid-connect",
-        "protocolMapper": "oidc-usermodel-attribute-mapper",
-        "consentRequired": false,
-        "config": {
-          "userinfo.token.claim": "true",
-          "user.attribute": "birthdate",
-          "id.token.claim": "true",
-          "access.token.claim": "true",
-          "claim.name": "birthdate",
-          "jsonType.label": "String"
-        }
-      },
-      {
-        "id": "0e23f800-8630-4875-9d9f-8bfac42ae6c2",
-        "name": "locale",
-        "protocol": "openid-connect",
-        "protocolMapper": "oidc-usermodel-attribute-mapper",
-        "consentRequired": false,
-        "config": {
-          "userinfo.token.claim": "true",
-          "user.attribute": "locale",
-          "id.token.claim": "true",
-          "access.token.claim": "true",
-          "claim.name": "locale",
-          "jsonType.label": "String"
-        }
-      },
-      {
-        "id": "d68d8733-76e2-4453-8581-50c9e513938d",
-        "name": "family name",
-        "protocol": "openid-connect",
-        "protocolMapper": "oidc-usermodel-property-mapper",
-        "consentRequired": false,
-        "config": {
-          "userinfo.token.claim": "true",
-          "user.attribute": "lastName",
-          "id.token.claim": "true",
-          "access.token.claim": "true",
-          "claim.name": "family_name",
-          "jsonType.label": "String"
-        }
-      },
-      {
-        "id": "c4f97e51-deed-4d85-8eae-bb23fc843724",
-        "name": "middle name",
-        "protocol": "openid-connect",
-        "protocolMapper": "oidc-usermodel-attribute-mapper",
-        "consentRequired": false,
-        "config": {
-          "userinfo.token.claim": "true",
-          "user.attribute": "middleName",
-          "id.token.claim": "true",
-          "access.token.claim": "true",
-          "claim.name": "middle_name",
-          "jsonType.label": "String"
-        }
-      },
-      {
-        "id": "ac0d05c6-3def-4643-a74d-f7645c383d29",
-        "name": "full name",
-        "protocol": "openid-connect",
-        "protocolMapper": "oidc-full-name-mapper",
-        "consentRequired": false,
-        "config": {
-          "id.token.claim": "true",
-          "access.token.claim": "true",
-          "userinfo.token.claim": "true"
-        }
-      },
-      {
-        "id": "916be031-1da9-4162-8fde-f367658a70a0",
-        "name": "picture",
-        "protocol": "openid-connect",
-        "protocolMapper": "oidc-usermodel-attribute-mapper",
-        "consentRequired": false,
-        "config": {
-          "userinfo.token.claim": "true",
-          "user.attribute": "picture",
-          "id.token.claim": "true",
-          "access.token.claim": "true",
-          "claim.name": "picture",
-          "jsonType.label": "String"
-        }
-      },
-      {
-        "id": "958c17d9-6034-431f-bac2-f9f7b06d1fae",
-        "name": "gender",
-        "protocol": "openid-connect",
-        "protocolMapper": "oidc-usermodel-attribute-mapper",
-        "consentRequired": false,
-        "config": {
-          "userinfo.token.claim": "true",
-          "user.attribute": "gender",
-          "id.token.claim": "true",
-          "access.token.claim": "true",
-          "claim.name": "gender",
-          "jsonType.label": "String"
-        }
-      }
-    ]
-  },
-  {
-    "id": "c33558f5-0164-4b75-8320-497d830a24a4",
-    "name": "email",
-    "description": "OpenID Connect built-in scope: email",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true",
-      "consent.screen.text": "${emailScopeConsentText}"
     },
-    "protocolMappers": [
-      {
-        "id": "47bda104-2779-46f3-a2b2-2ae3ff21d91f",
-        "name": "email",
+    {
+        "id": "460e752e-7296-4858-ac24-fbcdb8193a17",
+        "name": "READ_GRAD_COUNTRY_CODE_DATA",
         "protocol": "openid-connect",
-        "protocolMapper": "oidc-usermodel-property-mapper",
-        "consentRequired": false,
-        "config": {
-          "userinfo.token.claim": "true",
-          "user.attribute": "email",
-          "id.token.claim": "true",
-          "access.token.claim": "true",
-          "claim.name": "email",
-          "jsonType.label": "String"
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
         }
-      },
-      {
-        "id": "f8b6b28b-9c72-48e3-b47a-d5768516295e",
-        "name": "email verified",
-        "protocol": "openid-connect",
-        "protocolMapper": "oidc-usermodel-property-mapper",
-        "consentRequired": false,
-        "config": {
-          "userinfo.token.claim": "true",
-          "user.attribute": "emailVerified",
-          "id.token.claim": "true",
-          "access.token.claim": "true",
-          "claim.name": "email_verified",
-          "jsonType.label": "boolean"
-        }
-      }
-    ]
-  },
-  {
-    "id": "51e57f7e-762c-427c-9dc2-fb5d4bf9d2af",
-    "name": "address",
-    "description": "OpenID Connect built-in scope: address",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true",
-      "consent.screen.text": "${addressScopeConsentText}"
     },
-    "protocolMappers": [
-      {
-        "id": "fece9723-12e9-460c-bc16-cb1a5f4bc9ac",
-        "name": "address",
+    {
+        "id": "dc3b7e75-5700-4b78-bfda-1623edd93ad4",
+        "name": "READ_GRAD_COURSE_DATA",
         "protocol": "openid-connect",
-        "protocolMapper": "oidc-address-mapper",
-        "consentRequired": false,
-        "config": {
-          "user.attribute.formatted": "formatted",
-          "user.attribute.country": "country",
-          "user.attribute.postal_code": "postal_code",
-          "userinfo.token.claim": "true",
-          "user.attribute.street": "street",
-          "id.token.claim": "true",
-          "user.attribute.region": "region",
-          "access.token.claim": "true",
-          "user.attribute.locality": "locality"
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
         }
-      }
-    ]
-  },
-  {
-    "id": "ddbf089a-7321-47e3-b66c-799ca88c1ff4",
-    "name": "phone",
-    "description": "OpenID Connect built-in scope: phone",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true",
-      "consent.screen.text": "${phoneScopeConsentText}"
     },
-    "protocolMappers": [
-      {
-        "id": "bd661a01-1631-499e-9ca2-1401ff655fcd",
-        "name": "phone number",
+    {
+        "id": "67410b79-d3c5-4e46-8539-4c6ff96bd14d",
+        "name": "READ_GRAD_PSI_DATA",
         "protocol": "openid-connect",
-        "protocolMapper": "oidc-usermodel-attribute-mapper",
-        "consentRequired": false,
-        "config": {
-          "userinfo.token.claim": "true",
-          "user.attribute": "phoneNumber",
-          "id.token.claim": "true",
-          "access.token.claim": "true",
-          "claim.name": "phone_number",
-          "jsonType.label": "String"
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
         }
-      },
-      {
-        "id": "10e13c26-6575-4f7f-b49e-b68ac53d3145",
-        "name": "phone number verified",
-        "protocol": "openid-connect",
-        "protocolMapper": "oidc-usermodel-attribute-mapper",
-        "consentRequired": false,
-        "config": {
-          "userinfo.token.claim": "true",
-          "user.attribute": "phoneNumberVerified",
-          "id.token.claim": "true",
-          "access.token.claim": "true",
-          "claim.name": "phone_number_verified",
-          "jsonType.label": "boolean"
-        }
-      }
-    ]
-  },
-  {
-    "id": "50b7f4e5-4c64-49e7-b92a-70c1925773f2",
-    "name": "roles",
-    "description": "OpenID Connect scope for add user roles to the access token",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "false",
-      "display.on.consent.screen": "true",
-      "consent.screen.text": "${rolesScopeConsentText}"
     },
-    "protocolMappers": [
-      {
-        "id": "06d264e5-39e0-4c61-a082-d7bf09cbaca1",
-        "name": "realm roles",
+    {
+        "id": "63a51588-7195-4641-9cd3-d5557ff99ac6",
+        "name": "READ_GRAD_SPECIAL_PROGRAM_RULES_DATA",
         "protocol": "openid-connect",
-        "protocolMapper": "oidc-usermodel-realm-role-mapper",
-        "consentRequired": false,
-        "config": {
-          "user.attribute": "foo",
-          "access.token.claim": "true",
-          "claim.name": "realm_access.roles",
-          "jsonType.label": "String",
-          "multivalued": "true"
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
         }
-      },
-      {
-        "id": "c000b218-962d-4e02-979d-3fc325720cf3",
-        "name": "client roles",
-        "protocol": "openid-connect",
-        "protocolMapper": "oidc-usermodel-client-role-mapper",
-        "consentRequired": false,
-        "config": {
-          "user.attribute": "foo",
-          "access.token.claim": "true",
-          "claim.name": "resource_access.${client_id}.roles",
-          "jsonType.label": "String",
-          "multivalued": "true"
-        }
-      },
-      {
-        "id": "05ba28e4-de53-4fc2-b5c3-99040cd2fd6d",
-        "name": "audience resolve",
-        "protocol": "openid-connect",
-        "protocolMapper": "oidc-audience-resolve-mapper",
-        "consentRequired": false,
-        "config": {}
-      }
-    ]
-  },
-  {
-    "id": "091c6129-b7cd-4fc2-a0de-76bef8215133",
-    "name": "web-origins",
-    "description": "OpenID Connect scope for add allowed web origins to the access token",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "false",
-      "display.on.consent.screen": "false",
-      "consent.screen.text": ""
     },
-    "protocolMappers": [
-      {
-        "id": "e6e6cad8-d75c-4f5b-bd62-2eebdfdb640e",
-        "name": "allowed web origins",
+    {
+        "id": "9ae0539a-e889-470b-a6fc-44b4438d5d72",
+        "name": "READ_GRAD_STUDENT_CERTIFICATE_DATA",
         "protocol": "openid-connect",
-        "protocolMapper": "oidc-allowed-origins-mapper",
-        "consentRequired": false,
-        "config": {}
-      }
-    ]
-  },
-  {
-    "id": "495c1a60-a2d5-49d3-a166-f00516b49c23",
-    "name": "microprofile-jwt",
-    "description": "Microprofile - JWT built-in scope",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
     },
-    "protocolMappers": [
-      {
-        "id": "28ea6917-d7ca-4058-85b4-226ac0a3fb8b",
-        "name": "groups",
+    {
+        "id": "46c0f3ec-c2d0-4688-b630-57d946bdee7c",
+        "name": "READ_GRAD_STUDENT_EXAM_DATA",
         "protocol": "openid-connect",
-        "protocolMapper": "oidc-usermodel-realm-role-mapper",
-        "consentRequired": false,
-        "config": {
-          "multivalued": "true",
-          "user.attribute": "foo",
-          "id.token.claim": "true",
-          "access.token.claim": "true",
-          "claim.name": "groups",
-          "jsonType.label": "String"
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
         }
-      },
-      {
-        "id": "799de530-2572-4546-879b-8d247eb48933",
-        "name": "upn",
+    },
+    {
+        "id": "499202dd-2b82-4ff2-b501-57409e766d0c",
+        "name": "READ_GRAD_STUDENT_REPORT_DATA",
         "protocol": "openid-connect",
-        "protocolMapper": "oidc-usermodel-property-mapper",
-        "consentRequired": false,
-        "config": {
-          "userinfo.token.claim": "true",
-          "user.attribute": "username",
-          "id.token.claim": "true",
-          "access.token.claim": "true",
-          "claim.name": "upn",
-          "jsonType.label": "String"
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
         }
-      }
-    ]
-  },
-  {
-    "id": "READ_DIGITALID",
-    "name": "READ_DIGITALID",
-    "description": "Read scope for digital ID",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
+    },
+    {
+        "id": "b3a49973-a055-488a-a3e4-f5aac5cdef6b",
+        "name": "READ_GRAD_STUDENT_UNGRAD_REASONS_DATA",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "1dc6a7fc-6e15-4d33-950a-23005eafe45f",
+        "name": "RUN_GRAD_ALGORITHM",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "1506404f-e4b1-4987-87e6-f5e71289c5b6",
+        "name": "UPDATE_GRAD_GRADUATION_STATUS",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "75823d80-7317-44af-b06d-cd13a566381e",
+        "name": "UPDATE_GRAD_PROGRAM_RULES_DATA",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "95e12089-910a-436a-b895-8439ef54c290",
+        "name": "UPDATE_GRAD_SPECIAL_PROGRAM_CODE_DATA",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "e5a46920-9dc5-43d8-9721-5a8ebd990584",
+        "name": "READ_SIGNATURE_IMAGE_BY_CODE",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "ad22bfeb-108f-41fb-999c-e928775f9dcc",
+        "name": "READ_GRAD_HISTORY_ACTIVITY_CODE_DATA",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "ceeed35e-73c9-4365-918c-763501554b4e",
+        "name": "CREATE_GRAD_CERTIFICATE_CODE_DATA",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "fa58572e-ccf1-4474-b547-7361f0b35ead",
+        "name": "CREATE_GRAD_REPORT_CODE_DATA",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "c8feeb2c-2cd9-48d1-a301-c83ae4c1adc7",
+        "name": "CREATE_GRAD_SPECIAL_PROGRAM_CODE_DATA",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "93fc8a22-2562-4581-a829-177836ca4f78",
+        "name": "CREATE_GRAD_SPECIAL_PROGRAM_RULES_DATA",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "b7afa580-1f43-4670-9425-8e03e7ae1d83",
+        "name": "CREATE_GRAD_STUDENT_NOTES_DATA",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "eac4aea7-84fd-4ebf-86ae-117be1603ad1",
+        "name": "CREATE_GRAD_STUDENT_STATUS_CODE_DATA",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "eed95ad8-9dcb-40ae-a6c1-daf146dbd07c",
+        "name": "CREATE_GRAD_STUDENT_UNGRAD_REASONS_DATA",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "91f733f0-6dbd-4a16-a992-f229622dff8c",
+        "name": "CREATE_GRAD_UNGRAD_CODE_DATA",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "6731eeaf-136d-4305-b28c-cdf098e0e1b4",
+        "name": "CREATE_STUDENT_ACHIEVEMENT_REPORT",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "88b2e95c-07c6-4cc2-8cf8-a8bc79d1a085",
+        "name": "DELETE_GRAD_CERTIFICATE_CODE_DATA",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "041bb443-86b7-445c-91d3-b1de7c958adb",
+        "name": "DELETE_GRAD_REQUIREMENT_TYPE_CODE_DATA",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "c1134ea5-acc9-48a5-899b-9e05927420b3",
+        "name": "DELETE_GRAD_SPECIAL_PROGRAM_CODE_DATA",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "b48f18d2-d1e5-4168-b96e-25fc8a777e8d",
+        "name": "DELETE_GRAD_STUDENT_STATUS_CODE_DATA",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "9c38a361-e5c4-48bb-98a5-bb9b7a0d5924",
+        "name": "READ_GRAD_CERTIFICATE_CODE_DATA",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "3b29f2bc-aa98-4de4-ae59-8da8eb8e5fea",
+        "name": "READ_GRAD_COURSE_REQUIREMENT_DATA",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "16a5c221-67eb-446e-afd1-060763d1ed53",
+        "name": "READ_GRAD_GRADUATION_STATUS",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "0f39a42f-a6aa-4005-a131-b4891f645a4b",
+        "name": "READ_GRAD_MESSAGING_CODE_DATA",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "f99a1f02-48f3-442f-907b-828db65dc289",
+        "name": "READ_GRAD_PROGRAM_CODE_DATA",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "ca1142e4-8ffa-4215-8c0c-3dbc7368c030",
+        "name": "READ_GRAD_PROGRAM_RULES_DATA",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "3c75d7e0-abf5-4e2a-bb94-599ff5b79b3a",
+        "name": "READ_GRAD_REPORT_CODE_DATA",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "17a45389-9650-4ad0-9aef-10571c486678",
+        "name": "READ_GRAD_SCHOOL_DATA",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "36722dc0-e6e7-4c26-92b8-015de7592974",
+        "name": "READ_GRAD_SPECIAL_PROGRAM_CODE_DATA",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "f0284748-f465-4631-9765-7b3a607f206c",
+        "name": "READ_GRAD_STUDENT_CAREER_DATA",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "bdbe9eba-4caa-4f3b-93f3-64d25d95a3b0",
+        "name": "READ_GRAD_STUDENT_DATA",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "acc135d2-c5d5-43b5-8948-cfc3cf099255",
+        "name": "READ_GRAD_STUDENT_NOTES_DATA",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "8c092e81-915d-4ec1-ac87-4c012d73467f",
+        "name": "READ_GRAD_STUDENT_SPECIAL_DATA",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "9f60cb51-2de2-43eb-a6db-b8f4b4906596",
+        "name": "READ_GRAD_UNGRAD_CODE_DATA",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "9e0dd304-b3af-45dd-8257-25b88441ed03",
+        "name": "CREATE_GRAD_REQUIREMENT_TYPE_CODE_DATA",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "40879510-4135-4eb3-a946-0e8b4716140b",
+        "name": "CREATE_OR_UPDATE_SIGNATURE_BLOCK_TYPE_CODE",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "a23c63b6-0827-41fa-a2a9-510872766c00",
+        "name": "CREATE_STUDENT_CERTIFICATE",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "d455d16e-6f68-4d5d-9a9e-3e7a8358b9f6",
+        "name": "DELETE_GRAD_PROGRAM_CODE_DATA",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "14483907-0004-43c8-946c-aad2015872b4",
+        "name": "DELETE_GRAD_PROGRAM_RULES_DATA",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "55022a7a-a1eb-4fa0-9d67-669489ec9584",
+        "name": "DELETE_GRAD_REPORT_CODE_DATA",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "e359ac5c-51a5-47a4-9234-efe9f3eb1073",
+        "name": "DELETE_GRAD_SPECIAL_PROGRAM_RULES_DATA",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "57f35fa7-d519-4a73-8afd-3bfaec3e33cc",
+        "name": "DELETE_GRAD_STUDENT_NOTES_DATA",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "bb10d7a6-5a59-4432-90b5-3abccb5865b6",
+        "name": "RUN_RULE_ENGINE",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "b8df26b7-843f-468a-9287-a1d63ec203cc",
+        "name": "UPDATE_GRAD_PROGRAM_SETS_DATA",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "de42692d-0420-495e-b2b5-33861967773c",
+        "name": "UPDATE_GRAD_REPORT_CODE_DATA",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "9ca20e48-ebf0-4572-9e08-e927a930918f",
+        "name": "UPDATE_GRAD_REQUIREMENT_TYPE_CODE_DATA",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "afac1fd1-819a-43c9-adad-f6f196f7a843",
+        "name": "UPDATE_GRAD_STUDENT_CERTIFICATE_DATA",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "7b3e2679-55bc-481b-854f-5abbec78a3a5",
+        "name": "UPDATE_GRAD_UNGRAD_CODE_DATA",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "35bfaf98-9a8f-4112-9c7f-4a128fd4276c",
+        "name": "READ_SIGNATURE_BLOCK_TYPE_CODE",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "62ca9c65-a327-4da1-bb3f-41686d75b4c1",
+        "name": "READ_GRAD_DOCUMENT_STATUS_CODE_DATA",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "f212e446-7e47-4b5e-8005-75e85a9f3351",
+        "name": "CREATE_PACKING_SLIP",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "ddb61aeb-dcd1-48a1-a73e-17cf6d10485a",
+        "name": "READ_GRAD_ASSESSMENT_REQUIREMENT_DATA",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "8436178a-802c-4464-97d4-5bc239742931",
+        "name": "READ_GRAD_COURSE_RESTRICTION_DATA",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "7b3571b6-5c4f-45f1-93e7-44a65f6e0452",
+        "name": "READ_GRAD_LETTER_GRADE_DATA",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "57f25049-5c56-4011-ac03-e6081b4ab702",
+        "name": "READ_GRAD_PROVINCE_CODE_DATA",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "3b4900ad-64a7-43d1-b5cf-375f203ffa85",
+        "name": "READ_GRAD_REQUIREMENT_TYPE_CODE_DATA",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "ccd19835-d9e9-409c-a229-ba871e0b652a",
+        "name": "READ_GRAD_SPECIAL_CASE_DATA",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "225f8422-eafb-4d1f-a24c-0f91fd6d2d53",
+        "name": "READ_GRAD_STUDENT_COURSE_DATA",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "d9eb1f2a-34cf-4e3f-be00-1c00005eb418",
+        "name": "UPDATE_GRAD_BATCH_JOB_CODE_DATA",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "ecc414d4-7ed2-4a8f-bea4-040e1ee2ac6e",
+        "name": "CREATE_GRAD_BATCH_JOB_CODE_DATA",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "0b57e939-b0cd-4b64-9a53-fdfcba8eba9e",
+        "name": "LOAD_BATCH_DASHBOARD",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "66c7d828-d79e-4ee0-8a45-c0d811e209fd",
+        "name": "READ_GRAD_STUDENT_STATUS_CODE_DATA",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "741245e4-acff-4c8a-8453-a5a4bc2ad1a8",
+        "name": "READ_GRAD_TRANSCRIPT_CODE_DATA",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "d7e48917-e45c-48af-a754-8f497c20af82",
+        "name": "UPDATE_GRAD_CERTIFICATE_CODE_DATA",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "6f7a6c1a-31f9-4517-903d-6cfc3ba52229",
+        "name": "UPDATE_GRAD_PROGRAM_CODE_DATA",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "421f733d-bea1-482e-8ed3-b55b201b9f8a",
+        "name": "UPDATE_GRAD_SPECIAL_PROGRAM_RULES_DATA",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "db0f9769-0aef-47ba-9259-e508b113f451",
+        "name": "UPDATE_GRAD_STUDENT_NOTES_DATA",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "8a14a712-4d86-4e52-a12d-3fe181888e3b",
+        "name": "UPDATE_GRAD_STUDENT_REPORT_DATA",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "6dd52dd2-4bf0-4620-8b65-df24f7b7447e",
+        "name": "UPDATE_GRAD_STUDENT_SPECIAL_DATA",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "1bf9d992-656d-4fe0-bc31-f967302e9398",
+        "name": "UPDATE_GRAD_STUDENT_STATUS_CODE_DATA",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "9263bb9c-d2f6-46b8-ac47-f85a1f6d2758",
+        "name": "CREATE_STUDENT_NON_GRAD",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "0f2b983f-a204-4f78-adfd-1c5ba7c86b9c",
+        "name": "CREATE_GRAD_PROGRAM_CODE_DATA",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "26cedf9f-b090-441f-a6eb-462870e1b2ab",
+        "name": "CREATE_GRAD_PROGRAM_RULES_DATA",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "df58472d-4aa3-42bf-ae16-14ee32cb2bfa",
+        "name": "CREATE_OR_UPDATE_SIGNATURE_IMAGE",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "b1ebdea4-71e5-4fa8-ae0b-33fcb43c3726",
+        "name": "CREATE_STUDENT_TRANSCRIPT_REPORT",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "8c0e2eef-71b9-4ce6-a4d1-4f0641011ba4",
+        "name": "DELETE_GRAD_UNGRAD_CODE_DATA",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "dc5907a9-c540-4423-9287-e4609c64211a",
+        "name": "LOAD_STUDENT_IDS",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "2b276666-b55e-4943-8cc0-4d778595145a",
+        "name": "CREATE_SCHOOL_DISTRIBUTION",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "37aa243d-a4db-411a-998e-b75dbe5a3aa9",
+        "name": "CREATE_STUDENT_XML_TRANSCRIPT_REPORT",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "0d3543f6-83b9-4f22-a900-6caffd771b7e",
+        "name": "GET_GRADUATION_DATA",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "443c66e2-0a4e-4aae-8625-b5d51477af29",
+        "name": "GRAD_BUSINESS_R",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "1046fe96-bbb3-44d1-822a-37b7683ae9ce",
+        "name": "CREATE_GRAD_ASSESSMENT_REQUIREMENT_DATA",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "ddbb026e-2567-45f2-88a6-a0ce792e67ee",
+        "name": "GET_GRADUATION_TRANSCRIPT",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "0f293892-a4fa-432a-9ee0-7b9ebe970e90",
+        "name": "GET_GRADUATION_CERTIFICATE",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "9cf5ca65-4f71-4340-a757-a132f5a52e3a",
+        "name": "GET_GRADUATION_ACHIEVEMENT",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "2a27ece8-b79b-42bb-961b-6e38fd84cdde",
+        "name": "READ_GRAD_TRAX_STUDENT_DATA",
+        "description": "Permission to read TRAX Student related Data",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "24aadd30-867c-4a0d-b790-19c1e7be7a63",
+        "name": "READ_GRAD_TRAX_COURSE_DATA",
+        "description": "Permission to read TRAX Course related Data",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "5a2fc44f-9cdd-48e6-b339-87e30e017f23",
+        "name": "UPDATE_GRAD_TRAX_STUDENT_DATA",
+        "description": "Permission to update Trax Student related tables such as TRAX_STUDENT_NO and STUDENT_MASTER.",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "67a1dfe0-6c17-4a9d-9b70-733ff95c8126",
+        "name": "CREATE_SCHOOL_GRADUATION",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "false"
+        }
+    },
+    {
+        "id": "7f42f17c-4ebb-4d7f-a962-8a30c1247930",
+        "name": "READ_GRAD_BATCH_JOB_CODE_DATA",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "3978d876-1ef4-4eec-aaeb-603cda756f52",
+        "name": "CREATE_SCHOOL_NON_GRADUATION",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "false"
+        }
+    },
+    {
+        "id": "ef29bd09-f45d-4a1b-87ef-121c7ae3023d",
+        "name": "DELETE_STUDENT_REPORT",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "49fe24fd-659a-4a14-9661-87e0f9b56e3a",
+        "name": "CREATE_SCHOOL_LABEL",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "4e371ce0-7962-46cc-90db-6b233dd39c6b",
+        "name": "DELETE_GRAD_BATCH_JOB_CODE_DATA",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "4109da00-964c-40d6-ac31-35e878dbf8ae",
+        "name": "RUN_DELETE_STUDENT_REPORTS",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "fad97d99-c014-43df-ba45-00260528bcf2",
+        "name": "READ_GRAD_STUDENT_GRADE_CODES",
+        "description": "",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "95933f4c-55b0-4732-a1b4-85524ab29a99",
+        "name": "DELETE_GRAD_STUDENT_DATA",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "113555ba-9a32-41bd-86fd-70cc42780296",
+        "name": "READ_EQUIVALENT_OR_CHALLENGE_CODE",
+        "description": "Read scope for equivalent or challenge code",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "0514f4a5-b25c-4aeb-a435-597a9f7a2c8a",
+        "name": "READ_EXAM_SPECIAL_CASE_CODE",
+        "description": "Read scope for exam special case code",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "5605e5cb-9027-496b-8181-ef7a0e38cc95",
+        "name": "READ_FINE_ART_APPLIED_SKILLS_CODE",
+        "description": "Read scope for fine arts applied skills code",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "cb5c7e8c-1764-4720-9639-dcb1e85b41fa",
+        "name": "RUN_ARCHIVE_STUDENTS",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "38fbecc2-42f6-4c3f-b7e0-5d89c4ecd30b",
+        "name": "ARCHIVE_GRADUATION_STUDENT_RECORD",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "75f7cfcc-5edb-4e94-bffe-45bf266aae18",
+        "name": "RUN_ARCHIVE_SCHOOL_REPORTS",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "a2ad2b73-58d4-4c82-9402-b0ff70ab15e8",
+        "name": "ARCHIVE_SCHOOL_REPORT",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
     }
-  },
-  {
-    "id": "WRITE_DIGITALID",
-    "name": "WRITE_DIGITALID",
-    "description": "Write scope for digital ID",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "READ_DIGITALID_CODETABLE",
-    "name": "READ_DIGITALID_CODETABLE",
-    "description": "SOAM send email scope",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "READ_SERVICES_CARD",
-    "name": "READ_SERVICES_CARD",
-    "description": "SOAM send email scope",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "WRITE_SERVICES_CARD",
-    "name": "WRITE_SERVICES_CARD",
-    "description": "SOAM send email scope",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "READ_PEN_REQUEST",
-    "name": "READ_PEN_REQUEST",
-    "description": "Read scope for PEN request",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "WRITE_PEN_REQUEST",
-    "name": "WRITE_PEN_REQUEST",
-    "description": "Write scope for PEN request",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "READ_DOCUMENT",
-    "name": "READ_DOCUMENT",
-    "description": "SOAM send email scope",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "READ_DOCUMENT_REQUIREMENTS",
-    "name": "READ_DOCUMENT_REQUIREMENTS",
-    "description": "SOAM send email scope",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "WRITE_DOCUMENT",
-    "name": "WRITE_DOCUMENT",
-    "description": "SOAM send email scope",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "READ_DOCUMENT_TYPES",
-    "name": "READ_DOCUMENT_TYPES",
-    "description": "SOAM send email scope",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "READ_PEN_REQUEST_STATUSES",
-    "name": "READ_PEN_REQUEST_STATUSES",
-    "description": "SOAM send email scope",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "READ_PEN_REQUEST_CODES",
-    "name": "READ_PEN_REQUEST_CODES",
-    "description": "SOAM send email scope",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "READ_PEN_REQ_MACRO",
-    "name": "READ_PEN_REQ_MACRO",
-    "description": "SOAM read pen request macro scope",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "WRITE_PEN_REQ_MACRO",
-    "name": "WRITE_PEN_REQ_MACRO",
-    "description": "SOAM write pen request macro scope",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "DELETE_DOCUMENT",
-    "name": "DELETE_DOCUMENT",
-    "description": "SOAM send email scope",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "READ_PEN_DEMOGRAPHICS",
-    "name": "READ_PEN_DEMOGRAPHICS",
-    "description": "SOAM send email scope",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "READ_STUDENT_PROFILE",
-    "name": "READ_STUDENT_PROFILE",
-    "description": "Read scope for Student Profile",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "WRITE_STUDENT_PROFILE",
-    "name": "WRITE_STUDENT_PROFILE",
-    "description": "Write scope for Student Profile",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "DELETE_DOCUMENT_STUDENT_PROFILE",
-    "name": "DELETE_DOCUMENT_STUDENT_PROFILE",
-    "description": "Delete scope for Student Profile Document",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "READ_DOCUMENT_STUDENT_PROFILE",
-    "name": "READ_DOCUMENT_STUDENT_PROFILE",
-    "description": "Read scope for Student Profile Document",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "READ_DOCUMENT_REQ_STUDENT_PROFILE",
-    "name": "READ_DOCUMENT_REQUIREMENTS_STUDENT_PROFILE",
-    "description": "Read scope for Student Profile Document Requirements",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "WRITE_DOCUMENT_STUDENT_PROFILE",
-    "name": "WRITE_DOCUMENT_STUDENT_PROFILE",
-    "description": "Write scope for Student Profile Document",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "READ_DOCUMENT_TYPES_STUDENT_PROFILE",
-    "name": "READ_DOCUMENT_TYPES_STUDENT_PROFILE",
-    "description": "Read scope for Student Profile Document Types",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "READ_STUDENT_PROFILE_STATUSES",
-    "name": "READ_STUDENT_PROFILE_STATUSES",
-    "description": "Read scope for Student Profile Statuses",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "READ_STUDENT_PROFILE_CODES",
-    "name": "READ_STUDENT_PROFILE_CODES",
-    "description": "Read scope for Student Profile Codes",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "READ_STUDENT_PROFILE_MACRO",
-    "name": "READ_STUDENT_PROFILE_MACRO",
-    "description": "SOAM read pen request macro scope",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "WRITE_STUDENT_PROFILE_MACRO",
-    "name": "WRITE_STUDENT_PROFILE_MACRO",
-    "description": "SOAM write pen request macro scope",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "SOAM_LOGIN",
-    "name": "SOAM_LOGIN",
-    "description": "SOAM login scope",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "SEND_STUDENT_PROFILE_EMAIL",
-    "name": "SEND_STUDENT_PROFILE_EMAIL",
-    "description": "Student Profile send email scope",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "STUDENT_PROFILE_COMPLETE_SAGA",
-    "name": "STUDENT_PROFILE_COMPLETE_SAGA",
-    "description": "Access to execute complete Saga for Student profile.",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "STUDENT_PROFILE_COMMENT_SAGA",
-    "name": "STUDENT_PROFILE_COMMENT_SAGA",
-    "description": "Access to add comment and update status for student profile",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "STUDENT_PROFILE_REJECT_SAGA",
-    "name": "STUDENT_PROFILE_REJECT_SAGA",
-    "description": "Access to Reject a student profile request",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "STUDENT_PROFILE_RETURN_SAGA",
-    "name": "STUDENT_PROFILE_RETURN_SAGA",
-    "description": "Access to Return a student profile request",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "PEN_REQUEST_COMPLETE_SAGA",
-    "name": "PEN_REQUEST_COMPLETE_SAGA",
-    "description": "Scope for completing a PEN request",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "PEN_REQUEST_COMMENT_SAGA",
-    "name": "PEN_REQUEST_COMMENT_SAGA",
-    "description": "Scope for adding PEN request comments and updating its status",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "PEN_REQUEST_RETURN_SAGA",
-    "name": "PEN_REQUEST_RETURN_SAGA",
-    "description": "Scope to return a PEN request for more info",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "PEN_REQUEST_REJECT_SAGA",
-    "name": "PEN_REQUEST_REJECT_SAGA",
-    "description": "Scope to reject a PEN request ",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "PEN_REQUEST_UNLINK_SAGA",
-    "name": "PEN_REQUEST_UNLINK_SAGA",
-    "description": "Scope to unlink a PEN request after it is completed",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "STUDENT_PROFILE_READ_SAGA",
-    "name": "STUDENT_PROFILE_READ_SAGA",
-    "description": "Scope to READ a SAGA record by its ID",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "READ_PEN_MATCH",
-    "name": "READ_PEN_MATCH",
-    "description": "Read Pen Match",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "VALIDATE_STUDENT_DEMOGRAPHICS",
-    "name": "VALIDATE_STUDENT_DEMOGRAPHICS",
-    "description": "Validate Student Demographics from both batch and interactive",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "GET_NEXT_PEN_NUMBER",
-    "name": "GET_NEXT_PEN_NUMBER",
-    "description": "get the next pen number",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "READ_VALIDATION_CODES",
-    "name": "READ_VALIDATION_CODES",
-    "description": "Scope to access validation issue codes",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "READ_STUDENT",
-    "name": "READ_STUDENT",
-    "description": "Read scope for student",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "WRITE_STUDENT",
-    "name": "WRITE_STUDENT",
-    "description": "Write scope for student",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "DELETE_PEN_REQUEST_BATCH",
-    "name": "DELETE_PEN_REQUEST_BATCH",
-    "description": "Delete Pen Request Batch Data",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "READ_PEN_REQUEST_BATCH_MACRO",
-    "name": "READ_PEN_REQUEST_BATCH_MACRO",
-    "description": "Read Pen Request Batch Macro Data",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "PEN_REQUEST_BATCH_USER_MATCH_SAGA",
-    "name": "PEN_REQUEST_BATCH_USER_MATCH_SAGA",
-    "description": "Start Processing user match a student to a pen request from psi or school",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "356a7c84-08d4-4e71-8a9e-131138e6a24f",
-    "name": "READ_GRAD_ALGORITHM_RULES_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "b45a0f74-c3f4-4418-a740-8cb4055c94ac",
-    "name": "READ_GRAD_ASSESSMENT_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "c07dd39c-60d6-481f-b9ef-65a0603874a4",
-    "name": "READ_GRAD_CAREER_PROGRAM_CODE_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "460e752e-7296-4858-ac24-fbcdb8193a17",
-    "name": "READ_GRAD_COUNTRY_CODE_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "WRITE_PEN_COORDINATOR",
-    "name": "WRITE_PEN_COORDINATOR",
-    "description": "Write scope for pen coordinator",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "dc3b7e75-5700-4b78-bfda-1623edd93ad4",
-    "name": "READ_GRAD_COURSE_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "28904ff7-3807-48e7-91bb-c4ff5da28996",
-    "name": "READ_GRAD_PROGRAM_TYPE_CODE_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "67410b79-d3c5-4e46-8539-4c6ff96bd14d",
-    "name": "READ_GRAD_PSI_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "PEN_REQUEST_BATCH_WRITE_SAGA",
-    "name": "PEN_REQUEST_BATCH_WRITE_SAGA",
-    "description": "Write Saga information.",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "STUDENT_PROFILE_WRITE_SAGA",
-    "name": "STUDENT_PROFILE_WRITE_SAGA",
-    "description": "Scope to WRITE to a SAGA record by its ID",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "63a51588-7195-4641-9cd3-d5557ff99ac6",
-    "name": "READ_GRAD_SPECIAL_PROGRAM_RULES_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "9ae0539a-e889-470b-a6fc-44b4438d5d72",
-    "name": "READ_GRAD_STUDENT_CERTIFICATE_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "46c0f3ec-c2d0-4688-b630-57d946bdee7c",
-    "name": "READ_GRAD_STUDENT_EXAM_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "PEN_REPLICATION_READ_SAGA",
-    "name": "PEN_REPLICATION_READ_SAGA",
-    "description": "Read Saga Data",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "499202dd-2b82-4ff2-b501-57409e766d0c",
-    "name": "READ_GRAD_STUDENT_REPORT_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "WRITE_PEN_MACRO",
-    "name": "WRITE_PEN_MACRO",
-    "description": "Scope to start processing edit macro saga",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "b3a49973-a055-488a-a3e4-f5aac5cdef6b",
-    "name": "READ_GRAD_STUDENT_UNGRAD_REASONS_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "1dc6a7fc-6e15-4d33-950a-23005eafe45f",
-    "name": "RUN_GRAD_ALGORITHM",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "1506404f-e4b1-4987-87e6-f5e71289c5b6",
-    "name": "UPDATE_GRAD_GRADUATION_STATUS",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "75823d80-7317-44af-b06d-cd13a566381e",
-    "name": "UPDATE_GRAD_PROGRAM_RULES_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "95e12089-910a-436a-b895-8439ef54c290",
-    "name": "UPDATE_GRAD_SPECIAL_PROGRAM_CODE_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "e5a46920-9dc5-43d8-9721-5a8ebd990584",
-    "name": "READ_SIGNATURE_IMAGE_BY_CODE",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "ad22bfeb-108f-41fb-999c-e928775f9dcc",
-    "name": "READ_GRAD_HISTORY_ACTIVITY_CODE_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "READ_FED_PROV_CODE",
-    "name": "READ_FED_PROV_CODE",
-    "description": "Read scope for fed to provincial school codes ",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "ACTIVATE_EDX_USER",
-    "name": "ACTIVATE_EDX_USER",
-    "description": "Activate EDX_USER ",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "STS_ROLES",
-    "name": "STS_ROLES",
-    "description": "SOAM read sts roles scope",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "WRITE_SDC_SCHOOL_COLLECTION",
-    "name": "WRITE_SDC_SCHOOL_COLLECTION",
-    "description": "Write Student Data Collection School Collection Data",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "38001cc7-983b-47a0-8d96-991b710e6132",
-    "name": "CREATE_GRAD_CAREER_PROGRAM_CODE_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "ceeed35e-73c9-4365-918c-763501554b4e",
-    "name": "CREATE_GRAD_CERTIFICATE_CODE_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "fa58572e-ccf1-4474-b547-7361f0b35ead",
-    "name": "CREATE_GRAD_REPORT_CODE_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "c8feeb2c-2cd9-48d1-a301-c83ae4c1adc7",
-    "name": "CREATE_GRAD_SPECIAL_PROGRAM_CODE_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "93fc8a22-2562-4581-a829-177836ca4f78",
-    "name": "CREATE_GRAD_SPECIAL_PROGRAM_RULES_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "b7afa580-1f43-4670-9425-8e03e7ae1d83",
-    "name": "CREATE_GRAD_STUDENT_NOTES_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "eac4aea7-84fd-4ebf-86ae-117be1603ad1",
-    "name": "CREATE_GRAD_STUDENT_STATUS_CODE_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "eed95ad8-9dcb-40ae-a6c1-daf146dbd07c",
-    "name": "CREATE_GRAD_STUDENT_UNGRAD_REASONS_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "91f733f0-6dbd-4a16-a992-f229622dff8c",
-    "name": "CREATE_GRAD_UNGRAD_CODE_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "6731eeaf-136d-4305-b28c-cdf098e0e1b4",
-    "name": "CREATE_STUDENT_ACHIEVEMENT_REPORT",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "88b2e95c-07c6-4cc2-8cf8-a8bc79d1a085",
-    "name": "DELETE_GRAD_CERTIFICATE_CODE_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "b1641b77-1145-4a35-94df-d917fffef6c9",
-    "name": "DELETE_GRAD_PROGRAM_TYPE_CODE_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "041bb443-86b7-445c-91d3-b1de7c958adb",
-    "name": "DELETE_GRAD_REQUIREMENT_TYPE_CODE_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "c1134ea5-acc9-48a5-899b-9e05927420b3",
-    "name": "DELETE_GRAD_SPECIAL_PROGRAM_CODE_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "b48f18d2-d1e5-4168-b96e-25fc8a777e8d",
-    "name": "DELETE_GRAD_STUDENT_STATUS_CODE_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "READ_COLLECTION_CODES",
-    "name": "READ_COLLECTION_CODES",
-    "description": "Read Student Data Collection Collection Codes",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "WRITE_FED_PROV_CODE",
-    "name": "WRITE_FED_PROV_CODE",
-    "description": "Write scope for fed to provincial school codes ",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "AVED_PEN_VALIDATION",
-    "name": "AVED_PEN_VALIDATION",
-    "description": "write pen request batch scope for aved",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "NOMINAL_ROLL_READ_STUDENT",
-    "name": "NOMINAL_ROLL_READ_STUDENT",
-    "description": "Read nominal roll student",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "NOMINAL_ROLL_UPLOAD_FILE",
-    "name": "NOMINAL_ROLL_UPLOAD_FILE",
-    "description": "Upload nominal roll file",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "NOMINAL_ROLL_READ_SAGA",
-    "name": "NOMINAL_ROLL_READ_SAGA",
-    "description": "Fetch nominal roll saga information",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "WRITE_SECURE_EXCHANGE",
-    "name": "WRITE_SECURE_EXCHANGE",
-    "description": "Write scope for secure exchange",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "WRITE_SECURE_EXCHANGE_DOCUMENT",
-    "name": "WRITE_SECURE_EXCHANGE_DOCUMENT",
-    "description": "SOAM send email scope",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "READ_SECURE_EXCHANGE_CODES",
-    "name": "READ_SECURE_EXCHANGE_CODES",
-    "description": "SOAM send email scope",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "DELETE_SECURE_EXCHANGE_DOCUMENT",
-    "name": "DELETE_SECURE_EXCHANGE_DOCUMENT",
-    "description": "SOAM send email scope",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "READ_EDX_USER_SCHOOLS",
-    "name": "READ_EDX_USER_SCHOOLS",
-    "description": "Reading user schools in EDX",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "READ_STUDENT_CODES",
-    "name": "READ_STUDENT_CODES",
-    "description": "SOAM send email scope",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "READ_PEN_REQUEST_BATCH",
-    "name": "READ_PEN_REQUEST_BATCH",
-    "description": "Read Pen Request Batch Data",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "READ_PEN_REQUEST_BATCH_BLOB",
-    "name": "READ_PEN_REQUEST_BATCH_BLOB",
-    "description": "Read Pen Request Batch Source data",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "WRITE_PEN_REQUEST_BATCH_MACRO",
-    "name": "WRITE_PEN_REQUEST_BATCH_MACRO",
-    "description": "Write Pen Request Batch Macro Data",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "PEN_REQUEST_BATCH_READ_SAGA",
-    "name": "PEN_REQUEST_BATCH_READ_SAGA",
-    "description": "Fetch Saga information based on saga id.",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "53952e74-7388-49f1-9ac5-f56563c53b3b",
-    "name": "READ_GRAD_AND_PEN_STUDENT_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "READ_PEN_SERVICES_MACRO",
-    "name": "READ_PEN_SERVICES_MACRO",
-    "description": "Scope to read PEN SERVICES Macros",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "9c38a361-e5c4-48bb-98a5-bb9b7a0d5924",
-    "name": "READ_GRAD_CERTIFICATE_CODE_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "PEN_REPLICATION_WRITE_SAGA",
-    "name": "PEN_REPLICATION_WRITE_SAGA",
-    "description": "Update Saga Data",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "3b29f2bc-aa98-4de4-ae59-8da8eb8e5fea",
-    "name": "READ_GRAD_COURSE_REQUIREMENT_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "16a5c221-67eb-446e-afd1-060763d1ed53",
-    "name": "READ_GRAD_GRADUATION_STATUS",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "0f39a42f-a6aa-4005-a131-b4891f645a4b",
-    "name": "READ_GRAD_MESSAGING_CODE_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "f99a1f02-48f3-442f-907b-828db65dc289",
-    "name": "READ_GRAD_PROGRAM_CODE_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "READ_PEN_MACRO",
-    "name": "READ_PEN_MACRO",
-    "description": "Scope to read PEN Macros",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "ca1142e4-8ffa-4215-8c0c-3dbc7368c030",
-    "name": "READ_GRAD_PROGRAM_RULES_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "3c75d7e0-abf5-4e2a-bb94-599ff5b79b3a",
-    "name": "READ_GRAD_REPORT_CODE_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "17a45389-9650-4ad0-9aef-10571c486678",
-    "name": "READ_GRAD_SCHOOL_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "36722dc0-e6e7-4c26-92b8-015de7592974",
-    "name": "READ_GRAD_SPECIAL_PROGRAM_CODE_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "NOMINAL_ROLL",
-    "name": "NOMINAL_ROLL",
-    "description": "Nominal roll scope",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "f0284748-f465-4631-9765-7b3a607f206c",
-    "name": "READ_GRAD_STUDENT_CAREER_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "bdbe9eba-4caa-4f3b-93f3-64d25d95a3b0",
-    "name": "READ_GRAD_STUDENT_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "acc135d2-c5d5-43b5-8948-cfc3cf099255",
-    "name": "READ_GRAD_STUDENT_NOTES_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "8c092e81-915d-4ec1-ac87-4c012d73467f",
-    "name": "READ_GRAD_STUDENT_SPECIAL_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "9f60cb51-2de2-43eb-a6db-b8f4b4906596",
-    "name": "READ_GRAD_UNGRAD_CODE_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "8a0b57dc-45ec-4f54-8291-0068b728a22e",
-    "name": "CREATE_GRAD_PROGRAM_TYPE_CODE_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "9e0dd304-b3af-45dd-8257-25b88441ed03",
-    "name": "CREATE_GRAD_REQUIREMENT_TYPE_CODE_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "40879510-4135-4eb3-a946-0e8b4716140b",
-    "name": "CREATE_OR_UPDATE_SIGNATURE_BLOCK_TYPE_CODE",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "a23c63b6-0827-41fa-a2a9-510872766c00",
-    "name": "CREATE_STUDENT_CERTIFICATE",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "58ab862d-c891-4111-8f4f-2d9044ec1f49",
-    "name": "DELETE_GRAD_CAREER_PROGRAM_CODE_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "d455d16e-6f68-4d5d-9a9e-3e7a8358b9f6",
-    "name": "DELETE_GRAD_PROGRAM_CODE_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "14483907-0004-43c8-946c-aad2015872b4",
-    "name": "DELETE_GRAD_PROGRAM_RULES_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "55022a7a-a1eb-4fa0-9d67-669489ec9584",
-    "name": "DELETE_GRAD_REPORT_CODE_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "e359ac5c-51a5-47a4-9234-efe9f3eb1073",
-    "name": "DELETE_GRAD_SPECIAL_PROGRAM_RULES_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "57f35fa7-d519-4a73-8afd-3bfaec3e33cc",
-    "name": "DELETE_GRAD_STUDENT_NOTES_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "bb10d7a6-5a59-4432-90b5-3abccb5865b6",
-    "name": "RUN_RULE_ENGINE",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "19b14d22-521d-4bed-975d-9ff9365053a9",
-    "name": "UPDATE_GRAD_CAREER_PROGRAM_CODE_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "6132e27e-cd92-46a2-9daa-7374525b8deb",
-    "name": "UPDATE_GRAD_COURSE_RESTRICTION_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "b8df26b7-843f-468a-9287-a1d63ec203cc",
-    "name": "UPDATE_GRAD_PROGRAM_SETS_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "de42692d-0420-495e-b2b5-33861967773c",
-    "name": "UPDATE_GRAD_REPORT_CODE_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "9ca20e48-ebf0-4572-9e08-e927a930918f",
-    "name": "UPDATE_GRAD_REQUIREMENT_TYPE_CODE_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "afac1fd1-819a-43c9-adad-f6f196f7a843",
-    "name": "UPDATE_GRAD_STUDENT_CERTIFICATE_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "7b3e2679-55bc-481b-854f-5abbec78a3a5",
-    "name": "UPDATE_GRAD_UNGRAD_CODE_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "35bfaf98-9a8f-4112-9c7f-4a128fd4276c",
-    "name": "READ_SIGNATURE_BLOCK_TYPE_CODE",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "62ca9c65-a327-4da1-bb3f-41686d75b4c1",
-    "name": "READ_GRAD_DOCUMENT_STATUS_CODE_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "WRITE_ACTIVATION_CODE",
-    "name": "WRITE_ACTIVATION_CODE",
-    "description": "Write EDX_ACTIVATION_CODE ",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "SOAM_LINK",
-    "name": "SOAM_LINK",
-    "description": "SOAM read sts roles scope",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "AVED_PEN_REQUEST",
-    "name": "AVED_PEN_REQUEST",
-    "description": "Read scope for Aved",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "NOMINAL_ROLL_WRITE_STUDENT",
-    "name": "NOMINAL_ROLL_WRITE_STUDENT",
-    "description": "Write nominal roll student",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "NOMINAL_ROLL_VALIDATE",
-    "name": "NOMINAL_ROLL_VALIDATE",
-    "description": "Validate nominal roll student",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "NOMINAL_ROLL_WRITE_SAGA",
-    "name": "NOMINAL_ROLL_WRITE_SAGA",
-    "description": "Write nominal roll saga information",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "READ_DISTRICT",
-    "name": "READ_DISTRICT",
-    "description": "Read scope for district",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "f212e446-7e47-4b5e-8005-75e85a9f3351",
-    "name": "CREATE_PACKING_SLIP",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "READ_DISTRICT_CONTACT",
-    "name": "READ_DISTRICT_CONTACT",
-    "description": "Read scope for district contact",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "READ_DISTRICT_ADDRESS",
-    "name": "READ_DISTRICT_ADDRESS",
-    "description": "Read scope for district address",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "READ_SECURE_EXCHANGE_DOCUMENT",
-    "name": "READ_SECURE_EXCHANGE_DOCUMENT",
-    "description": "SOAM send email scope",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "READ_SECURE_EXCHANGE_DOCUMENT_TYPES",
-    "name": "READ_SECURE_EXCHANGE_DOCUMENT_TYPES",
-    "description": "SOAM send email scope",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "DELETE_DISTRICT_ADDRESS",
-    "name": "DELETE_DISTRICT_ADDRESS",
-    "description": "Delete scope for district address",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "READ_DISTRICT_NOTE",
-    "name": "READ_DISTRICT_NOTE",
-    "description": "Read scope for district address",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "READ_EDX_USERS",
-    "name": "READ_EDX_USERS",
-    "description": "Reading users in EDX",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "READ_STUDENT_HISTORY",
-    "name": "READ_STUDENT_HISTORY",
-    "description": "Read scope for student history",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "WRITE_PEN_REQUEST_BATCH",
-    "name": "WRITE_PEN_REQUEST_BATCH",
-    "description": "Write Pen Request Batch Data",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "WRITE_PEN_REQUEST_BATCH_BLOB",
-    "name": "WRITE_PEN_REQUEST_BATCH_BLOB",
-    "description": "Update Pen Request Batch Source data",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "PEN_REQUEST_BATCH_NEW_PEN_SAGA",
-    "name": "PEN_REQUEST_BATCH_NEW_PEN_SAGA",
-    "description": "Start Issue New Pen Saga",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "ddb61aeb-dcd1-48a1-a73e-17cf6d10485a",
-    "name": "READ_GRAD_ASSESSMENT_REQUIREMENT_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "8436178a-802c-4464-97d4-5bc239742931",
-    "name": "READ_GRAD_COURSE_RESTRICTION_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "7b3571b6-5c4f-45f1-93e7-44a65f6e0452",
-    "name": "READ_GRAD_LETTER_GRADE_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "57f25049-5c56-4011-ac03-e6081b4ab702",
-    "name": "READ_GRAD_PROVINCE_CODE_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "3b4900ad-64a7-43d1-b5cf-375f203ffa85",
-    "name": "READ_GRAD_REQUIREMENT_TYPE_CODE_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "ccd19835-d9e9-409c-a229-ba871e0b652a",
-    "name": "READ_GRAD_SPECIAL_CASE_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "WRITE_PEN_SERVICES_MACRO",
-    "name": "WRITE_PEN_SERVICES_MACRO",
-    "description": "Scope to write PEN SERVICES Macros",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "aa638a5b-2997-4ba9-8791-9091abd29d80",
-    "name": "READ_GRAD_STUDENT_ASSESSMENT_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "225f8422-eafb-4d1f-a24c-0f91fd6d2d53",
-    "name": "READ_GRAD_STUDENT_COURSE_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "READ_STS",
-    "name": "READ_STS",
-    "description": "STS API READ scope",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "f2a89d59-920a-496a-9712-14ce1b9a2b51",
-    "name": "DELETE_STUDENT",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "72fc1c6c-7122-4d3a-8f99-c5f4571f2b2b",
-    "name": "DELETE_STUDENT_PROFILE",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "a21dbcd6-ab11-4a3a-9c4f-e3cca1d47778",
-    "name": "DELETE_PEN_REQUEST",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "a5d7f15f-635e-4c40-817d-71bb3121615b",
-    "name": "DELETE_DIGITALID",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "READ_SCHOOL",
-    "name": "READ_SCHOOL",
-    "description": "Read scope for school",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "READ_NICKNAMES",
-    "name": "READ_NICKNAMES",
-    "description": "Read Nicknames",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "READ_PEN_REQUEST_STATS",
-    "name": "READ_PEN_REQUEST_STATS",
-    "description": "Scope to query stats for reporting",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "READ_STUDENT_PROFILE_STATS",
-    "name": "READ_STUDENT_PROFILE_STATS",
-    "description": "Scope to query stats for reporting",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "d9eb1f2a-34cf-4e3f-be00-1c00005eb418",
-    "name": "UPDATE_GRAD_BATCH_JOB_CODE_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "READ_SLD_STUDENT",
-    "name": "READ_SLD_STUDENT",
-    "description": "Read scope for SLD Student data",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "ecc414d4-7ed2-4a8f-bea4-040e1ee2ac6e",
-    "name": "CREATE_GRAD_BATCH_JOB_CODE_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "READ_PEN_TRAX",
-    "name": "READ_PEN_TRAX",
-    "description": "Read scope for Trax system",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "STUDENT_MOVE_SLD_SAGA",
-    "name": "STUDENT_MOVE_SLD_SAGA",
-    "description": "Scope to start processing move sld saga",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "a9e6fd9f-c919-4739-99e6-8971565e3406",
-    "name": "READ_INSTITUTE_CODES",
-    "description": "READ_INSTITUTE_CODES",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "SOAM_USER_INFO",
-    "name": "SOAM_USER_INFO",
-    "description": "SOAM user info scope",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "DELETE_STUDENT_MERGE",
-    "name": "DELETE_STUDENT_MERGE",
-    "description": "Scope to Delete individual merge records by primary key",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "0b57e939-b0cd-4b64-9a53-fdfcba8eba9e",
-    "name": "LOAD_BATCH_DASHBOARD",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "READ_POSSIBLE_MATCH",
-    "name": "READ_POSSIBLE_MATCH",
-    "description": "Read Possible Match",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "WRITE_POSSIBLE_MATCH",
-    "name": "WRITE_POSSIBLE_MATCH",
-    "description": "Write Possible Match",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "DELETE_POSSIBLE_MATCH",
-    "name": "DELETE_POSSIBLE_MATCH",
-    "description": "Delete Possible Match",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "READ_STUDENT_MERGE",
-    "name": "READ_STUDENT_MERGE",
-    "description": "Scope to access student merges",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "WRITE_STUDENT_MERGE",
-    "name": "WRITE_STUDENT_MERGE",
-    "description": "Scope to access writing student merges",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "READ_STUDENT_MERGE_CODES",
-    "name": "READ_STUDENT_MERGE_CODES",
-    "description": "Scope to access merge codes",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "GENERATE_PEN_REPORT",
-    "name": "GENERATE_PEN_REPORT",
-    "description": "Generate reports related to PEN",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "STUDENT_MERGE_COMPLETE_SAGA",
-    "name": "STUDENT_MERGE_COMPLETE_SAGA",
-    "description": "Start Processing student merge complete saga",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "PEN_SERVICES_READ_SAGA",
-    "name": "PEN_SERVICES_READ_SAGA",
-    "description": "Scope to READ a SAGA record by its ID",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "STUDENT_DEMERGE_COMPLETE_SAGA",
-    "name": "STUDENT_DEMERGE_COMPLETE_SAGA",
-    "description": "Start Processing student demerge complete saga",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "STUDENT_SPLIT_PEN_SAGA",
-    "name": "STUDENT_SPLIT_PEN_SAGA",
-    "description": "Scope to start processing split pen saga",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "PEN_REQUEST_BATCH_READ_HISTORY",
-    "name": "PEN_REQUEST_BATCH_READ_HISTORY",
-    "description": "Read PEN request batch history records.",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "PEN_REQUEST_BATCH_ARCHIVE_SAGA",
-    "name": "PEN_REQUEST_BATCH_ARCHIVE_SAGA",
-    "description": "Start archive and return saga.",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "PEN_REQUEST_BATCH_REPOST_SAGA",
-    "name": "PEN_REQUEST_BATCH_REPOST_SAGA",
-    "description": "Start repost reports saga.",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "READ_PEN_COORDINATOR",
-    "name": "READ_PEN_COORDINATOR",
-    "description": "Read scope for pen coordinator",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "MYED_WRITE_PEN_REQUEST_BATCH",
-    "name": "MYED_WRITE_PEN_REQUEST_BATCH",
-    "description": "write pen request batch scope for myed",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "MYED_READ_PEN_REQUEST_BATCH",
-    "name": "MYED_READ_PEN_REQUEST_BATCH",
-    "description": "Read scope for MyEd",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "MYED_READ_PEN_COORDINATOR",
-    "name": "MYED_READ_PEN_COORDINATOR",
-    "description": "Read pen coordinator scope for MyEd",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "MYED_VALIDATE_PEN",
-    "name": "MYED_VALIDATE_PEN",
-    "description": "Validate pen scope for MyEd",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "MYED_PEN_REQUEST",
-    "name": "MYED_PEN_REQUEST",
-    "description": "one of pen request scope for MyEd",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "66c7d828-d79e-4ee0-8a45-c0d811e209fd",
-    "name": "READ_GRAD_STUDENT_STATUS_CODE_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "741245e4-acff-4c8a-8453-a5a4bc2ad1a8",
-    "name": "READ_GRAD_TRANSCRIPT_CODE_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "d7e48917-e45c-48af-a754-8f497c20af82",
-    "name": "UPDATE_GRAD_CERTIFICATE_CODE_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "6f7a6c1a-31f9-4517-903d-6cfc3ba52229",
-    "name": "UPDATE_GRAD_PROGRAM_CODE_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "782fc3cb-be63-4913-a661-78258bf3c53b",
-    "name": "UPDATE_GRAD_PROGRAM_TYPE_CODE_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "MACRO_READ_SAGA",
-    "name": "MACRO_READ_SAGA",
-    "description": "Scope to READ a SAGA record by its ID",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "421f733d-bea1-482e-8ed3-b55b201b9f8a",
-    "name": "UPDATE_GRAD_SPECIAL_PROGRAM_RULES_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "db0f9769-0aef-47ba-9259-e508b113f451",
-    "name": "UPDATE_GRAD_STUDENT_NOTES_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "8a14a712-4d86-4e52-a12d-3fe181888e3b",
-    "name": "UPDATE_GRAD_STUDENT_REPORT_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "6dd52dd2-4bf0-4620-8b65-df24f7b7447e",
-    "name": "UPDATE_GRAD_STUDENT_SPECIAL_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "MYED_READ_STUDENT",
-    "name": "MYED_READ_STUDENT",
-    "description": "Read student details scope for MyEd",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "1bf9d992-656d-4fe0-bc31-f967302e9398",
-    "name": "UPDATE_GRAD_STUDENT_STATUS_CODE_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "9263bb9c-d2f6-46b8-ac47-f85a1f6d2758",
-    "name": "CREATE_STUDENT_NON_GRAD",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "DELETE_ACTIVATION_CODE",
-    "name": "DELETE_ACTIVATION_CODE",
-    "description": "Deleting EDX_ACTIVATION_CODE ",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "0f2b983f-a204-4f78-adfd-1c5ba7c86b9c",
-    "name": "CREATE_GRAD_PROGRAM_CODE_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "26cedf9f-b090-441f-a6eb-462870e1b2ab",
-    "name": "CREATE_GRAD_PROGRAM_RULES_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "df58472d-4aa3-42bf-ae16-14ee32cb2bfa",
-    "name": "CREATE_OR_UPDATE_SIGNATURE_IMAGE",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "b1ebdea4-71e5-4fa8-ae0b-33fcb43c3726",
-    "name": "CREATE_STUDENT_TRANSCRIPT_REPORT",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "8c0e2eef-71b9-4ce6-a4d1-4f0641011ba4",
-    "name": "DELETE_GRAD_UNGRAD_CODE_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "dc5907a9-c540-4423-9287-e4609c64211a",
-    "name": "LOAD_STUDENT_IDS",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "NOMINAL_ROLL_DELETE_STUDENT",
-    "name": "NOMINAL_ROLL_DELETE_STUDENT",
-    "description": "Delete nominal roll student",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "NOMINAL_ROLL_POST_DATA_SAGA",
-    "name": "NOMINAL_ROLL_POST_DATA_SAGA",
-    "description": "Start post data saga",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "SCOPE_READ_INSTITUTE_CODES",
-    "name": "SCOPE_READ_INSTITUTE_CODES",
-    "description": "Read scope for institute codes",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "WRITE_DISTRICT",
-    "name": "WRITE_DISTRICT",
-    "description": "Write scope for district",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "NOMINAL_ROLL_CREATE_FED_PROV",
-    "name": "NOMINAL_ROLL_CREATE_FED_PROV",
-    "description": "Create nominal roll fed prov code",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "READ_SECURE_EXCHANGE",
-    "name": "READ_SECURE_EXCHANGE",
-    "description": "Read scope for secure exchange",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "READ_SECURE_EXCHANGE_STATUSES",
-    "name": "READ_SECURE_EXCHANGE_STATUSES",
-    "description": "SOAM send email scope",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "READ_MINISTRY_TEAMS",
-    "name": "READ_MINISTRY_TEAMS",
-    "description": "Reading ministry teams in EDX",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "DELETE_DISTRICT",
-    "name": "DELETE_DISTRICT",
-    "description": "Delete scope for district",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "WRITE_DISTRICT_CONTACT",
-    "name": "WRITE_DISTRICT_CONTACT",
-    "description": "Write scope for district contact",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "DELETE_DISTRICT_CONTACT",
-    "name": "DELETE_DISTRICT_CONTACT",
-    "description": "Delete scope for district contact",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "WRITE_DISTRICT_ADDRESS",
-    "name": "WRITE_DISTRICT_ADDRESS",
-    "description": "Write scope for district address",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "2b276666-b55e-4943-8cc0-4d778595145a",
-    "name": "CREATE_SCHOOL_DISTRIBUTION",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "DELETE_FED_PROV_CODE",
-    "name": "DELETE_FED_PROV_CODE",
-    "description": "Write scope for fed to provincial school codes ",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "37aa243d-a4db-411a-998e-b75dbe5a3aa9",
-    "name": "CREATE_STUDENT_XML_TRANSCRIPT_REPORT",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "0d3543f6-83b9-4f22-a900-6caffd771b7e",
-    "name": "GET_GRADUATION_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "443c66e2-0a4e-4aae-8625-b5d51477af29",
-    "name": "GRAD_BUSINESS_R",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "1046fe96-bbb3-44d1-822a-37b7683ae9ce",
-    "name": "CREATE_GRAD_ASSESSMENT_REQUIREMENT_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "TEST-CLIENT-SCOPE",
-    "name": "TEST-CLIENT-SCOPE",
-    "protocol": "openid-connect",
-    "attributes": {}
-  },
-  {
-    "id": "DELETE_SECURE_EXCHANGE",
-    "name": "DELETE_SECURE_EXCHANGE",
-    "description": "Delete scope for secure exchange",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "READ_SEC_EXCHANGE_DOC_REQUIREMENTS",
-    "name": "READ_SECURE_EXCHANGE_DOCUMENT_REQUIREMENTS",
-    "description": "SOAM send email scope",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "ddbb026e-2567-45f2-88a6-a0ce792e67ee",
-    "name": "GET_GRADUATION_TRANSCRIPT",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "0f293892-a4fa-432a-9ee0-7b9ebe970e90",
-    "name": "GET_GRADUATION_CERTIFICATE",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "9cf5ca65-4f71-4340-a757-a132f5a52e3a",
-    "name": "GET_GRADUATION_ACHIEVEMENT",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "WRITE_EDX_USER",
-    "name": "WRITE_EDX_USER",
-    "description": "Writing users in EDX_USER",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "DELETE_EDX_USER",
-    "name": "DELETE_EDX_USER",
-    "description": "Deleting user from EDX_USER",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "DELETE_EDX_USER_SCHOOL",
-    "name": "DELETE_EDX_USER_SCHOOL",
-    "description": "Deleting EDX_USER_SCHOOL ",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "WRITE_EDX_USER_SCHOOL",
-    "name": "WRITE_EDX_USER_SCHOOL",
-    "description": "Writing in EDX_USER_SCHOOL",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "WRITE_EDX_USER_SCHOOL_ROLE",
-    "name": "WRITE_EDX_USER_SCHOOL_ROLE",
-    "description": "Writing  in EDX_USER_SCHOOL_ROLE",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "DELETE_EDX_USER_SCHOOL_ROLE",
-    "name": "DELETE_EDX_USER_SCHOOL_ROLE",
-    "description": "Deleting DELETE_EDX_USER_SCHOOL_ROLE ",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "2a27ece8-b79b-42bb-961b-6e38fd84cdde",
-    "name": "READ_GRAD_TRAX_STUDENT_DATA",
-    "description": "Permission to read TRAX Student related Data",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "24aadd30-867c-4a0d-b790-19c1e7be7a63",
-    "name": "READ_GRAD_TRAX_COURSE_DATA",
-    "description": "Permission to read TRAX Course related Data",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "5a2fc44f-9cdd-48e6-b339-87e30e017f23",
-    "name": "UPDATE_GRAD_TRAX_STUDENT_DATA",
-    "description": "Permission to update Trax Student related tables such as TRAX_STUDENT_NO and STUDENT_MASTER.",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "WRITE_DISTRICT_NOTE",
-    "name": "WRITE_DISTRICT_NOTE",
-    "description": "Write scope for district address",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "WRITE_SCHOOL",
-    "name": "WRITE_SCHOOL",
-    "description": "Write scope for school",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "WRITE_SCHOOL_CONTACT",
-    "name": "WRITE_SCHOOL_CONTACT",
-    "description": "Write scope for school contact",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "WRITE_SCHOOL_ADDRESS",
-    "name": "WRITE_SCHOOL_ADDRESS",
-    "description": "Write scope for school address",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "WRITE_SCHOOL_NOTE",
-    "name": "WRITE_SCHOOL_NOTE",
-    "description": "Write scope for school address",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "WRITE_INDEPENDENT_AUTHORITY",
-    "name": "WRITE_INDEPENDENT_AUTHORITY",
-    "description": "Write scope for independent authority",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "WRITE_INDEPENDENT_AUTHORITY_CONTACT",
-    "name": "WRITE_INDEPENDENT_AUTHORITY_CONTACT",
-    "description": "Write scope for independent authority contact",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "WRITE_INDEPENDENT_AUTHORITY_ADDRESS",
-    "name": "WRITE_INDEPENDENT_AUTHORITY_ADDRESS",
-    "description": "Write scope for independent authority address",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "WRITE_INDEPENDENT_AUTHORITY_NOTE",
-    "name": "WRITE_INDEPENDENT_AUTHORITY_NOTE",
-    "description": "Write scope for independent authority address",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "81e10a33-3fa3-4a57-8377-4f81b2e46796",
-    "name": "UPDATE_GRAD_TRAX_CACHE",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "CREATE_SECURE_EXCHANGE_SAGA",
-    "name": "CREATE_SECURE_EXCHANGE_SAGA",
-    "description": "Write CREATE_SECURE_EXCHANGE_SAGA ",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "67a1dfe0-6c17-4a9d-9b70-733ff95c8126",
-    "name": "CREATE_SCHOOL_GRADUATION",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "WRITE_SDC_SCHOOL_COLLECTION_STUDENT",
-    "name": "WRITE_SDC_SCHOOL_COLLECTION_STUDENT",
-    "description": "Write Student Data Collection School Collection Students",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "WRITE_SECURE_EXCHANGE_COMMENT",
-    "name": "WRITE_SECURE_EXCHANGE_COMMENT",
-    "description": "Write scope for secure exchange comment",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "WRITE_SECURE_EXCHANGE_NOTE",
-    "name": "WRITE_SECURE_EXCHANGE_NOTE",
-    "description": "Write scope for secure exchange note",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "WRITE_SECURE_EXCHANGE_STUDENT",
-    "name": "WRITE_SECURE_EXCHANGE_STUDENT",
-    "description": "Write scope for secure exchange student",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "READ_SDC_SCHOOL_COLLECTION_STUDENT",
-    "name": "READ_SDC_SCHOOL_COLLECTION_STUDENT",
-    "description": "Read Student Data Collection School Collection Students",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "WRITE_EDX_USER_DISTRICT",
-    "name": "WRITE_EDX_USER_DISTRICT",
-    "description": "Write scope for EDX_USER_DISTRICT",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "WRITE_EDX_USER_DISTRICT_ROLE",
-    "name": "WRITE_EDX_USER_DISTRICT_ROLE",
-    "description": "Write scope for EDX_USER_DISTRICT_ROLE",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "READ_SDC_COLLECTION",
-    "name": "READ_SDC_COLLECTION",
-    "description": "Read Student Data Collection Collection Data",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "WRITE_SDC_COLLECTION",
-    "name": "WRITE_SDC_COLLECTION",
-    "description": "Write Student Data Collection Collection Data",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "DELETE_SDC_COLLECTION",
-    "name": "DELETE_SDC_COLLECTION",
-    "description": "Delete Student Data Collection Collection Data",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "READ_SCHOLARSHIPS_CODES",
-    "name": "READ_SCHOLARSHIPS_CODES",
-    "description": "Read Scholarships Codes",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "READ_EAS_SESSIONS",
-    "name": "READ_EAS_SESSIONS",
-    "description": "Read Assessment Sessions Data",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "READ_EAS_STUDENT",
-    "name": "READ_EAS_STUDENT",
-    "description": "Read Assessment Students",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "DELETE_DISTRICT_NOTE",
-    "name": "DELETE_DISTRICT_NOTE",
-    "description": "Delete scope for district address",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "DELETE_SCHOOL",
-    "name": "DELETE_SCHOOL",
-    "description": "Delete scope for school",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "DELETE_SCHOOL_CONTACT",
-    "name": "DELETE_SCHOOL_CONTACT",
-    "description": "Delete scope for school contact",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "DELETE_SCHOOL_ADDRESS",
-    "name": "DELETE_SCHOOL_ADDRESS",
-    "description": "Delete scope for school address",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "DELETE_SCHOOL_NOTE",
-    "name": "DELETE_SCHOOL_NOTE",
-    "description": "Delete scope for school address",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "DELETE_INDEPENDENT_AUTHORITY",
-    "name": "DELETE_INDEPENDENT_AUTHORITY",
-    "description": "Delete scope for independent authority",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "DELETE_INDEPENDENT_AUTHORITY_CONTACT",
-    "name": "DELETE_INDEPENDENT_AUTHORITY_CONTACT",
-    "description": "Delete scope for independent authority contact",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "DELETE_INDEPENDENT_AUTHORITY_ADDRESS",
-    "name": "DELETE_INDEPENDENT_AUTHORITY_ADDRESS",
-    "description": "Delete scope for independent authority address",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "DELETE_INDEPENDENT_AUTHORITY_NOTE",
-    "name": "DELETE_INDEPENDENT_AUTHORITY_NOTE",
-    "description": "Delete scope for independent authority address",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "DELETE_SDC_SCHOOL_COLLECTION",
-    "name": "DELETE_SDC_SCHOOL_COLLECTION",
-    "description": "Delete Student Data Collection School Collection Data",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "WRITE_SDC_DISTRICT_COLLECTION",
-    "name": "WRITE_SDC_DISTRICT_COLLECTION",
-    "description": "Write Student Data Collection District Collection Data",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "READ_TENANT_ACCESS",
-    "name": "READ_TENANT_ACCESS",
-    "description": "Read scope for tenant access",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "DELETE_EDX_USER_DISTRICT_ROLE",
-    "name": "DELETE_EDX_USER_DISTRICT_ROLE",
-    "description": "Write scope for DELETE_EDX_USER_DISTRICT_ROLE",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "7f42f17c-4ebb-4d7f-a962-8a30c1247930",
-    "name": "READ_GRAD_BATCH_JOB_CODE_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "dd110b42-f33a-4685-b1f3-5b0a031abc6c",
-    "name": "CREATE_STUDENT_NON_GRAD_REQ",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "3978d876-1ef4-4eec-aaeb-603cda756f52",
-    "name": "CREATE_SCHOOL_NON_GRADUATION",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "READ_FILESET_STUDENT_ERROR",
-    "name": "READ_FILESET_STUDENT_ERROR",
-    "description": "Read Fileset Student Error",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "ef29bd09-f45d-4a1b-87ef-121c7ae3023d",
-    "name": "DELETE_STUDENT_REPORT",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "SCOPE_READ_GRAD_COLLECTION_CODES",
-    "name": "SCOPE_READ_GRAD_COLLECTION_CODES",
-    "description": "Read Grad Data Collection Codes",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "8dba551c-9e61-4cd0-8553-6f6b37da97cf",
-    "name": "WRITE_EVENT_HISTORY",
-    "description": "GRAD write history events",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "READ_SCHOOL_HISTORY",
-    "name": "READ_SCHOOL_HISTORY",
-    "description": "Read scope for school history",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "7341207a-71b0-44d6-b902-d4ca91a98c8f",
-    "name": "CREATE_SCHOOL_SAGA",
-    "description": "Write CREATE_SCHOOL_SAGA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "READ_SCHOOL_CONTACT",
-    "name": "READ_SCHOOL_CONTACT",
-    "description": "Read scope for school contact",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "READ_SCHOOL_ADDRESS",
-    "name": "READ_SCHOOL_ADDRESS",
-    "description": "Read scope for school address",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "READ_SCHOOL_NOTE",
-    "name": "READ_SCHOOL_NOTE",
-    "description": "Read scope for school address",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "READ_INDEPENDENT_AUTHORITY",
-    "name": "READ_INDEPENDENT_AUTHORITY",
-    "description": "Read scope for independent authority",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "READ_INDEPENDENT_AUTHORITY_CONTACT",
-    "name": "READ_INDEPENDENT_AUTHORITY_CONTACT",
-    "description": "Read scope for independent authority contact",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "READ_INDEPENDENT_AUTHORITY_ADDRESS",
-    "name": "READ_INDEPENDENT_AUTHORITY_ADDRESS",
-    "description": "Read scope for independent authority address",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "READ_INDEPENDENT_AUTHORITY_NOTE",
-    "name": "READ_INDEPENDENT_AUTHORITY_NOTE",
-    "description": "Read scope for independent authority address",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "4da66c91-20a9-4e5b-8959-d9ee0c2e2116",
-    "name": "WRITE_PRIMARY_ACTIVATION_CODE",
-    "description": "WRITE_PRIMARY_ACTIVATION_CODE",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "8cd006d3-1587-4757-a624-ca546daeff63",
-    "name": "READ_PRIMARY_ACTIVATION_CODE",
-    "description": "READ_PRIMARY_ACTIVATION_CODE",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "49fe24fd-659a-4a14-9661-87e0f9b56e3a",
-    "name": "CREATE_SCHOOL_LABEL",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "SOAM_TENANT",
-    "name": "SOAM_TENANT",
-    "description": "SOAM tenant scope",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "CREATE_SECURE_EXCHANGE_COMMENT_SAGA",
-    "name": "CREATE_SECURE_EXCHANGE_COMMENT_SAGA",
-    "description": "Write CREATE_SECURE_EXCHANGE_COMMENT_SAGA ",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "READ_SCHOOL_FUNDING_GROUP",
-    "name": "READ_SCHOOL_FUNDING_GROUP",
-    "description": "Read Independent School Funding Group",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "WRITE_SCHOOL_FUNDING_GROUP",
-    "name": "WRITE_SCHOOL_FUNDING_GROUP",
-    "description": "Write Independent School Funding Group",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "SCHOOL_USER_ACTIVATION_INVITE_SAGA",
-    "name": "SCHOOL_USER_ACTIVATION_INVITE_SAGA",
-    "description": "Write SCHOOL_USER_ACTIVATION_INVITE_SAGA ",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "DELETE_SCHOOL_FUNDING_GROUP",
-    "name": "DELETE_SCHOOL_FUNDING_GROUP",
-    "description": "Delete Independent School Funding Group",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "DELETE_SDC_DISTRICT_COLLECTION",
-    "name": "DELETE_SDC_DISTRICT_COLLECTION",
-    "description": "Delete Student Data Collection District Collection Data",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "READ_SECURE_EXCHANGE_COMMENT",
-    "name": "READ_SECURE_EXCHANGE_COMMENT",
-    "description": "Read scope for secure exchange comment",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "DELETE_SECURE_EXCHANGE_COMMENT",
-    "name": "DELETE_SECURE_EXCHANGE_COMMENT",
-    "description": "Delete scope for secure exchange comment",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "READ_SECURE_EXCHANGE_NOTE",
-    "name": "READ_SECURE_EXCHANGE_NOTE",
-    "description": "Read scope for secure exchange note",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "DELETE_SECURE_EXCHANGE_NOTE",
-    "name": "DELETE_SECURE_EXCHANGE_NOTE",
-    "description": "Delete scope for secure exchange note",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "READ_SECURE_EXCHANGE_STUDENT",
-    "name": "READ_SECURE_EXCHANGE_STUDENT",
-    "description": "Read scope for secure exchange student",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "DELETE_SECURE_EXCHANGE_STUDENT",
-    "name": "DELETE_SECURE_EXCHANGE_STUDENT",
-    "description": "Delete scope for secure exchange student",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "DISTRICT_USER_ACTIVATION_INVITE_SAGA",
-    "name": "DISTRICT_USER_ACTIVATION_INVITE_SAGA",
-    "description": "Write DISTRICT_USER_ACTIVATION_INVITE_SAGA ",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "DELETE_SDC_SCHOOL_COLLECTION_STUDENT",
-    "name": "DELETE_SDC_SCHOOL_COLLECTION_STUDENT",
-    "description": "Delete Student Data Collection School Collection Students",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "DELETE_EDX_USER_DISTRICT",
-    "name": "DELETE_EDX_USER_DISTRICT",
-    "description": "Delete scope for EDX_USER_DISTRICT",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "4e371ce0-7962-46cc-90db-6b233dd39c6b",
-    "name": "DELETE_GRAD_BATCH_JOB_CODE_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "MOVE_SCHOOL_SAGA",
-    "name": "MOVE_SCHOOL_SAGA",
-    "description": "Write MOVE_SCHOOL_SAGA ",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "4109da00-964c-40d6-ac31-35e878dbf8ae",
-    "name": "RUN_DELETE_STUDENT_REPORTS",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "READ_SCHOOL_FUNDING_GROUP_SNAPSHOT",
-    "name": "READ_SCHOOL_FUNDING_GROUP_SNAPSHOT",
-    "description": "Read Independent School Funding Group Snapshot",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "WRITE_EAS_SESSIONS",
-    "name": "WRITE_EAS_SESSIONS",
-    "description": "Write Assessment Sessions Data",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "fad97d99-c014-43df-ba45-00260528bcf2",
-    "name": "READ_GRAD_STUDENT_GRADE_CODES",
-    "description": "",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "c7a2c150-4b5f-4b79-aea5-172297e735d9",
-    "name": "DELETE_GRAD_STUDENT_REPORTS",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "95933f4c-55b0-4732-a1b4-85524ab29a99",
-    "name": "DELETE_GRAD_STUDENT_DATA",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "READ_SDC_DISTRICT_COLLECTION",
-    "name": "READ_SDC_DISTRICT_COLLECTION",
-    "description": "Read Student Data Collection District Collection Data",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "READ_GRAD_COLLECTION_CODES",
-    "name": "READ_GRAD_COLLECTION_CODES",
-    "description": "Read Grad Data Collection Codes",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "READ_GRAD_COLLECTION",
-    "name": "READ_GRAD_COLLECTION",
-    "description": "Read Grad Data Collection",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "READ_EAS_REPORT",
-    "name": "READ_EAS_REPORT",
-    "description": "Read EAS report",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "113555ba-9a32-41bd-86fd-70cc42780296",
-    "name": "READ_EQUIVALENT_OR_CHALLENGE_CODE",
-    "description": "Read scope for equivalent or challenge code",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "0514f4a5-b25c-4aeb-a435-597a9f7a2c8a",
-    "name": "READ_EXAM_SPECIAL_CASE_CODE",
-    "description": "Read scope for exam special case code",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "5605e5cb-9027-496b-8181-ef7a0e38cc95",
-    "name": "READ_FINE_ART_APPLIED_SKILLS_CODE",
-    "description": "Read scope for fine arts applied skills code",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "READ_SDC_MINISTRY_REPORTS",
-    "name": "READ_SDC_MINISTRY_REPORTS",
-    "description": "Read Student Data Collection Ministry Reports",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "WRITE_GRAD_COLLECTION",
-    "name": "WRITE_GRAD_COLLECTION",
-    "description": "Write Grad Collection Data",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "WRITE_COLLECTION_CODES",
-    "name": "WRITE_COLLECTION_CODES",
-    "description": "Write Student Data Collection Codes",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "WRITE_EAS_STUDENT",
-    "name": "WRITE_EAS_STUDENT",
-    "description": "Write Assessment Students",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "READ_SCHOLARSHIPS_STUDENT",
-    "name": "READ_SCHOLARSHIPS_STUDENT",
-    "description": "Read Assessment Students",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "READ_INCOMING_FILESET",
-    "name": "READ_INCOMING_FILESET",
-    "description": "Read incoming fileset",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "e0ad3237-347c-458c-b240-2df0f3206ab3",
-    "name": "READ_EVENT_HISTORY",
-    "description": "GRAD read history events",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "WRITE_SCHOLARSHIPS_STUDENT",
-    "name": "WRITE_SCHOLARSHIPS_STUDENT",
-    "description": "Write Assessment Students",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "false"
-    }
-  },
-  {
-    "id": "cb5c7e8c-1764-4720-9639-dcb1e85b41fa",
-    "name": "RUN_ARCHIVE_STUDENTS",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "38fbecc2-42f6-4c3f-b7e0-5d89c4ecd30b",
-    "name": "ARCHIVE_GRADUATION_STUDENT_RECORD",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "75f7cfcc-5edb-4e94-bffe-45bf266aae18",
-    "name": "RUN_ARCHIVE_SCHOOL_REPORTS",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  },
-  {
-    "id": "a2ad2b73-58d4-4c82-9402-b0ff70ab15e8",
-    "name": "ARCHIVE_SCHOOL_REPORT",
-    "protocol": "openid-connect",
-    "attributes": {
-      "include.in.token.scope": "true",
-      "display.on.consent.screen": "true"
-    }
-  }
 ]
