@@ -45,23 +45,23 @@ while true; do
 #Create Roles
 echo -e "CREATE Roles \n"
 jq -c '.[]' roles.sh | while read -r role; do
-  result=$(curl -s  -w "%{http_code}"   -X  POST "$KC_BASE_URL/$KC_REALM_ID/roles" \
-  --header "Authorization: Bearer "$(cat "$TKN_FILE")" "  \
-  --header "Content-Type: application/json" \
-  --data-raw "$role")
-   echo -e " Response create role  : $result\n"
+ # result=$(curl -s  -w "%{http_code}"   -X  POST "$KC_BASE_URL/$KC_REALM_ID/roles" \
+ # --header "Authorization: Bearer "$(cat "$TKN_FILE")" "  \
+  #--header "Content-Type: application/json" \
+  #--data-raw "$role")
+  # echo -e " Response create role  : $result\n"
 done
 
 
 
 #Create Scopes
 echo -e "CREATE Scopes\n"
-jq -c '.[]' client_scopes.sh | while read -r scope; do
-  result=$(curl -s  -w "%{http_code}"   -X  POST "$KC_BASE_URL/$KC_REALM_ID/client-scopes" \
-  --header "Authorization: Bearer "$(cat "$TKN_FILE")" "  \
-  --header "Content-Type: application/json" \
-  --data-raw "$scope")
-   echo -e "Create scope  Response : $result\n"
+#jq -c '.[]' client_scopes.sh | while read -r scope; do
+  #result=$(curl -s  -w "%{http_code}"   -X  POST "$KC_BASE_URL/$KC_REALM_ID/client-scopes" \
+  #--header "Authorization: Bearer "$(cat "$TKN_FILE")" "  \
+  #--header "Content-Type: application/json" \
+  #--data-raw "$scope")
+  # echo -e "Create scope  Response : $result\n"
 done
 
 
@@ -70,19 +70,19 @@ done
 echo -e "CREATE Clients \n"
 
 jq -c '.[]' clients.sh | while read -r client; do
-  result=$(curl -s  -w "%{http_code}"   -X  POST "$KC_BASE_URL/$KC_REALM_ID/clients" \
-  --header "Authorization: Bearer "$(cat "$TKN_FILE")" "  \
-  --header "Content-Type: application/json" \
-  --data-raw "$client")
+  #result=$(curl -s  -w "%{http_code}"   -X  POST "$KC_BASE_URL/$KC_REALM_ID/clients" \
+  #--header "Authorization: Bearer "$(cat "$TKN_FILE")" "  \
+  #--header "Content-Type: application/json" \
+  #--data-raw "$client")
   default_scopes=$(echo "$client" | jq -r '.defaultClientScopes[]')
   clientId=$(echo "$client" | jq -r '.clientId')
   CLIENT_UUID=$(curl -s -X  GET "$KC_BASE_URL/$KC_REALM_ID/clients" \
       -H "Content-Type: application/json" \
       -H "Authorization: Bearer "$(cat "$TKN_FILE")" "  \
       | jq '.[] | select(.clientId=="'"$clientId"'")' | jq -r '.id')
-  (curl -s  -w "%{http_code}"   -X  DELETE "$KC_BASE_URL/$KC_REALM_ID/clients/$CLIENT_UUID" \
+  result=$((curl -s  -w "%{http_code}"   -X  DELETE "$KC_BASE_URL/$KC_REALM_ID/clients/$CLIENT_UUID" \
   --header "Authorization: Bearer "$(cat "$TKN_FILE")" "  \
-  --header "Content-Type: application/json" \
+  --header "Content-Type: application/json" )
   
   echo -e " Response client  "$clientId"  create : $result\n"
 
