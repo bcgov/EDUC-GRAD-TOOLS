@@ -54,7 +54,7 @@ jq -c '.[]' client_scopes.sh | while read -r client; do
   CLIENT_UUID=$(curl -s -X  GET "$KC_BASE_URL/$KC_REALM_ID/client-scopes" \
       -H "Content-Type: application/json" \
       -H "Authorization: Bearer "$(cat "$TKN_FILE")" "  \
-      | jq '.[] | select(.clientId=="'"$clientId"'")' | jq -r '.id')
+      | jq '.[] | select(.name=="'"$clientId"'")' | jq -r '.id')
   result=$(curl -s  -w "%{http_code}"   -X  DELETE "$KC_BASE_URL/$KC_REALM_ID/client-scopes/$CLIENT_UUID" \
   --header "Authorization: Bearer "$(cat "$TKN_FILE")" "  \
   --header "Content-Type: application/json" )
