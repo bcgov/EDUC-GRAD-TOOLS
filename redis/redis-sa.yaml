@@ -24,6 +24,29 @@ objects:
       as-copy-of: template.${NAME}-secret
   stringData:
     REDIS_PASSWORD: "${REDIS_PASSWORD}"
+- apiVersion: v1
+  kind: ConfigMap
+  metadata:
+    name: "${DATABASE_SERVICE_NAME}"
+    labels:
+      app: "${DATABASE_SERVICE_NAME}"
+  data:
+    redis-readiness.sh: |
+      #!/bin/sh
+      export REDISCLI_AUTH=$REDIS_PASSWORD
+      response=$(timeout 3 $1 redis-cli -h $HOSTNAME -p 6379 ping)
+      if [ "$response" != "PONG" ]; then
+        echo "$response"
+        exit 1
+      fi
+    redis-liveness.sh: |
+      #!/bin/sh
+      export REDISCLI_AUTH=$REDIS_PASSWORD
+      response=$(timeout 3 $1 redis-cli -h $HOSTNAME -p 6379 ping)
+      if [ "$response" != "PONG" ] && [ "$response" != "LOADING Redis is loading the dataset in memory" ]; then
+        echo "$response"
+        exit 1
+      fi
 - kind: Service
   apiVersion: v1
   metadata:
@@ -84,6 +107,24 @@ objects:
             terminationMessagePath: "/dev/termination-log"
             terminationMessagePolicy: File
             imagePullPolicy: IfNotPresent
+            readinessProbe:
+              exec:
+                command: [ "/conf/redis-readiness.sh" ]
+              enabled: true
+              initialDelaySeconds: 20
+              periodSeconds: 5
+              timeoutSeconds: 5
+              successThreshold: 1
+              failureThreshold: 5
+            livenessProbe:
+              exec:
+                command: [ "/conf/redis-liveness.sh" ]
+              enabled: true
+              initialDelaySeconds: 20
+              periodSeconds: 5
+              timeoutSeconds: 1
+              successThreshold: 1
+              failureThreshold: 5
             env:
               - name: REDIS_PASSWORD
                 valueFrom:
@@ -93,7 +134,7 @@ objects:
               - name: TZ
                 value: "America/Vancouver"
             volumeMounts:
-              - name: ${DATABASE_SERVICE_NAME}-data
+              - name: conf
                 mountPath: /conf
                 readOnly: false
               - name: ${DATABASE_SERVICE_NAME}-data
@@ -103,6 +144,10 @@ objects:
           - name: ${DATABASE_SERVICE_NAME}-data
             persistentVolumeClaim:
               claimName: ${DATABASE_SERVICE_NAME}-data
+          - name: conf
+            configMap:
+              name: ${DATABASE_SERVICE_NAME}
+              defaultMode: 0755
         restartPolicy: Always
         terminationGracePeriodSeconds: 30
     strategy:
@@ -122,7 +167,7 @@ objects:
               storage: "${STORAGE_SIZE}"
 parameters:
 - name: STORAGE_SIZE
-  value: 100Mi
+  value: 250Mi
 - name: CPU_LIMIT
   value: 50m
 - name: MEMORY_LIMIT
@@ -134,7 +179,7 @@ parameters:
 - name: DATABASE_SERVICE_NAME
   displayName: Database Service Name
   description: The name of the OpenShift Service exposed for the database.
-  value: redis-sa
+  value: redis
   required: true
 - name: REDIS_PASSWORD
   displayName: Redis Connection Password
