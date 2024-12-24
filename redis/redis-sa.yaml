@@ -97,6 +97,7 @@ objects:
             ports:
               - containerPort: 6379
                 protocol: TCP
+            command: /bin/sh -c "redis-server --requirepass ${REDIS_PASSWORD}"
             resources:
               requests:
                 cpu: "${CPU_REQUEST}"
