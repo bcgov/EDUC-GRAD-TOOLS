@@ -1031,5 +1031,23 @@
             "include.in.token.scope": "true",
             "display.on.consent.screen": "true"
         }
+    },
+    {
+        "id": "8dba551c-9e61-4cd0-8553-6f6b37da97cf",
+        "name": "WRITE_EVENT_HISTORY",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
+    },
+    {
+        "id": "e0ad3237-347c-458c-b240-2df0f3206ab3",
+        "name": "READ_EVENT_HISTORY",
+        "protocol": "openid-connect",
+        "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true"
+        }
     }
 ]
