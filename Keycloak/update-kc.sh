@@ -89,8 +89,9 @@ else
     echo "$CLIENT_UUID"
     echo "$clientId"
     
-    if ! echo "$existing_scopes" | grep -q "$scope"; then
+    if ! (echo "$existing_scopes" | grep -q "$scope"); then
     missing_scopes+=("$scope")  
+    echo "found missing scope "$scope"  "
     fi
   done
 echo "existing scopes "$existing_scopes" "
