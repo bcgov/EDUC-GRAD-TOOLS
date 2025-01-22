@@ -75,7 +75,7 @@ default_scopes=$(echo "$client" | jq -r '.defaultClientScopes[]')
 clientId=$(echo "$client" | jq -r '.clientId')
 CLIENT_UUID=$( jq -r '.[] | select(.clientId=="'"$clientId"'") |.id' "$existing_clients")
 
-if [ -z "$CLIENT_UUID"]; then
+if [ -z "$CLIENT_UUID" ]; then
 echo "client "$clientId" not found "
  result=$(curl -s  -w "%{http_code}"   -X  POST "$KC_BASE_URL/$KC_REALM_ID/clients" \
   --header "Authorization: Bearer "$(cat "$TKN_FILE")" "  \
