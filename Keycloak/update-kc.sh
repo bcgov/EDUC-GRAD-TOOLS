@@ -93,7 +93,7 @@ else
     missing_scopes+=("$scope")  
     fi
   done
-echo "existing scopes $existing_scopes" "
+echo "existing scopes "$existing_scopes" "
 echo "missing scopes "$missing_scopes" "
 fi  
 done 
