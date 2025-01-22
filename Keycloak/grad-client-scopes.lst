@@ -89,6 +89,44 @@
             "display.on.consent.screen": "true"
         }
     },
+
+{
+    "id": "28904ff7-3807-48e7-91bb-c4ff5da28996",
+    "name": "READ_GRAD_PROGRAM_TYPE_CODE_DATA",
+    "protocol": "openid-connect",
+    "attributes": {
+      "include.in.token.scope": "true",
+      "display.on.consent.screen": "true"
+    }
+  },
+
+ {
+    "id": "782fc3cb-be63-4913-a661-78258bf3c53b",
+    "name": "UPDATE_GRAD_PROGRAM_TYPE_CODE_DATA",
+    "protocol": "openid-connect",
+    "attributes": {
+      "include.in.token.scope": "true",
+      "display.on.consent.screen": "true"
+    }
+  },
+    {
+    "id": "38001cc7-983b-47a0-8d96-991b710e6132",
+    "name": "CREATE_GRAD_CAREER_PROGRAM_CODE_DATA",
+    "protocol": "openid-connect",
+    "attributes": {
+      "include.in.token.scope": "true",
+      "display.on.consent.screen": "true"
+    }
+  },
+    {
+    "id": "6132e27e-cd92-46a2-9daa-7374525b8deb",
+    "name": "UPDATE_GRAD_COURSE_RESTRICTION_DATA",
+    "protocol": "openid-connect",
+    "attributes": {
+      "include.in.token.scope": "true",
+      "display.on.consent.screen": "true"
+    }
+  },
     {
         "id": "46c0f3ec-c2d0-4688-b630-57d946bdee7c",
         "name": "READ_GRAD_STUDENT_EXAM_DATA",
