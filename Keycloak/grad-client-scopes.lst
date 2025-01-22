@@ -1041,6 +1041,16 @@
             "display.on.consent.screen": "true"
         }
     },
+ {
+    "id": "WRITE_STUDENT",
+    "name": "WRITE_STUDENT",
+    "description": "Write scope for student",
+    "protocol": "openid-connect",
+    "attributes": {
+      "include.in.token.scope": "true",
+      "display.on.consent.screen": "false"
+    }
+  },
     {
         "id": "e0ad3237-347c-458c-b240-2df0f3206ab3",
         "name": "READ_EVENT_HISTORY",
