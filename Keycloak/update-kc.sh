@@ -64,14 +64,16 @@ done
 
 #Create Clients
 echo -e "CREATE Clients \n"
+existing_clients="/tmp/existing_clients.json"
+curl -s -X  GET "$KC_BASE_URL/$KC_REALM_ID/clients" \
+      -H "Content-Type: application/json" \
+      -H "Authorization: Bearer "$(cat "$TKN_FILE")" " >"$existing_clients"
+
 
 jq -c '.[]' clients.sh | while read -r client; do
 default_scopes=$(echo "$client" | jq -r '.defaultClientScopes[]')
 clientId=$(echo "$client" | jq -r '.clientId')
- CLIENT_UUID=$(curl -s -X  GET "$KC_BASE_URL/$KC_REALM_ID/clients" \
-      -H "Content-Type: application/json" \
-      -H "Authorization: Bearer "$(cat "$TKN_FILE")" "  \
-      | jq '.[] | select(.clientId=="'"$clientId"'")' | jq -r '.id')
+CLIENT_UUID=$( jq -r '.[] | select(.clientId=="'"$clientId"'") |.id' "$existing_clients")
       
  echo "$default_scopes"  | while read -r scope; do
     echo "$CLIENT_UUID"
