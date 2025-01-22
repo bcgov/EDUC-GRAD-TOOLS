@@ -89,6 +89,15 @@
             "display.on.consent.screen": "true"
         }
     },
+ {
+    "id": "dd110b42-f33a-4685-b1f3-5b0a031abc6c",
+    "name": "CREATE_STUDENT_NON_GRAD_REQ",
+    "protocol": "openid-connect",
+    "attributes": {
+      "include.in.token.scope": "true",
+      "display.on.consent.screen": "false"
+    }
+  },
     {
         "id": "499202dd-2b82-4ff2-b501-57409e766d0c",
         "name": "READ_GRAD_STUDENT_REPORT_DATA",
