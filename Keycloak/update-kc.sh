@@ -91,9 +91,10 @@ else
     
     if ! echo "$existing_scopes" | grep -q "$scope"; then
     missing_scopes+=("$scope")
-    echo "$scope"
+  
     fi
   done
 fi  
 done 
+echo "$missing_scopes"
 kill $REFRESH_PID
