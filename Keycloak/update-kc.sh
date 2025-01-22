@@ -97,7 +97,7 @@ else
     SCOPE_UUID=$(curl -s -X  GET "$KC_BASE_URL/$KC_REALM_ID/client-scopes" \
       -H "Content-Type: application/json" \
       -H "Authorization: Bearer "$(cat "$TKN_FILE")" "  \
-      | jq '.[] | select(.name=="'"$name"'")' | jq -r '.id')
+      | jq '.[] | select(.name=="'"$scope"'")' | jq -r '.id')
         echo "found missing scope "$scope" with uuid  "$SCOPE_UUID"  "
       #PUT /{realm}/clients/{id}/default-client-scopes/{clientScopeId}
     result=$(curl -s  -w "%{http_code}"   -X  PUT "$KC_BASE_URL/$KC_REALM_ID/clients/$CLIENT_UUID/default-client-scopes/$SCOPE_UUID" \
