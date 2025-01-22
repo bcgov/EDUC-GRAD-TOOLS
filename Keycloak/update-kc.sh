@@ -77,19 +77,17 @@ CLIENT_UUID=$( jq -r '.[] | select(.clientId=="'"$clientId"'") |.id' "$existing_
 
 if [ -z "$CLIENT_UUID"]; then
 echo "client "$clientId" not found "
-fi
-      
- echo "$default_scopes"  | while read -r scope; do
-    echo "$CLIENT_UUID"
-    echo "$clientId"
-    echo "$scope"
-   
-  done
-  result=$(curl -s  -w "%{http_code}"   -X  POST "$KC_BASE_URL/$KC_REALM_ID/clients" \
+ result=$(curl -s  -w "%{http_code}"   -X  POST "$KC_BASE_URL/$KC_REALM_ID/clients" \
   --header "Authorization: Bearer "$(cat "$TKN_FILE")" "  \
   --header "Content-Type: application/json" \
   --data-raw "$client")
   clientId=$(echo "$client" | jq -r '.clientId')
   echo -e " Response client  "$clientId"  create : $result\n"
+fi  
+ echo "$default_scopes"  | while read -r scope; do
+    echo "$CLIENT_UUID"
+    echo "$clientId"
+    echo "$scope"
+  done
 done 
 kill $REFRESH_PID
