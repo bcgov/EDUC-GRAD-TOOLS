@@ -71,7 +71,7 @@
             "READ_GRAD_MESSAGING_CODE_DATA",
             "CREATE_GRAD_SPECIAL_PROGRAM_CODE_DATA",
             "CREATE_GRAD_ASSESSMENT_REQUIREMENT_DATA",
-            "profile",
+          
             "DELETE_GRAD_BATCH_JOB_CODE_DATA",
             "READ_GRAD_ALGORITHM_RULES_DATA",
             "READ_GRAD_COUNTRY_CODE_DATA",
@@ -145,12 +145,12 @@
             "READ_GRAD_HISTORY_ACTIVITY_CODE_DATA",
             "UPDATE_GRAD_PROGRAM_CODE_DATA",
             "READ_GRAD_PSI_DATA",
-            "role_list",
+          
             "UPDATE_GRAD_SPECIAL_PROGRAM_CODE_DATA",
             "READ_GRAD_STUDENT_SPECIAL_DATA",
             "CREATE_GRAD_PROGRAM_RULES_DATA",
             "READ_GRAD_TRAX_STUDENT_DATA",
-            "roles",
+          
             "READ_GRAD_STUDENT_CAREER_DATA",
             "READ_STUDENT",
             "DELETE_GRAD_STUDENT_NOTES_DATA",
@@ -366,7 +366,7 @@
             "CREATE_GRAD_SPECIAL_PROGRAM_CODE_DATA",
             "READ_GRAD_MESSAGING_CODE_DATA",
             "CREATE_GRAD_ASSESSMENT_REQUIREMENT_DATA",
-            "profile",
+          
             "DELETE_GRAD_BATCH_JOB_CODE_DATA",
             "READ_GRAD_COUNTRY_CODE_DATA",
             "READ_GRAD_ALGORITHM_RULES_DATA",
@@ -443,12 +443,12 @@
             "READ_GRAD_HISTORY_ACTIVITY_CODE_DATA",
             "UPDATE_GRAD_PROGRAM_CODE_DATA",
             "READ_GRAD_PSI_DATA",
-            "role_list",
+          
             "UPDATE_GRAD_SPECIAL_PROGRAM_CODE_DATA",
             "READ_GRAD_STUDENT_SPECIAL_DATA",
             "CREATE_GRAD_PROGRAM_RULES_DATA",
             "READ_GRAD_TRAX_STUDENT_DATA",
-            "roles",
+          
             "READ_GRAD_STUDENT_CAREER_DATA",
             "DELETE_GRAD_STUDENT_NOTES_DATA",
             "READ_STUDENT",
@@ -653,7 +653,7 @@
             "CREATE_GRAD_SPECIAL_PROGRAM_CODE_DATA",
             "READ_GRAD_MESSAGING_CODE_DATA",
             "CREATE_GRAD_ASSESSMENT_REQUIREMENT_DATA",
-            "profile",
+          
             "DELETE_GRAD_BATCH_JOB_CODE_DATA",
             "READ_GRAD_COUNTRY_CODE_DATA",
             "READ_GRAD_ALGORITHM_RULES_DATA",
@@ -723,12 +723,12 @@
             "READ_GRAD_HISTORY_ACTIVITY_CODE_DATA",
             "UPDATE_GRAD_PROGRAM_CODE_DATA",
             "READ_GRAD_PSI_DATA",
-            "role_list",
+          
             "UPDATE_GRAD_SPECIAL_PROGRAM_CODE_DATA",
             "READ_GRAD_STUDENT_SPECIAL_DATA",
             "CREATE_GRAD_PROGRAM_RULES_DATA",
             "READ_GRAD_TRAX_STUDENT_DATA",
-            "roles",
+          
             "READ_GRAD_STUDENT_CAREER_DATA",
             "DELETE_GRAD_STUDENT_NOTES_DATA",
             "READ_STUDENT",
@@ -851,10 +851,10 @@
         "defaultClientScopes": [
             "READ_SCHOLARSHIPS_CODES",
             "READ_GRAD_SPECIAL_PROGRAM_CODE_DATA",
-            "role_list",
+          
             "READ_DISTRICT",
-            "profile",
-            "roles",
+          
+          
             "READ_GRAD_CAREER_PROGRAM_CODE_DATA",
             "web-origins",
             "READ_INSTITUTE_CODES",
@@ -966,11 +966,11 @@
         "defaultClientScopes": [
             "CREATE_STUDENT_TRANSCRIPT_REPORT",
             "READ_GRAD_SPECIAL_PROGRAM_CODE_DATA",
-            "role_list",
+          
             "READ_GRAD_PROGRAM_CODE_DATA",
             "READ_GRAD_STUDENT_SPECIAL_DATA",
-            "profile",
-            "roles",
+          
+          
             "READ_GRAD_STUDENT_REPORT_DATA",
             "READ_STUDENT",
             "READ_GRAD_ASSESSMENT_DATA",
@@ -1084,10 +1084,10 @@
             "web-origins",
             "READ_INSTITUTE_CODES",
             "READ_GRAD_PROGRAM_RULES_DATA",
-            "role_list",
+          
             "READ_DISTRICT",
-            "profile",
-            "roles",
+          
+          
             "READ_COLLECTION_CODES",
             "READ_DISTRICT_NOTE",
             "READ_SCHOOL",
@@ -1217,7 +1217,7 @@
             "READ_GRAD_MESSAGING_CODE_DATA",
             "CREATE_GRAD_SPECIAL_PROGRAM_CODE_DATA",
             "CREATE_GRAD_ASSESSMENT_REQUIREMENT_DATA",
-            "profile",
+          
             "DELETE_GRAD_BATCH_JOB_CODE_DATA",
             "READ_GRAD_ALGORITHM_RULES_DATA",
             "READ_GRAD_COUNTRY_CODE_DATA",
@@ -1290,12 +1290,12 @@
             "READ_GRAD_HISTORY_ACTIVITY_CODE_DATA",
             "UPDATE_GRAD_PROGRAM_CODE_DATA",
             "READ_GRAD_PSI_DATA",
-            "role_list",
+          
             "UPDATE_GRAD_SPECIAL_PROGRAM_CODE_DATA",
             "CREATE_GRAD_PROGRAM_RULES_DATA",
             "READ_GRAD_STUDENT_SPECIAL_DATA",
             "READ_GRAD_TRAX_STUDENT_DATA",
-            "roles",
+          
             "READ_GRAD_STUDENT_CAREER_DATA",
             "DELETE_GRAD_STUDENT_NOTES_DATA",
             "READ_STUDENT",
@@ -1445,7 +1445,7 @@
             "READ_GRAD_MESSAGING_CODE_DATA",
             "CREATE_GRAD_SPECIAL_PROGRAM_CODE_DATA",
             "CREATE_GRAD_ASSESSMENT_REQUIREMENT_DATA",
-            "profile",
+          
             "DELETE_GRAD_BATCH_JOB_CODE_DATA",
             "READ_GRAD_ALGORITHM_RULES_DATA",
             "READ_GRAD_COUNTRY_CODE_DATA",
@@ -1518,12 +1518,12 @@
             "READ_GRAD_HISTORY_ACTIVITY_CODE_DATA",
             "UPDATE_GRAD_PROGRAM_CODE_DATA",
             "READ_GRAD_PSI_DATA",
-            "role_list",
+          
             "UPDATE_GRAD_SPECIAL_PROGRAM_CODE_DATA",
             "CREATE_GRAD_PROGRAM_RULES_DATA",
             "READ_GRAD_STUDENT_SPECIAL_DATA",
             "READ_GRAD_TRAX_STUDENT_DATA",
-            "roles",
+          
             "READ_GRAD_STUDENT_CAREER_DATA",
             "DELETE_GRAD_STUDENT_NOTES_DATA",
             "READ_STUDENT",
@@ -1674,7 +1674,7 @@
             "READ_GRAD_MESSAGING_CODE_DATA",
             "CREATE_GRAD_SPECIAL_PROGRAM_CODE_DATA",
             "CREATE_GRAD_ASSESSMENT_REQUIREMENT_DATA",
-            "profile",
+          
             "DELETE_GRAD_BATCH_JOB_CODE_DATA",
             "READ_GRAD_ALGORITHM_RULES_DATA",
             "READ_GRAD_COUNTRY_CODE_DATA",
@@ -1747,12 +1747,12 @@
             "READ_GRAD_HISTORY_ACTIVITY_CODE_DATA",
             "UPDATE_GRAD_PROGRAM_CODE_DATA",
             "READ_GRAD_PSI_DATA",
-            "role_list",
+          
             "UPDATE_GRAD_SPECIAL_PROGRAM_CODE_DATA",
             "CREATE_GRAD_PROGRAM_RULES_DATA",
             "READ_GRAD_STUDENT_SPECIAL_DATA",
             "READ_GRAD_TRAX_STUDENT_DATA",
-            "roles",
+          
             "READ_GRAD_STUDENT_CAREER_DATA",
             "DELETE_GRAD_STUDENT_NOTES_DATA",
             "READ_STUDENT",
@@ -1901,7 +1901,7 @@
             "READ_GRAD_MESSAGING_CODE_DATA",
             "CREATE_GRAD_SPECIAL_PROGRAM_CODE_DATA",
             "CREATE_GRAD_ASSESSMENT_REQUIREMENT_DATA",
-            "profile",
+          
             "DELETE_GRAD_BATCH_JOB_CODE_DATA",
             "READ_GRAD_ALGORITHM_RULES_DATA",
             "READ_GRAD_COUNTRY_CODE_DATA",
@@ -1978,12 +1978,12 @@
             "READ_GRAD_HISTORY_ACTIVITY_CODE_DATA",
             "UPDATE_GRAD_PROGRAM_CODE_DATA",
             "READ_GRAD_PSI_DATA",
-            "role_list",
+          
             "UPDATE_GRAD_SPECIAL_PROGRAM_CODE_DATA",
             "CREATE_GRAD_PROGRAM_RULES_DATA",
             "READ_GRAD_STUDENT_SPECIAL_DATA",
             "READ_GRAD_TRAX_STUDENT_DATA",
-            "roles",
+          
             "READ_GRAD_STUDENT_CAREER_DATA",
             "DELETE_GRAD_STUDENT_NOTES_DATA",
             "READ_STUDENT",
@@ -2076,8 +2076,8 @@
         "web-origins",
         "READ_GRAD_LETTER_GRADE_DATA",
         "READ_GRAD_GRADUATION_STATUS",
-        "roles",
-        "profile",
+      
+      
         "READ_EQUIVALENT_OR_CHALLENGE_CODE",
         "READ_GRAD_STUDENT_REPORT_DATA",
         "email",
@@ -2133,8 +2133,8 @@
       "defaultClientScopes": [
         "web-origins",
         "acr",
-        "roles",
-        "profile",
+      
+      
         "READ_SCHOOL",
         "email"
       ],
