@@ -76,7 +76,7 @@ clientId=$(echo "$client" | jq -r '.clientId')
 CLIENT_UUID=$( jq -r '.[] | select(.clientId=="'"$clientId"'") |.id' "$existing_clients")
 
 if [-z "$CLIENT_UUID"]; then
-echo "client '$clientId' not found "
+echo "client "$clientId" not found "
 fi
       
  echo "$default_scopes"  | while read -r scope; do
