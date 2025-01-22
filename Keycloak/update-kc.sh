@@ -94,7 +94,7 @@ else
     fi
   done
 echo "existing scopes $existing_scopes" "
-echo "missing scopes $missing_scopes" "
+echo "missing scopes "$missing_scopes" "
 fi  
 done 
 kill $REFRESH_PID
