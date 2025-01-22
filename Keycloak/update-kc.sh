@@ -93,10 +93,11 @@ else
     if ! (echo "$existing_scopes" | grep -q "$scope"); then
     missing_scopes+=("test")  
     echo "found missing scope "$scope"  "
+    echo "missing scopes "$missing_scopes" "
     fi
   done
 echo "existing scopes "$existing_scopes" "
-echo "missing scopes "$missing_scopes" "
+
 fi  
 done 
 kill $REFRESH_PID
