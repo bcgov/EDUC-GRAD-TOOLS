@@ -91,7 +91,7 @@ else
     echo "$clientId"
     
     if ! (echo "$existing_scopes" | grep -q "$scope"); then
-    missing_scopes+=("test")  
+    missing_scopes+=("$scope")  
     echo "found missing scope "$scope"  "
     echo "missing scopes "$missing_scopes" "
     fi
