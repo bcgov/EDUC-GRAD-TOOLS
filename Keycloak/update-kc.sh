@@ -71,7 +71,7 @@ curl -s -X  GET "$KC_BASE_URL/$KC_REALM_ID/clients" \
 
  
 jq -c '.[]' clients.sh | while read -r client; do
-missing_scopes=()
+
 default_scopes=$(echo "$client" | jq -r '.defaultClientScopes[]')
 clientId=$(echo "$client" | jq -r '.clientId')
 CLIENT_UUID=$( jq -r '.[] | select(.clientId=="'"$clientId"'") |.id' "$existing_clients")
@@ -89,11 +89,15 @@ else
  echo "$default_scopes"  | while read -r scope; do
     echo "$CLIENT_UUID"
     echo "$clientId"
-    
     if ! (echo "$existing_scopes" | grep -q "$scope"); then
-    missing_scopes+=("$scope")  
     echo "found missing scope "$scope"  "
-    echo "missing scopes "$missing_scopes" "
+      #PUT /{realm}/clients/{id}/default-client-scopes/{clientScopeId}
+    result=$(curl -s  -w "%{http_code}"   -X  PUT "$KC_BASE_URL/$KC_REALM_ID/clients/$CLIENT_UUID/default-client-scopes/$scope" \
+    --header "Authorization: Bearer $TKN" \
+    --header "Content-Type: application/json" \
+    )
+    echo -e " Response client  "$clientId"  update scope  "$scope"  : $result\n"
+   
     fi
   done
 echo "existing scopes "$existing_scopes" "
