@@ -69,7 +69,7 @@ curl -s -X  GET "$KC_BASE_URL/$KC_REALM_ID/clients" \
       -H "Content-Type: application/json" \
       -H "Authorization: Bearer "$(cat "$TKN_FILE")" " >"$existing_clients"
 
-
+ missing_scopes =()
 jq -c '.[]' clients.sh | while read -r client; do
 default_scopes=$(echo "$client" | jq -r '.defaultClientScopes[]')
 clientId=$(echo "$client" | jq -r '.clientId')
@@ -90,11 +90,11 @@ else
     echo "$clientId"
     
     if ! echo "$existing_scopes" | grep -q "$scope"; then
-    missing_scopes+=("$scope")
-  
+    missing_scopes+=("$scope")  
     fi
   done
+echo "existing scopes $existing_scopes" "
+echo "missing scopes $missing_scopes" "
 fi  
 done 
-echo "$missing_scopes"
 kill $REFRESH_PID
