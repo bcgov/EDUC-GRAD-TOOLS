@@ -95,7 +95,7 @@
             "GET_GRADUATION_DATA",
             "DELETE_GRAD_SPECIAL_PROGRAM_RULES_DATA",
             "READ_GRAD_STUDENT_COURSE_DATA",
-            "email",
+           
             "DELETE_GRAD_REQUIREMENT_TYPE_CODE_DATA",
             "CREATE_STUDENT_TRANSCRIPT_REPORT",
             "READ_GRAD_UNGRAD_CODE_DATA",
@@ -392,7 +392,7 @@
             "DELETE_GRAD_SPECIAL_PROGRAM_RULES_DATA",
             "READ_GRAD_STUDENT_COURSE_DATA",
             "WRITE_EVENT_HISTORY",
-            "email",
+           
             "DELETE_GRAD_REQUIREMENT_TYPE_CODE_DATA",
             "CREATE_STUDENT_TRANSCRIPT_REPORT",
             "READ_GRAD_UNGRAD_CODE_DATA",
@@ -676,7 +676,7 @@
             "GET_GRADUATION_DATA",
             "DELETE_GRAD_SPECIAL_PROGRAM_RULES_DATA",
             "READ_GRAD_STUDENT_COURSE_DATA",
-            "email",
+           
             "DELETE_GRAD_REQUIREMENT_TYPE_CODE_DATA",
             "CREATE_STUDENT_TRANSCRIPT_REPORT",
             "READ_GRAD_UNGRAD_CODE_DATA",
@@ -1241,7 +1241,7 @@
             "GET_GRADUATION_DATA",
             "DELETE_GRAD_SPECIAL_PROGRAM_RULES_DATA",
             "READ_GRAD_STUDENT_COURSE_DATA",
-            "email",
+           
             "DELETE_GRAD_REQUIREMENT_TYPE_CODE_DATA",
             "CREATE_STUDENT_TRANSCRIPT_REPORT",
             "READ_GRAD_UNGRAD_CODE_DATA",
@@ -1469,7 +1469,7 @@
             "GET_GRADUATION_DATA",
             "DELETE_GRAD_SPECIAL_PROGRAM_RULES_DATA",
             "READ_GRAD_STUDENT_COURSE_DATA",
-            "email",
+           
             "DELETE_GRAD_REQUIREMENT_TYPE_CODE_DATA",
             "CREATE_STUDENT_TRANSCRIPT_REPORT",
             "READ_GRAD_UNGRAD_CODE_DATA",
@@ -1698,7 +1698,7 @@
             "GET_GRADUATION_DATA",
             "DELETE_GRAD_SPECIAL_PROGRAM_RULES_DATA",
             "READ_GRAD_STUDENT_COURSE_DATA",
-            "email",
+           
             "DELETE_GRAD_REQUIREMENT_TYPE_CODE_DATA",
             "CREATE_STUDENT_TRANSCRIPT_REPORT",
             "READ_GRAD_UNGRAD_CODE_DATA",
@@ -1927,7 +1927,7 @@
             "DELETE_GRAD_SPECIAL_PROGRAM_RULES_DATA",
             "READ_GRAD_STUDENT_COURSE_DATA",
             "WRITE_EVENT_HISTORY",
-            "email",
+           
             "DELETE_GRAD_REQUIREMENT_TYPE_CODE_DATA",
             "CREATE_STUDENT_TRANSCRIPT_REPORT",
             "READ_GRAD_UNGRAD_CODE_DATA",
@@ -2080,7 +2080,7 @@
       
         "READ_EQUIVALENT_OR_CHALLENGE_CODE",
         "READ_GRAD_STUDENT_REPORT_DATA",
-        "email",
+       
         "READ_GRAD_SCHOOL_DATA"
       ],
       "optionalClientScopes": [
