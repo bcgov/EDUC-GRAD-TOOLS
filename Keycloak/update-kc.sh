@@ -74,7 +74,10 @@ jq -c '.[]' clients.sh | while read -r client; do
 
 default_scopes=$(echo "$client" | jq -r '.defaultClientScopes[]')
 clientId=$(echo "$client" | jq -r '.clientId')
-CLIENT_UUID=$( jq -r '.[] | select(.clientId=="'"$clientId"'") |.id' "$existing_clients")
+CLIENT_UUID=$(curl -s -X  GET "$KC_BASE_URL/$KC_REALM_ID/clients" \
+      -H "Content-Type: application/json" \
+      -H "Authorization: Bearer "$(cat "$TKN_FILE")" "  \
+      | jq '.[] | select(.clientId=="'"$clientId"'")' | jq -r '.id')
 existing_scopes=$( jq -r '.[] | select(.clientId=="'"$clientId"'") |.defaultClientScopes[]' "$existing_clients")
 
 if [ -z "$CLIENT_UUID" ]; then
