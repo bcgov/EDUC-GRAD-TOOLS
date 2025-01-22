@@ -17,6 +17,15 @@
             "display.on.consent.screen": "true"
         }
     },
+  {
+    "id": "53952e74-7388-49f1-9ac5-f56563c53b3b",
+    "name": "READ_GRAD_AND_PEN_STUDENT_DATA",
+    "protocol": "openid-connect",
+    "attributes": {
+      "include.in.token.scope": "true",
+      "display.on.consent.screen": "true"
+    }
+  },
     {
         "id": "c07dd39c-60d6-481f-b9ef-65a0603874a4",
         "name": "READ_GRAD_CAREER_PROGRAM_CODE_DATA",
