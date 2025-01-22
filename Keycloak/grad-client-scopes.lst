@@ -109,6 +109,24 @@
       "display.on.consent.screen": "true"
     }
   },
+  {
+    "id": "58ab862d-c891-4111-8f4f-2d9044ec1f49",
+    "name": "DELETE_GRAD_CAREER_PROGRAM_CODE_DATA",
+    "protocol": "openid-connect",
+    "attributes": {
+      "include.in.token.scope": "true",
+      "display.on.consent.screen": "true"
+    }
+  },
+ {
+    "id": "aa638a5b-2997-4ba9-8791-9091abd29d80",
+    "name": "READ_GRAD_STUDENT_ASSESSMENT_DATA",
+    "protocol": "openid-connect",
+    "attributes": {
+      "include.in.token.scope": "true",
+      "display.on.consent.screen": "true"
+    }
+  },
     {
     "id": "38001cc7-983b-47a0-8d96-991b710e6132",
     "name": "CREATE_GRAD_CAREER_PROGRAM_CODE_DATA",
