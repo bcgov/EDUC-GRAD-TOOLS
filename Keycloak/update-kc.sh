@@ -74,6 +74,7 @@ jq -c '.[]' clients.sh | while read -r client; do
 default_scopes=$(echo "$client" | jq -r '.defaultClientScopes[]')
 clientId=$(echo "$client" | jq -r '.clientId')
 CLIENT_UUID=$( jq -r '.[] | select(.clientId=="'"$clientId"'") |.id' "$existing_clients")
+existing_scopes=$( jq -r '.[] | select(.clientId=="'"$clientId"'") |.defaultClientScopes[]' "$existing_clients")
 
 if [ -z "$CLIENT_UUID" ]; then
 echo "client "$clientId" not found "
@@ -83,11 +84,16 @@ echo "client "$clientId" not found "
   --data-raw "$client")
   clientId=$(echo "$client" | jq -r '.clientId')
   echo -e " Response client  "$clientId"  create : $result\n"
-fi  
+else  
  echo "$default_scopes"  | while read -r scope; do
     echo "$CLIENT_UUID"
     echo "$clientId"
+    
+    if ! echo "$existing_scopes" | grep -q "$scope"; then
+    missing_scopes+=("$scope")
     echo "$scope"
+    fi
   done
+fi  
 done 
 kill $REFRESH_PID
