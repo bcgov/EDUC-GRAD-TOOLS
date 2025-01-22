@@ -93,7 +93,7 @@ else
     echo "found missing scope "$scope"  "
       #PUT /{realm}/clients/{id}/default-client-scopes/{clientScopeId}
     result=$(curl -s  -w "%{http_code}"   -X  PUT "$KC_BASE_URL/$KC_REALM_ID/clients/$CLIENT_UUID/default-client-scopes/$scope" \
-    --header "Authorization: Bearer $TKN" \
+     --header "Authorization: Bearer "$(cat "$TKN_FILE")" "  \
     --header "Content-Type: application/json" \
     )
     echo -e " Response client  "$clientId"  update scope  "$scope"  : $result\n"
