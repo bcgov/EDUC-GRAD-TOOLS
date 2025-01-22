@@ -107,6 +107,16 @@
             "display.on.consent.screen": "true"
         }
     },
+ {
+    "id": "READ_SCHOOL",
+    "name": "READ_SCHOOL",
+    "description": "Read scope for school",
+    "protocol": "openid-connect",
+    "attributes": {
+      "include.in.token.scope": "true",
+      "display.on.consent.screen": "false"
+    }
+  },
     {
         "id": "1dc6a7fc-6e15-4d33-950a-23005eafe45f",
         "name": "RUN_GRAD_ALGORITHM",
