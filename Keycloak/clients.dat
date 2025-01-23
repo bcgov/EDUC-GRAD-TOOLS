@@ -245,95 +245,6 @@
     "authenticationFlowBindingOverrides": {},
     "fullScopeAllowed": true,
     "nodeReRegistrationTimeout": -1,
-    "protocolMappers": [
-      {
-        "id": "cd17c0b1-d80d-41bf-b2f9-e101a5af006e",
-        "name": "Client Host",
-        "protocol": "openid-connect",
-        "protocolMapper": "oidc-usersessionmodel-note-mapper",
-        "consentRequired": false,
-        "config": {
-          "user.session.note": "clientHost",
-          "id.token.claim": "true",
-          "access.token.claim": "true",
-          "claim.name": "clientHost",
-          "jsonType.label": "String"
-        }
-      },
-      {
-        "id": "ff97a876-1a13-4d18-b774-6b8486931c45",
-        "name": "display_name",
-        "protocol": "openid-connect",
-        "protocolMapper": "oidc-usermodel-attribute-mapper",
-        "consentRequired": false,
-        "config": {
-          "userinfo.token.claim": "true",
-          "user.attribute": "display_name",
-          "id.token.claim": "true",
-          "access.token.claim": "true",
-          "claim.name": "display_name",
-          "jsonType.label": "String"
-        }
-      },
-      {
-        "id": "d083a52d-7bb0-4820-9a67-68e60bed915e",
-        "name": "Client ID",
-        "protocol": "openid-connect",
-        "protocolMapper": "oidc-usersessionmodel-note-mapper",
-        "consentRequired": false,
-        "config": {
-          "user.session.note": "clientId",
-          "id.token.claim": "true",
-          "access.token.claim": "true",
-          "claim.name": "clientId",
-          "jsonType.label": "String"
-        }
-      },
-      {
-        "id": "3d8ac28c-e896-400b-8f26-d3ae06a8469c",
-        "name": "idir_username",
-        "protocol": "openid-connect",
-        "protocolMapper": "oidc-usermodel-attribute-mapper",
-        "consentRequired": false,
-        "config": {
-          "userinfo.token.claim": "true",
-          "user.attribute": "idir_username",
-          "id.token.claim": "true",
-          "access.token.claim": "true",
-          "claim.name": "idir_username",
-          "jsonType.label": "String"
-        }
-      },
-      {
-        "id": "a4a8ad81-cf60-4ef0-9b49-e75d3d8acd7a",
-        "name": "idir_guid",
-        "protocol": "openid-connect",
-        "protocolMapper": "oidc-usermodel-attribute-mapper",
-        "consentRequired": false,
-        "config": {
-          "userinfo.token.claim": "true",
-          "user.attribute": "idir_guid",
-          "id.token.claim": "true",
-          "access.token.claim": "true",
-          "claim.name": "idir_guid",
-          "jsonType.label": "String"
-        }
-      },
-      {
-        "id": "b19cbf97-379e-4bec-8a30-e97aaace48a3",
-        "name": "Client IP Address",
-        "protocol": "openid-connect",
-        "protocolMapper": "oidc-usersessionmodel-note-mapper",
-        "consentRequired": false,
-        "config": {
-          "user.session.note": "clientAddress",
-          "id.token.claim": "true",
-          "access.token.claim": "true",
-          "claim.name": "clientAddress",
-          "jsonType.label": "String"
-        }
-      }
-    ],
     "defaultClientScopes": [
       "CREATE_GRAD_SPECIAL_PROGRAM_RULES_DATA",
       "READ_GRAD_STUDENT_NOTES_DATA",
@@ -526,98 +437,6 @@
     "authenticationFlowBindingOverrides": {},
     "fullScopeAllowed": true,
     "nodeReRegistrationTimeout": -1,
-    "protocolMappers": [
-      {
-        "id": "77e02fe4-edf6-482c-8a4f-393d184f5815",
-        "name": "Client ID",
-        "protocol": "openid-connect",
-        "protocolMapper": "oidc-usersessionmodel-note-mapper",
-        "consentRequired": false,
-        "config": {
-          "user.session.note": "clientId",
-          "userinfo.token.claim": "true",
-          "id.token.claim": "true",
-          "access.token.claim": "true",
-          "claim.name": "clientId",
-          "jsonType.label": "String"
-        }
-      },
-      {
-        "id": "ef9cde7c-d215-493b-a6fb-5561cd3e7eab",
-        "name": "display_name",
-        "protocol": "openid-connect",
-        "protocolMapper": "oidc-usermodel-attribute-mapper",
-        "consentRequired": false,
-        "config": {
-          "userinfo.token.claim": "true",
-          "user.attribute": "display_name",
-          "id.token.claim": "true",
-          "access.token.claim": "true",
-          "claim.name": "display_name",
-          "jsonType.label": "String"
-        }
-      },
-      {
-        "id": "8667228f-df66-4075-aa56-bb56cf9a70e6",
-        "name": "idir_guid",
-        "protocol": "openid-connect",
-        "protocolMapper": "oidc-usermodel-attribute-mapper",
-        "consentRequired": false,
-        "config": {
-          "userinfo.token.claim": "true",
-          "user.attribute": "idir_guid",
-          "id.token.claim": "true",
-          "access.token.claim": "true",
-          "claim.name": "idir_guid",
-          "jsonType.label": "String"
-        }
-      },
-      {
-        "id": "2662da14-fded-4e77-b370-dc53352bc8ed",
-        "name": "idir_username",
-        "protocol": "openid-connect",
-        "protocolMapper": "oidc-usermodel-attribute-mapper",
-        "consentRequired": false,
-        "config": {
-          "userinfo.token.claim": "true",
-          "user.attribute": "idir_username",
-          "id.token.claim": "true",
-          "access.token.claim": "true",
-          "claim.name": "idir_username",
-          "jsonType.label": "String"
-        }
-      },
-      {
-        "id": "b9dbd84e-93e8-480f-b37a-34c37788d09e",
-        "name": "Client IP Address",
-        "protocol": "openid-connect",
-        "protocolMapper": "oidc-usersessionmodel-note-mapper",
-        "consentRequired": false,
-        "config": {
-          "user.session.note": "clientAddress",
-          "userinfo.token.claim": "true",
-          "id.token.claim": "true",
-          "access.token.claim": "true",
-          "claim.name": "clientAddress",
-          "jsonType.label": "String"
-        }
-      },
-      {
-        "id": "f5a84c23-1e50-4c89-849d-1f6e09d7d18c",
-        "name": "Client Host",
-        "protocol": "openid-connect",
-        "protocolMapper": "oidc-usersessionmodel-note-mapper",
-        "consentRequired": false,
-        "config": {
-          "user.session.note": "clientHost",
-          "userinfo.token.claim": "true",
-          "id.token.claim": "true",
-          "access.token.claim": "true",
-          "claim.name": "clientHost",
-          "jsonType.label": "String"
-        }
-      }
-    ],
     "defaultClientScopes": [
       "CREATE_GRAD_SPECIAL_PROGRAM_RULES_DATA",
       "READ_GRAD_STUDENT_NOTES_DATA",
@@ -785,53 +604,6 @@
     "authenticationFlowBindingOverrides": {},
     "fullScopeAllowed": true,
     "nodeReRegistrationTimeout": -1,
-    "protocolMappers": [
-      {
-        "id": "436f2296-8fe1-4be2-a922-227521c18b7c",
-        "name": "Client IP Address",
-        "protocol": "openid-connect",
-        "protocolMapper": "oidc-usersessionmodel-note-mapper",
-        "consentRequired": false,
-        "config": {
-          "user.session.note": "clientAddress",
-          "userinfo.token.claim": "true",
-          "id.token.claim": "true",
-          "access.token.claim": "true",
-          "claim.name": "clientAddress",
-          "jsonType.label": "String"
-        }
-      },
-      {
-        "id": "584c51c9-80be-4b77-a3d0-a95f6967375c",
-        "name": "Client Host",
-        "protocol": "openid-connect",
-        "protocolMapper": "oidc-usersessionmodel-note-mapper",
-        "consentRequired": false,
-        "config": {
-          "user.session.note": "clientHost",
-          "userinfo.token.claim": "true",
-          "id.token.claim": "true",
-          "access.token.claim": "true",
-          "claim.name": "clientHost",
-          "jsonType.label": "String"
-        }
-      },
-      {
-        "id": "89a29be1-96f7-4347-bf72-b49eb05b3d4b",
-        "name": "Client ID",
-        "protocol": "openid-connect",
-        "protocolMapper": "oidc-usersessionmodel-note-mapper",
-        "consentRequired": false,
-        "config": {
-          "user.session.note": "clientId",
-          "userinfo.token.claim": "true",
-          "id.token.claim": "true",
-          "access.token.claim": "true",
-          "claim.name": "clientId",
-          "jsonType.label": "String"
-        }
-      }
-    ],
     "defaultClientScopes": [
       "READ_SCHOLARSHIPS_CODES",
       "READ_GRAD_SPECIAL_PROGRAM_CODE_DATA",
@@ -898,50 +670,6 @@
     "authenticationFlowBindingOverrides": {},
     "fullScopeAllowed": true,
     "nodeReRegistrationTimeout": -1,
-    "protocolMappers": [
-      {
-        "id": "b9f21e53-a2e7-416c-8c19-bcd41f764eac",
-        "name": "Client IP Address",
-        "protocol": "openid-connect",
-        "protocolMapper": "oidc-usersessionmodel-note-mapper",
-        "consentRequired": false,
-        "config": {
-          "user.session.note": "clientAddress",
-          "id.token.claim": "true",
-          "access.token.claim": "true",
-          "claim.name": "clientAddress",
-          "jsonType.label": "String"
-        }
-      },
-      {
-        "id": "b99a5f37-c283-4898-af2e-cd954f81aa9c",
-        "name": "Client ID",
-        "protocol": "openid-connect",
-        "protocolMapper": "oidc-usersessionmodel-note-mapper",
-        "consentRequired": false,
-        "config": {
-          "user.session.note": "clientId",
-          "id.token.claim": "true",
-          "access.token.claim": "true",
-          "claim.name": "clientId",
-          "jsonType.label": "String"
-        }
-      },
-      {
-        "id": "b95b5ba9-e7b4-49d9-a47e-eec50f22ee65",
-        "name": "Client Host",
-        "protocol": "openid-connect",
-        "protocolMapper": "oidc-usersessionmodel-note-mapper",
-        "consentRequired": false,
-        "config": {
-          "user.session.note": "clientHost",
-          "id.token.claim": "true",
-          "access.token.claim": "true",
-          "claim.name": "clientHost",
-          "jsonType.label": "String"
-        }
-      }
-    ],
     "defaultClientScopes": [
       "CREATE_STUDENT_TRANSCRIPT_REPORT",
       "READ_GRAD_SPECIAL_PROGRAM_CODE_DATA",
@@ -1010,50 +738,6 @@
     "authenticationFlowBindingOverrides": {},
     "fullScopeAllowed": true,
     "nodeReRegistrationTimeout": -1,
-    "protocolMappers": [
-      {
-        "id": "15fd8fa1-104c-4388-a170-25d141efbf6b",
-        "name": "Client ID",
-        "protocol": "openid-connect",
-        "protocolMapper": "oidc-usersessionmodel-note-mapper",
-        "consentRequired": false,
-        "config": {
-          "user.session.note": "clientId",
-          "id.token.claim": "true",
-          "access.token.claim": "true",
-          "claim.name": "clientId",
-          "jsonType.label": "String"
-        }
-      },
-      {
-        "id": "8a91c0ec-f938-4b8c-93ec-ec47be463c09",
-        "name": "Client IP Address",
-        "protocol": "openid-connect",
-        "protocolMapper": "oidc-usersessionmodel-note-mapper",
-        "consentRequired": false,
-        "config": {
-          "user.session.note": "clientAddress",
-          "id.token.claim": "true",
-          "access.token.claim": "true",
-          "claim.name": "clientAddress",
-          "jsonType.label": "String"
-        }
-      },
-      {
-        "id": "2edff46b-e120-4697-8620-3c1d011667d5",
-        "name": "Client Host",
-        "protocol": "openid-connect",
-        "protocolMapper": "oidc-usersessionmodel-note-mapper",
-        "consentRequired": false,
-        "config": {
-          "user.session.note": "clientHost",
-          "id.token.claim": "true",
-          "access.token.claim": "true",
-          "claim.name": "clientHost",
-          "jsonType.label": "String"
-        }
-      }
-    ],
     "defaultClientScopes": [
       "web-origins",
       "READ_INSTITUTE_CODES",
@@ -1115,53 +799,6 @@
     "authenticationFlowBindingOverrides": {},
     "fullScopeAllowed": true,
     "nodeReRegistrationTimeout": -1,
-    "protocolMappers": [
-      {
-        "id": "1a98b7fe-f6db-4918-b40e-95f77beb58ec",
-        "name": "Client ID",
-        "protocol": "openid-connect",
-        "protocolMapper": "oidc-usersessionmodel-note-mapper",
-        "consentRequired": false,
-        "config": {
-          "user.session.note": "clientId",
-          "userinfo.token.claim": "true",
-          "id.token.claim": "true",
-          "access.token.claim": "true",
-          "claim.name": "clientId",
-          "jsonType.label": "String"
-        }
-      },
-      {
-        "id": "1d5954ba-b78d-4d99-a34e-0d70423d00da",
-        "name": "Client Host",
-        "protocol": "openid-connect",
-        "protocolMapper": "oidc-usersessionmodel-note-mapper",
-        "consentRequired": false,
-        "config": {
-          "user.session.note": "clientHost",
-          "userinfo.token.claim": "true",
-          "id.token.claim": "true",
-          "access.token.claim": "true",
-          "claim.name": "clientHost",
-          "jsonType.label": "String"
-        }
-      },
-      {
-        "id": "1450a4d8-5c51-40f2-bb9f-e0321a93ef84",
-        "name": "Client IP Address",
-        "protocol": "openid-connect",
-        "protocolMapper": "oidc-usersessionmodel-note-mapper",
-        "consentRequired": false,
-        "config": {
-          "user.session.note": "clientAddress",
-          "userinfo.token.claim": "true",
-          "id.token.claim": "true",
-          "access.token.claim": "true",
-          "claim.name": "clientAddress",
-          "jsonType.label": "String"
-        }
-      }
-    ],
     "defaultClientScopes": [
       "CREATE_GRAD_SPECIAL_PROGRAM_RULES_DATA",
       "READ_GRAD_STUDENT_NOTES_DATA",
@@ -1337,53 +974,6 @@
     "authenticationFlowBindingOverrides": {},
     "fullScopeAllowed": true,
     "nodeReRegistrationTimeout": -1,
-    "protocolMappers": [
-      {
-        "id": "b4a56058-7110-48f5-b541-171cd224bfc6",
-        "name": "Client Host",
-        "protocol": "openid-connect",
-        "protocolMapper": "oidc-usersessionmodel-note-mapper",
-        "consentRequired": false,
-        "config": {
-          "user.session.note": "clientHost",
-          "userinfo.token.claim": "true",
-          "id.token.claim": "true",
-          "access.token.claim": "true",
-          "claim.name": "clientHost",
-          "jsonType.label": "String"
-        }
-      },
-      {
-        "id": "661e5d9f-01a5-47eb-9f3a-cda1ea48c512",
-        "name": "Client ID",
-        "protocol": "openid-connect",
-        "protocolMapper": "oidc-usersessionmodel-note-mapper",
-        "consentRequired": false,
-        "config": {
-          "user.session.note": "clientId",
-          "userinfo.token.claim": "true",
-          "id.token.claim": "true",
-          "access.token.claim": "true",
-          "claim.name": "clientId",
-          "jsonType.label": "String"
-        }
-      },
-      {
-        "id": "03dfad64-d366-4c74-9353-1ad967e80de6",
-        "name": "Client IP Address",
-        "protocol": "openid-connect",
-        "protocolMapper": "oidc-usersessionmodel-note-mapper",
-        "consentRequired": false,
-        "config": {
-          "user.session.note": "clientAddress",
-          "userinfo.token.claim": "true",
-          "id.token.claim": "true",
-          "access.token.claim": "true",
-          "claim.name": "clientAddress",
-          "jsonType.label": "String"
-        }
-      }
-    ],
     "defaultClientScopes": [
       "CREATE_GRAD_SPECIAL_PROGRAM_RULES_DATA",
       "READ_GRAD_STUDENT_NOTES_DATA",
@@ -1561,53 +1151,6 @@
     "authenticationFlowBindingOverrides": {},
     "fullScopeAllowed": true,
     "nodeReRegistrationTimeout": -1,
-    "protocolMappers": [
-      {
-        "id": "99560619-5aec-437a-b847-1818e6ed8774",
-        "name": "Client IP Address",
-        "protocol": "openid-connect",
-        "protocolMapper": "oidc-usersessionmodel-note-mapper",
-        "consentRequired": false,
-        "config": {
-          "user.session.note": "clientAddress",
-          "userinfo.token.claim": "true",
-          "id.token.claim": "true",
-          "access.token.claim": "true",
-          "claim.name": "clientAddress",
-          "jsonType.label": "String"
-        }
-      },
-      {
-        "id": "e2a2b9ad-ad59-4bd0-bb32-b749a0299e37",
-        "name": "Client ID",
-        "protocol": "openid-connect",
-        "protocolMapper": "oidc-usersessionmodel-note-mapper",
-        "consentRequired": false,
-        "config": {
-          "user.session.note": "clientId",
-          "userinfo.token.claim": "true",
-          "id.token.claim": "true",
-          "access.token.claim": "true",
-          "claim.name": "clientId",
-          "jsonType.label": "String"
-        }
-      },
-      {
-        "id": "4b05a44f-efbd-4101-8eeb-30650e32f927",
-        "name": "Client Host",
-        "protocol": "openid-connect",
-        "protocolMapper": "oidc-usersessionmodel-note-mapper",
-        "consentRequired": false,
-        "config": {
-          "user.session.note": "clientHost",
-          "userinfo.token.claim": "true",
-          "id.token.claim": "true",
-          "access.token.claim": "true",
-          "claim.name": "clientHost",
-          "jsonType.label": "String"
-        }
-      }
-    ],
     "defaultClientScopes": [
       "CREATE_GRAD_SPECIAL_PROGRAM_RULES_DATA",
       "READ_GRAD_STUDENT_NOTES_DATA",
@@ -1785,50 +1328,6 @@
     "authenticationFlowBindingOverrides": {},
     "fullScopeAllowed": true,
     "nodeReRegistrationTimeout": -1,
-    "protocolMappers": [
-      {
-        "id": "f0ab5b3c-ca4c-47a0-9eaa-871074221780",
-        "name": "Client IP Address",
-        "protocol": "openid-connect",
-        "protocolMapper": "oidc-usersessionmodel-note-mapper",
-        "consentRequired": false,
-        "config": {
-          "user.session.note": "clientAddress",
-          "id.token.claim": "true",
-          "access.token.claim": "true",
-          "claim.name": "clientAddress",
-          "jsonType.label": "String"
-        }
-      },
-      {
-        "id": "89e5a9e7-c2d6-4fe9-b769-a90d5448cc16",
-        "name": "Client Host",
-        "protocol": "openid-connect",
-        "protocolMapper": "oidc-usersessionmodel-note-mapper",
-        "consentRequired": false,
-        "config": {
-          "user.session.note": "clientHost",
-          "id.token.claim": "true",
-          "access.token.claim": "true",
-          "claim.name": "clientHost",
-          "jsonType.label": "String"
-        }
-      },
-      {
-        "id": "8bda0bf6-1a67-48a9-bc7b-fc0679c86442",
-        "name": "Client ID",
-        "protocol": "openid-connect",
-        "protocolMapper": "oidc-usersessionmodel-note-mapper",
-        "consentRequired": false,
-        "config": {
-          "user.session.note": "clientId",
-          "id.token.claim": "true",
-          "access.token.claim": "true",
-          "claim.name": "clientId",
-          "jsonType.label": "String"
-        }
-      }
-    ],
     "defaultClientScopes": [
       "CREATE_GRAD_SPECIAL_PROGRAM_RULES_DATA",
       "READ_GRAD_STUDENT_NOTES_DATA",
