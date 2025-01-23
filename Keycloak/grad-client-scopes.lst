@@ -138,6 +138,54 @@
             "display.on.consent.screen": "true"
         }
     },
+ {
+    "id": "c7a2c150-4b5f-4b79-aea5-172297e735d9",
+    "name": "DELETE_GRAD_STUDENT_REPORTS",
+    "protocol": "openid-connect",
+    "attributes": {
+      "include.in.token.scope": "true",
+      "display.on.consent.screen": "true"
+    }
+  },
+    {
+    "id": "19b14d22-521d-4bed-975d-9ff9365053a9",
+    "name": "UPDATE_GRAD_CAREER_PROGRAM_CODE_DATA",
+    "protocol": "openid-connect",
+    "attributes": {
+      "include.in.token.scope": "true",
+      "display.on.consent.screen": "true"
+    }
+  },
+    {
+    "id": "a9e6fd9f-c919-4739-99e6-8971565e3406",
+    "name": "READ_INSTITUTE_CODES",
+    "description": "READ_INSTITUTE_CODES",
+    "protocol": "openid-connect",
+    "attributes": {
+      "include.in.token.scope": "true",
+      "display.on.consent.screen": "false"
+    }
+  },
+    {
+    "id": "READ_INDEPENDENT_AUTHORITY",
+    "name": "READ_INDEPENDENT_AUTHORITY",
+    "description": "Read scope for independent authority",
+    "protocol": "openid-connect",
+    "attributes": {
+      "include.in.token.scope": "true",
+      "display.on.consent.screen": "false"
+    }
+  },
+   {
+    "id": "READ_EDX_USERS",
+    "name": "READ_EDX_USERS",
+    "description": "Reading users in EDX",
+    "protocol": "openid-connect",
+    "attributes": {
+      "include.in.token.scope": "true",
+      "display.on.consent.screen": "false"
+    }
+  },
     {
         "id": "67410b79-d3c5-4e46-8539-4c6ff96bd14d",
         "name": "READ_GRAD_PSI_DATA",
