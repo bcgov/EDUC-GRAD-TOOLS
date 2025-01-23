@@ -985,7 +985,7 @@
             "READ_GRAD_PROGRAM_RULES_DATA",
             "READ_GRAD_STUDENT_CERTIFICATE_DATA",
             "GET_GRADUATION_DATA",
-            "READ_SCHOOL",
+            "READ_SCHOOL"
            
         ],
         "optionalClientScopes": [
