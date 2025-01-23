@@ -862,7 +862,7 @@
             "READ_GRAD_PROGRAM_RULES_DATA",
             "READ_GRAD_STUDENT_GRADE_CODES",
             "READ_EDX_USERS",
-            "READ_SCHOOL",
+            "READ_SCHOOL"
            
         ],
         "optionalClientScopes": [
