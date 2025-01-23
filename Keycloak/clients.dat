@@ -863,7 +863,7 @@
             "READ_GRAD_STUDENT_GRADE_CODES",
             "READ_EDX_USERS",
             "READ_SCHOOL",
-            "email"
+           
         ],
         "optionalClientScopes": [
             "address",
@@ -986,7 +986,7 @@
             "READ_GRAD_STUDENT_CERTIFICATE_DATA",
             "GET_GRADUATION_DATA",
             "READ_SCHOOL",
-            "email"
+           
         ],
         "optionalClientScopes": [
             "address",
@@ -1091,7 +1091,7 @@
             "READ_COLLECTION_CODES",
             "READ_DISTRICT_NOTE",
             "READ_SCHOOL",
-            "email"
+           
         ],
         "optionalClientScopes": [
             "address",
@@ -2136,7 +2136,7 @@
       
       
         "READ_SCHOOL",
-        "email"
+       
       ],
       "optionalClientScopes": [
         "address",
