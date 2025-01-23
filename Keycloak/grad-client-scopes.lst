@@ -18,6 +18,25 @@
       "display.on.consent.screen": "false"
     }
   },
+ {
+    "id": "READ_SCHOLARSHIPS_CODES",
+    "name": "READ_SCHOLARSHIPS_CODES",
+    "description": "Read Scholarships Codes",
+    "protocol": "openid-connect",
+    "attributes": {
+      "include.in.token.scope": "true",
+      "display.on.consent.screen": "false"
+    }
+  },
+    {
+    "id": "81e10a33-3fa3-4a57-8377-4f81b2e46796",
+    "name": "UPDATE_GRAD_TRAX_CACHE",
+    "protocol": "openid-connect",
+    "attributes": {
+      "include.in.token.scope": "true",
+      "display.on.consent.screen": "false"
+    }
+  },
     {
     "id": "READ_DISTRICT_NOTE",
     "name": "READ_DISTRICT_NOTE",
