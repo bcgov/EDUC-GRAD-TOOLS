@@ -81,7 +81,6 @@ CLIENT_UUID=$(curl -s -X  GET "$KC_BASE_URL/$KC_REALM_ID/clients" \
 existing_scopes=$( jq -r '.[] | select(.clientId=="'"$clientId"'") |.defaultClientScopes[]' "$existing_clients")
 
 if [ -z "$CLIENT_UUID" ]; then
-echo "client "$clientId" not found "
  result=$(curl -s  -w "%{http_code}"   -X  POST "$KC_BASE_URL/$KC_REALM_ID/clients" \
   --header "Authorization: Bearer "$(cat "$TKN_FILE")" "  \
   --header "Content-Type: application/json" \
@@ -90,16 +89,12 @@ echo "client "$clientId" not found "
   echo -e " Response client  "$clientId"  create : $result\n"
 else  
  echo "$default_scopes"  | while read -r scope; do
-    echo "$CLIENT_UUID"
-    echo "$clientId"
     if ! (echo "$existing_scopes" | grep -q "$scope"); then
-  
     SCOPE_UUID=$(curl -s -X  GET "$KC_BASE_URL/$KC_REALM_ID/client-scopes" \
       -H "Content-Type: application/json" \
       -H "Authorization: Bearer "$(cat "$TKN_FILE")" "  \
       | jq '.[] | select(.name=="'"$scope"'")' | jq -r '.id')
-        echo "found missing scope "$scope" with uuid  "$SCOPE_UUID"  "
-      #PUT /{realm}/clients/{id}/default-client-scopes/{clientScopeId}
+       
     result=$(curl -s  -w "%{http_code}"   -X  PUT "$KC_BASE_URL/$KC_REALM_ID/clients/$CLIENT_UUID/default-client-scopes/$SCOPE_UUID" \
      --header "Authorization: Bearer "$(cat "$TKN_FILE")" "  \
     --header "Content-Type: application/json" \
@@ -108,8 +103,6 @@ else
    
     fi
   done
-echo "existing scopes "$existing_scopes" "
-
 fi  
 done 
 kill $REFRESH_PID
