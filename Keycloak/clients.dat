@@ -1084,13 +1084,10 @@
             "web-origins",
             "READ_INSTITUTE_CODES",
             "READ_GRAD_PROGRAM_RULES_DATA",
-          
             "READ_DISTRICT",
-          
-          
             "READ_COLLECTION_CODES",
             "READ_DISTRICT_NOTE",
-            "READ_SCHOOL",
+            "READ_SCHOOL"
            
         ],
         "optionalClientScopes": [
