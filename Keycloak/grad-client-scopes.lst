@@ -8,6 +8,15 @@
             "display.on.consent.screen": "true"
         }
     },
+ {
+    "id": "b1641b77-1145-4a35-94df-d917fffef6c9",
+    "name": "DELETE_GRAD_PROGRAM_TYPE_CODE_DATA",
+    "protocol": "openid-connect",
+    "attributes": {
+      "include.in.token.scope": "true",
+      "display.on.consent.screen": "true"
+    }
+  },
     {
         "id": "b45a0f74-c3f4-4418-a740-8cb4055c94ac",
         "name": "READ_GRAD_ASSESSMENT_DATA",
