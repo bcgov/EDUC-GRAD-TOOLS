@@ -8,6 +8,36 @@
             "display.on.consent.screen": "true"
         }
     },
+  {
+    "id": "READ_DISTRICT",
+    "name": "READ_DISTRICT",
+    "description": "Read scope for district",
+    "protocol": "openid-connect",
+    "attributes": {
+      "include.in.token.scope": "true",
+      "display.on.consent.screen": "false"
+    }
+  },
+    {
+    "id": "READ_DISTRICT_NOTE",
+    "name": "READ_DISTRICT_NOTE",
+    "description": "Read scope for district address",
+    "protocol": "openid-connect",
+    "attributes": {
+      "include.in.token.scope": "true",
+      "display.on.consent.screen": "false"
+    }
+  },
+   {
+    "id": "READ_COLLECTION_CODES",
+    "name": "READ_COLLECTION_CODES",
+    "description": "Read Student Data Collection Collection Codes",
+    "protocol": "openid-connect",
+    "attributes": {
+      "include.in.token.scope": "true",
+      "display.on.consent.screen": "false"
+    }
+  },
  {
     "id": "b1641b77-1145-4a35-94df-d917fffef6c9",
     "name": "DELETE_GRAD_PROGRAM_TYPE_CODE_DATA",
