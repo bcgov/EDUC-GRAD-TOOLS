@@ -1579,7 +1579,9 @@
     "defaultClientScopes": [
       "web-origins",
       "acr",
-      "READ_SCHOOL"
+      "READ_SCHOOL",
+      "READ_DISTRICT",
+      "READ_INSTITUTE_CODES"
     ],
     "optionalClientScopes": [
       "address",
