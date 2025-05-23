@@ -97,7 +97,7 @@ objects:
             app: redis-ha
         spec:
           imagePullSecrets:
-            - name: artifactory-creds
+            - name: artifacts-pull-grad-artifactory-bktzbw
           containers:
             - name: redis-ha
               image: artifacts.developer.gov.bc.ca/g77c-gen-docker-local/redis-with-tini:7.0.8
