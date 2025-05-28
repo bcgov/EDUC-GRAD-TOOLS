@@ -25,8 +25,7 @@ jobs:
           set -eux
           # Login to OpenShift and select project
           oc login --token=${{ env.OPENSHIFT_TOKEN }} --server=${{ env.OPENSHIFT_SERVER }}
-          # oc project ${{ env.OPENSHIFT_NAMESPACE }}
-          oc project 77c02f-tools
+          oc project ${{ env.OPENSHIFT_NAMESPACE }}
       - name: cleanup
         run : |
           echo "Cleaning up previous installation (if any)..."
