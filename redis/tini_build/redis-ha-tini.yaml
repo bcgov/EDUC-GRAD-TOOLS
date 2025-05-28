@@ -96,11 +96,9 @@ objects:
           labels:
             app: redis-ha
         spec:
-          imagePullSecrets:
-            - name: artifacts-pull-grad-artifactory-bktzbw
           containers:
             - name: redis-ha
-              image: artifacts.developer.gov.bc.ca/g77c-gen-docker-local/redis-with-tini:7.0.8
+              image: ghcr.io/bcgov/educ-grad-tools/tini-redis:7.0.8
               ports:
                 - containerPort: 6379
                   name: client
