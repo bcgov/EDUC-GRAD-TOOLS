@@ -36,7 +36,7 @@ jobs:
       - name: Wait for Readiness
         run: |
           echo "Waiting for pods to be ready..."
-          sleep "$((${{ env.REPLICAS }}*50))"
+          oc rollout status statefulset/redis-ha --timeout=600s
       - name: Create Cluster
         run: |
           echo "Retrieve redis password..."
