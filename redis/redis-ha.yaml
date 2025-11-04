@@ -98,7 +98,7 @@ objects:
         spec:
           containers:
             - name: redis-ha
-              image: ghcr.io/bcgov/educ-grad-tools/tini-redis:7.0.8
+              image: ghcr.io/bcgov/educ-grad-tools/tini-redis:7.4.6
               ports:
                 - containerPort: 6379
                   name: client
